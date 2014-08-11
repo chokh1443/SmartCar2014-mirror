@@ -41,7 +41,7 @@ void sendBlueMsg(const char * arr, unsigned long length){
 	sendBlueNewLine();
 }
 void sendBluePID(int count, int target, int pwm){
-	struct Sensor * pSensor = getSensor();
+/*	struct Sensor * pSensor = getSensor();
 	sendBlueNewLine();
 	//"x : t = xx, enc = xx, pwm = xx, mA=xx, mB= xx"
 	sendBlueInt(count);
@@ -61,7 +61,7 @@ void sendBluePID(int count, int target, int pwm){
 	sendBlueInt((pSensor->potValue[1]));
 	sendBlueChar(", pot[2]=", 10);
 	sendBlueInt((pSensor->potValue[2]));
-	sendBlueNewLine();
+	sendBlueNewLine();*/
 }
 int recvBlueInt(void){
 	int ret = 0, sign = 0;

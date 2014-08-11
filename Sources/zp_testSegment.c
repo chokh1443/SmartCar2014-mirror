@@ -15,9 +15,9 @@ void printSegmentTick(void) {
 	int setVal[3];
 	
 
-	zpSegment[0] = zpSegFromStruct->first; //변수명 그냥 대충 함
-	zpSegment[1] = zpSegFromStruct->second; //변수명 그냥 대충 함
-	zpSegment[2] = zpSegFromStruct->third; //변수명 그냥 대충 함
+	//zpSegment[0] = zpSegFromStruct->first; //변수명 그냥 대충 함
+	//zpSegment[1] = zpSegFromStruct->second; //변수명 그냥 대충 함
+	//zpSegment[2] = zpSegFromStruct->third; //변수명 그냥 대충 함
 
 	if (seq == 0) {
 		setVal[0] = zpSegment[0] % 10000 / 1000;
