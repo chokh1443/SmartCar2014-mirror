@@ -17,7 +17,7 @@ unsigned char newLine[2] = { '\r', '\n' };
 /*********************  Initialization Function(s) ************************/
 
 void main(void) {
-	struct Board board;
+	Board board;
 	sys_init_fnc();
 	EnableExternalInterrupts();
 	

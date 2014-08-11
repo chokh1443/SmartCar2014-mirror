@@ -1,18 +1,20 @@
 #pragma once
+#include "typedefs.h"
 
-struct LED {
-	void (*on)(int number);
-	void (*off)(int number);
-};
+typedef struct {
+	void (*on)(uint16_t number);
+	void (*off)(uint16_t number);
+} LED;
 
-struct GPIO {
-	void (*on)(int number);
-	void (*off)(int number);
-};
+typedef struct {
+	void (*on)(uint16_t number);
+	void (*off)(uint16_t number);
+	uint8_t (*get)(uint16_t number);
+} GPIO;
 
-struct Board {
-	struct LED led;
-	struct GPIO gpio;
-};
+typedef struct {
+	LED led;
+	GPIO gpio;
+} Board;
 
-void initBoard(struct Board * board);
+void initBoard(Board * board);
