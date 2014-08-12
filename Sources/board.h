@@ -11,6 +11,7 @@ typedef struct {
 	void (*on)(uint16_t ch);
 	void (*off)(uint16_t ch);
 	uint8_t (*get)(uint16_t ch);
+	void (*set)(uint16_t ch, uint8_t value);
 	
 	struct {
 		uint8_t ** segmentNumber;
