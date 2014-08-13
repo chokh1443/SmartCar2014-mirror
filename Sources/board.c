@@ -34,16 +34,16 @@ void initBoard(Board * board) {
 	board->gpio.ch.segmentEnable = (uint8_t**)CONST_SEGMENT_PIN_ENABLE;
 }
 void LED_ON(uint16_t ledId) {
-	GPIO_ON(DO_LED1 + ledId);
-}
-void LED_OFF(uint16_t ledId) {
 	GPIO_OFF(DO_LED1 + ledId);
 }
+void LED_OFF(uint16_t ledId) {
+	GPIO_ON(DO_LED1 + ledId);
+}
 void GPIO_ON(uint16_t ch) {
-	SIU.GPDO[ch].B.PDO = 0;
+	SIU.GPDO[ch].B.PDO = 1;
 }
 void GPIO_OFF(uint16_t ch) {
-	SIU.GPDO[ch].B.PDO = 1;
+	SIU.GPDO[ch].B.PDO = 0;
 }
 uint8_t GPIO_GET(uint16_t ch) {
 	return (uint8_t) SIU .GPDI[ch].B.PDI;

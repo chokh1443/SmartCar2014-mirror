@@ -1,4 +1,4 @@
-#include "eventHandler.h"
+#include "event_handler.h"
 
 EventHandler bind(void * that, void (*func) (void *)){
 	EventHandler eventHandler;

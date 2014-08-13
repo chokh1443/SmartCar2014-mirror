@@ -1,6 +1,8 @@
 #pragma once
 #include "typedefs.h"
 #include "zp_pin.h"
+#include "event_handler.h"
+#include "event_emiter.h"
 
 typedef struct {
 	void (*on)(uint16_t ledId);
@@ -20,9 +22,20 @@ typedef struct {
 } GPIO;
 
 typedef struct {
+	void (*addHandler)(void * this, EventHandler * handler);
+	void (*setInterval)(void * this);
+	
+	EventEmitter emitter;
+} Interrupt;
+
+typedef struct {
 	LED led;
 	GPIO gpio;
+	
+	Interrupt timerInterrupt;
+	Interrupt encoderInterrupt;
+	Interrupt cameraInterrupt;
 } Board;
 
 void initBoard(Board * board);
-
+void initInterrupt(Interrupt * this);

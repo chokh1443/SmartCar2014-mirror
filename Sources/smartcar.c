@@ -16,6 +16,6 @@ void initSmartCar(SmartCar * this){
 		initBarLED(&this->barLED[i], &this->board, i);
 	}
 	
-	initMotor(&this->motor);
+	initMotor(&this->motor, &this->board);
 	initServo(&this->servo);
 }
