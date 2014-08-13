@@ -73,9 +73,9 @@
 #define DO_SEG3_4       107//PG11_SEG3_SEL4
 
 //bar LED
-#define DO_BAR1_A       28//PB13_BAR1_A
-#define DO_BAR1_B       29//PB14_BAR1_B
-#define DO_BAR1_C       30//PB15_BAR1_C
+#define DO_BAR1_A       29//PB13_BAR1_A
+#define DO_BAR1_B       30//PB14_BAR1_B
+#define DO_BAR1_C       31//PB15_BAR1_C
 #define DO_BAR1_ON      108//PG12_BAR1_ON
 
 #define DO_BAR2_A       36//PC4_BAR2_A
