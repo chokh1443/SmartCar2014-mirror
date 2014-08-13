@@ -7,7 +7,7 @@
 
 #include "UART_drv_api.h"
 
-#include "board.h"
+#include "smartcar.h"
 
 /**********************  Function Prototype here *************************/
 
@@ -17,16 +17,20 @@ unsigned char newLine[2] = { '\r', '\n' };
 /*********************  Initialization Function(s) ************************/
 
 void main(void) {
-	Board board;
+	SmartCar smartCar;
 	sys_init_fnc();
 	EnableExternalInterrupts();
 	
-	initBoard(&board);
+	initSmartCar(&smartCar);
+	
 	/*
 	 * usages :
 	 * board.gpio.on(68);
 	 * board.led.off(1);
+	 * 
+	 * pEncoder = board.encoder;
+	 * encoder.get(pEncoder);
+	 * encoder.onTick(pEncoder);
 	 */
-	
 }
 

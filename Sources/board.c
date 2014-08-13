@@ -17,13 +17,13 @@ const uint8_t CONST_SEGMENT_PIN_NUMBER[3][4] = {
 const uint8_t CONST_SEGMENT_PIN_ENABLE[3][4] = {
 	{ DO_SEG1_1, DO_SEG1_2, DO_SEG1_3, DO_SEG1_4 },
 	{ DO_SEG2_1, DO_SEG2_2, DO_SEG2_3, DO_SEG2_4 },
-	{ DO_SEG3_1, DO_SEG3_2, DO_SEG3_3, DO_SEG3_4 }
+	{ DO_SEG3_1, DO_SEG3_2, DO_SEG3_3, DO_SEG3_4 } 
 };
 
 void initBoard(Board * board) {
 	//default I/O functions
 	board->led.on = LED_ON;
-	board->led.off = LED_OFF
+	board->led.off = LED_OFF;
 
 	board->gpio.on = GPIO_ON;
 	board->gpio.off = GPIO_OFF;
