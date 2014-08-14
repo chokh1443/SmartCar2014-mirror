@@ -18,12 +18,13 @@
 1.0 8/11/14 7:05 PM chokh  - 
 1.0 8/11/14 8:16 PM chokh SIU, LINFlex, System Clock Timers, ADC - 
 1.0 8/11/14 9:24 PM chokh  - 
-1.0 8/11/14 9:57 PM chokh  - </revisionBlock>
-        <projectDirectoryPath>D:\workspace\codewarrior</projectDirectoryPath>
+1.0 8/11/14 9:57 PM chokh  - 
+1.0 8/14/14 10:25 PM chokh  - </revisionBlock>
+        <projectDirectoryPath>C:\Users\chokh\Documents\GitHub\SmartCar</projectDirectoryPath>
         <sourceDirectoryPath>C:\zpSmartCar</sourceDirectoryPath>
         <projectLogPath></projectLogPath>
         <reportDirectoryPath>C:\Freescale\RAppID\RAppID Projects\5607B\Projects\report</reportDirectoryPath>
-        <lastSavedOn>2014-08-11T21:57:30.057+09:00</lastSavedOn>
+        <lastSavedOn>2014-08-14T22:31:19.932+09:00</lastSavedOn>
         <peripheralWizardMap>
             <entry>
                 <key>ADC</key>
@@ -5524,7 +5525,7 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>4</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR62::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PD14 as an Input&lt;br&gt;Device :-GPIO</toolTip>
-            <userAssignedSignal>PD14_CAM_CLK</userAssignedSignal>
+            <userAssignedSignal></userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsInputList>
     <padWizardDetailsOutputList>
@@ -5532,7 +5533,7 @@
             <peripheralName>GPIO</peripheralName>
             <padNumber>62</padNumber>
             <padType>G</padType>
-            <allocationStatus>true</allocationStatus>
+            <allocationStatus>false</allocationStatus>
             <ioType>O</ioType>
             <output>true</output>
             <chkBoxName>PD14</chkBoxName>
@@ -5542,11 +5543,11 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>4</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR62::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PD14 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
-            <userAssignedSignal>PD14_CAM_CLK</userAssignedSignal>
+            <userAssignedSignal></userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsOutputList>
     <attributeName>PD14</attributeName>
-    <userAssignedSignalName>PD14_CAM_CLK</userAssignedSignalName>
+    <userAssignedSignalName></userAssignedSignalName>
 </PINFunctionPADAttribute>
 <PINFunctionPADAttribute>
     <padWizardDetailsInputList>
@@ -5564,7 +5565,7 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>4</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR63::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PD15 as an Input&lt;br&gt;Device :-GPIO</toolTip>
-            <userAssignedSignal>PD15_CAM_SI</userAssignedSignal>
+            <userAssignedSignal></userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsInputList>
     <padWizardDetailsOutputList>
@@ -5572,7 +5573,7 @@
             <peripheralName>GPIO</peripheralName>
             <padNumber>63</padNumber>
             <padType>G</padType>
-            <allocationStatus>true</allocationStatus>
+            <allocationStatus>false</allocationStatus>
             <ioType>O</ioType>
             <output>true</output>
             <chkBoxName>PD15</chkBoxName>
@@ -5582,11 +5583,11 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>4</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR63::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PD15 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
-            <userAssignedSignal>PD15_CAM_SI</userAssignedSignal>
+            <userAssignedSignal></userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsOutputList>
     <attributeName>PD15</attributeName>
-    <userAssignedSignalName>PD15_CAM_SI</userAssignedSignalName>
+    <userAssignedSignalName></userAssignedSignalName>
 </PINFunctionPADAttribute>
                             </PINFunctionPADAttributeList>
                             <sequenceNo>4</sequenceNo>
@@ -6079,6 +6080,7 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>5</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR76::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE12 as an Input&lt;br&gt;Device :-GPIO</toolTip>
+            <userAssignedSignal>PE12_CAM1_CLK</userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsInputList>
     <padWizardDetailsOutputList>
@@ -6086,7 +6088,7 @@
             <peripheralName>GPIO</peripheralName>
             <padNumber>76</padNumber>
             <padType>G</padType>
-            <allocationStatus>false</allocationStatus>
+            <allocationStatus>true</allocationStatus>
             <ioType>O</ioType>
             <output>true</output>
             <chkBoxName>PE12</chkBoxName>
@@ -6096,9 +6098,11 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>5</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR76::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE12 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+            <userAssignedSignal>PE12_CAM1_CLK</userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsOutputList>
     <attributeName>PE12</attributeName>
+    <userAssignedSignalName>PE12_CAM1_CLK</userAssignedSignalName>
 </PINFunctionPADAttribute>
 <PINFunctionPADAttribute>
     <padWizardDetailsInputList>
@@ -6116,6 +6120,7 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>5</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR77::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE13 as an Input&lt;br&gt;Device :-GPIO</toolTip>
+            <userAssignedSignal>PE13_CAM1_SI</userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsInputList>
     <padWizardDetailsOutputList>
@@ -6123,7 +6128,7 @@
             <peripheralName>GPIO</peripheralName>
             <padNumber>77</padNumber>
             <padType>G</padType>
-            <allocationStatus>false</allocationStatus>
+            <allocationStatus>true</allocationStatus>
             <ioType>O</ioType>
             <output>true</output>
             <chkBoxName>PE13</chkBoxName>
@@ -6133,9 +6138,11 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>5</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR77::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE13 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+            <userAssignedSignal>PE13_CAM1_SI</userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsOutputList>
     <attributeName>PE13</attributeName>
+    <userAssignedSignalName>PE13_CAM1_SI</userAssignedSignalName>
 </PINFunctionPADAttribute>
 <PINFunctionPADAttribute>
     <padWizardDetailsInputList>
@@ -6153,6 +6160,7 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>5</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR78::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE14 as an Input&lt;br&gt;Device :-GPIO</toolTip>
+            <userAssignedSignal>PE14_CAM2_CLK</userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsInputList>
     <padWizardDetailsOutputList>
@@ -6160,7 +6168,7 @@
             <peripheralName>GPIO</peripheralName>
             <padNumber>78</padNumber>
             <padType>G</padType>
-            <allocationStatus>false</allocationStatus>
+            <allocationStatus>true</allocationStatus>
             <ioType>O</ioType>
             <output>true</output>
             <chkBoxName>PE14</chkBoxName>
@@ -6170,9 +6178,11 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>5</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR78::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE14 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+            <userAssignedSignal>PE14_CAM2_CLK</userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsOutputList>
     <attributeName>PE14</attributeName>
+    <userAssignedSignalName>PE14_CAM2_CLK</userAssignedSignalName>
 </PINFunctionPADAttribute>
 <PINFunctionPADAttribute>
     <padWizardDetailsInputList>
@@ -6190,6 +6200,7 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>5</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR79::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE15 as an Input&lt;br&gt;Device :-GPIO</toolTip>
+            <userAssignedSignal>PE15_CAM2_SI</userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsInputList>
     <padWizardDetailsOutputList>
@@ -6197,7 +6208,7 @@
             <peripheralName>GPIO</peripheralName>
             <padNumber>79</padNumber>
             <padType>G</padType>
-            <allocationStatus>false</allocationStatus>
+            <allocationStatus>true</allocationStatus>
             <ioType>O</ioType>
             <output>true</output>
             <chkBoxName>PE15</chkBoxName>
@@ -6207,9 +6218,11 @@
             <enableConflictCheckBox>true</enableConflictCheckBox>
             <groupSequenceNumber>5</groupSequenceNumber>
             <toolTip>Register::Bit_name :- SIU_PCR79::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE15 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+            <userAssignedSignal>PE15_CAM2_SI</userAssignedSignal>
         </padWizardDetails>
     </padWizardDetailsOutputList>
     <attributeName>PE15</attributeName>
+    <userAssignedSignalName>PE15_CAM2_SI</userAssignedSignalName>
 </PINFunctionPADAttribute>
                             </PINFunctionPADAttributeList>
                             <sequenceNo>5</sequenceNo>
@@ -12638,7 +12651,7 @@
                         </PADFunction>
                     </padFunctionList>
                     <padRegister>
-                        <value>1</value>
+                        <value>513</value>
                         <deviceName>SIU</deviceName>
                         <name>SIU_PCR79</name>
                         <offset>0xDE</offset>
@@ -12656,9 +12669,25 @@
                             <pinName>113</pinName>
                         </PADPackage>
                     </padPackageList>
-                    <allocated>false</allocated>
+                    <allocated>true</allocated>
                     <conflictInAllocation>false</conflictInAllocation>
                     <outputConflict>false</outputConflict>
+                    <objPADWizardDetailsAllocated>
+                        <peripheralName>GPIO</peripheralName>
+                        <padNumber>79</padNumber>
+                        <padType>G</padType>
+                        <allocationStatus>true</allocationStatus>
+                        <ioType>O</ioType>
+                        <output>true</output>
+                        <chkBoxName>PE15</chkBoxName>
+                        <attributeName>PE15</attributeName>
+                        <enabled>true</enabled>
+                        <peripheralValidationName>PE15</peripheralValidationName>
+                        <enableConflictCheckBox>true</enableConflictCheckBox>
+                        <groupSequenceNumber>5</groupSequenceNumber>
+                        <toolTip>Register::Bit_name :- SIU_PCR79::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE15 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                        <userAssignedSignal>PE15_CAM2_SI</userAssignedSignal>
+                    </objPADWizardDetailsAllocated>
                 </value>
             </entry>
             <entry>
@@ -12766,7 +12795,7 @@
                         </PADFunction>
                     </padFunctionList>
                     <padRegister>
-                        <value>1</value>
+                        <value>513</value>
                         <deviceName>SIU</deviceName>
                         <name>SIU_PCR78</name>
                         <offset>0xDC</offset>
@@ -12784,9 +12813,25 @@
                             <pinName>112</pinName>
                         </PADPackage>
                     </padPackageList>
-                    <allocated>false</allocated>
+                    <allocated>true</allocated>
                     <conflictInAllocation>false</conflictInAllocation>
                     <outputConflict>false</outputConflict>
+                    <objPADWizardDetailsAllocated>
+                        <peripheralName>GPIO</peripheralName>
+                        <padNumber>78</padNumber>
+                        <padType>G</padType>
+                        <allocationStatus>true</allocationStatus>
+                        <ioType>O</ioType>
+                        <output>true</output>
+                        <chkBoxName>PE14</chkBoxName>
+                        <attributeName>PE14</attributeName>
+                        <enabled>true</enabled>
+                        <peripheralValidationName>PE14</peripheralValidationName>
+                        <enableConflictCheckBox>true</enableConflictCheckBox>
+                        <groupSequenceNumber>5</groupSequenceNumber>
+                        <toolTip>Register::Bit_name :- SIU_PCR78::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE14 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                        <userAssignedSignal>PE14_CAM2_CLK</userAssignedSignal>
+                    </objPADWizardDetailsAllocated>
                 </value>
             </entry>
             <entry>
@@ -14687,7 +14732,7 @@
                         </PADFunction>
                     </padFunctionList>
                     <padRegister>
-                        <value>1</value>
+                        <value>513</value>
                         <deviceName>SIU</deviceName>
                         <name>SIU_PCR76</name>
                         <offset>0xD8</offset>
@@ -14705,9 +14750,25 @@
                             <pinName>109</pinName>
                         </PADPackage>
                     </padPackageList>
-                    <allocated>false</allocated>
+                    <allocated>true</allocated>
                     <conflictInAllocation>false</conflictInAllocation>
                     <outputConflict>false</outputConflict>
+                    <objPADWizardDetailsAllocated>
+                        <peripheralName>GPIO</peripheralName>
+                        <padNumber>76</padNumber>
+                        <padType>G</padType>
+                        <allocationStatus>true</allocationStatus>
+                        <ioType>O</ioType>
+                        <output>true</output>
+                        <chkBoxName>PE12</chkBoxName>
+                        <attributeName>PE12</attributeName>
+                        <enabled>true</enabled>
+                        <peripheralValidationName>PE12</peripheralValidationName>
+                        <enableConflictCheckBox>true</enableConflictCheckBox>
+                        <groupSequenceNumber>5</groupSequenceNumber>
+                        <toolTip>Register::Bit_name :- SIU_PCR76::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE12 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                        <userAssignedSignal>PE12_CAM1_CLK</userAssignedSignal>
+                    </objPADWizardDetailsAllocated>
                 </value>
             </entry>
             <entry>
@@ -14743,7 +14804,7 @@
                         </PADFunction>
                     </padFunctionList>
                     <padRegister>
-                        <value>1</value>
+                        <value>513</value>
                         <deviceName>SIU</deviceName>
                         <name>SIU_PCR77</name>
                         <offset>0xDA</offset>
@@ -14761,9 +14822,25 @@
                             <pinName>103</pinName>
                         </PADPackage>
                     </padPackageList>
-                    <allocated>false</allocated>
+                    <allocated>true</allocated>
                     <conflictInAllocation>false</conflictInAllocation>
                     <outputConflict>false</outputConflict>
+                    <objPADWizardDetailsAllocated>
+                        <peripheralName>GPIO</peripheralName>
+                        <padNumber>77</padNumber>
+                        <padType>G</padType>
+                        <allocationStatus>true</allocationStatus>
+                        <ioType>O</ioType>
+                        <output>true</output>
+                        <chkBoxName>PE13</chkBoxName>
+                        <attributeName>PE13</attributeName>
+                        <enabled>true</enabled>
+                        <peripheralValidationName>PE13</peripheralValidationName>
+                        <enableConflictCheckBox>true</enableConflictCheckBox>
+                        <groupSequenceNumber>5</groupSequenceNumber>
+                        <toolTip>Register::Bit_name :- SIU_PCR77::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE13 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                        <userAssignedSignal>PE13_CAM1_SI</userAssignedSignal>
+                    </objPADWizardDetailsAllocated>
                 </value>
             </entry>
             <entry>
@@ -16485,7 +16562,7 @@
                         </PADFunction>
                     </padFunctionList>
                     <padRegister>
-                        <value>513</value>
+                        <value>1</value>
                         <deviceName>SIU</deviceName>
                         <name>SIU_PCR62</name>
                         <offset>0xBC</offset>
@@ -16503,14 +16580,14 @@
                             <pinName>86</pinName>
                         </PADPackage>
                     </padPackageList>
-                    <allocated>true</allocated>
+                    <allocated>false</allocated>
                     <conflictInAllocation>false</conflictInAllocation>
                     <outputConflict>false</outputConflict>
                     <objPADWizardDetailsAllocated>
                         <peripheralName>GPIO</peripheralName>
                         <padNumber>62</padNumber>
                         <padType>G</padType>
-                        <allocationStatus>true</allocationStatus>
+                        <allocationStatus>false</allocationStatus>
                         <ioType>O</ioType>
                         <output>true</output>
                         <chkBoxName>PD14</chkBoxName>
@@ -16520,7 +16597,7 @@
                         <enableConflictCheckBox>true</enableConflictCheckBox>
                         <groupSequenceNumber>4</groupSequenceNumber>
                         <toolTip>Register::Bit_name :- SIU_PCR62::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PD14 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
-                        <userAssignedSignal>PD14_CAM_CLK</userAssignedSignal>
+                        <userAssignedSignal></userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -16996,7 +17073,7 @@
                         </PADFunction>
                     </padFunctionList>
                     <padRegister>
-                        <value>513</value>
+                        <value>1</value>
                         <deviceName>SIU</deviceName>
                         <name>SIU_PCR63</name>
                         <offset>0xBE</offset>
@@ -17014,14 +17091,14 @@
                             <pinName>88</pinName>
                         </PADPackage>
                     </padPackageList>
-                    <allocated>true</allocated>
+                    <allocated>false</allocated>
                     <conflictInAllocation>false</conflictInAllocation>
                     <outputConflict>false</outputConflict>
                     <objPADWizardDetailsAllocated>
                         <peripheralName>GPIO</peripheralName>
                         <padNumber>63</padNumber>
                         <padType>G</padType>
-                        <allocationStatus>true</allocationStatus>
+                        <allocationStatus>false</allocationStatus>
                         <ioType>O</ioType>
                         <output>true</output>
                         <chkBoxName>PD15</chkBoxName>
@@ -17031,7 +17108,7 @@
                         <enableConflictCheckBox>true</enableConflictCheckBox>
                         <groupSequenceNumber>4</groupSequenceNumber>
                         <toolTip>Register::Bit_name :- SIU_PCR63::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PD15 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
-                        <userAssignedSignal>PD15_CAM_SI</userAssignedSignal>
+                        <userAssignedSignal></userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -32376,7 +32453,7 @@
             <entry>
                 <key>62</key>
                 <value>
-                    <value>513</value>
+                    <value>1</value>
                     <deviceName>SIU</deviceName>
                     <name>SIU_PCR62</name>
                     <offset>0xBC</offset>
@@ -32391,7 +32468,7 @@
             <entry>
                 <key>63</key>
                 <value>
-                    <value>513</value>
+                    <value>1</value>
                     <deviceName>SIU</deviceName>
                     <name>SIU_PCR63</name>
                     <offset>0xBE</offset>
@@ -32586,7 +32663,7 @@
             <entry>
                 <key>76</key>
                 <value>
-                    <value>1</value>
+                    <value>513</value>
                     <deviceName>SIU</deviceName>
                     <name>SIU_PCR76</name>
                     <offset>0xD8</offset>
@@ -32601,7 +32678,7 @@
             <entry>
                 <key>77</key>
                 <value>
-                    <value>1</value>
+                    <value>513</value>
                     <deviceName>SIU</deviceName>
                     <name>SIU_PCR77</name>
                     <offset>0xDA</offset>
@@ -32616,7 +32693,7 @@
             <entry>
                 <key>78</key>
                 <value>
-                    <value>1</value>
+                    <value>513</value>
                     <deviceName>SIU</deviceName>
                     <name>SIU_PCR78</name>
                     <offset>0xDC</offset>
@@ -32631,7 +32708,7 @@
             <entry>
                 <key>79</key>
                 <value>
-                    <value>1</value>
+                    <value>513</value>
                     <deviceName>SIU</deviceName>
                     <name>SIU_PCR79</name>
                     <offset>0xDE</offset>

@@ -22,9 +22,9 @@
  *
  * Part Errata Fixes      : none
  *
- * Project Last Save Date : 11-Aug-2014 21:57:30
+ * Project Last Save Date : 14-Aug-2014 22:31:19
  *
- * Created on Date        : 11-Aug-2014 21:57:40
+ * Created on Date        : 14-Aug-2014 22:31:52
  *
  * Brief Description      : This File Contains Pads, external Interrupts and
  *                          Wakeups configuration
@@ -913,10 +913,9 @@ void siu_portD_init_fnc(void)
     /* ----------------------------------------------------------- */
     /*      Pad Configuration Register PCR[62]  PCS_1.1_eMIOS_0_26_ADC_0_ANS6_PD14 (86) */
     /* ----------------------------------------------------------- */
-       SIU.PCR[62].R = 0x0201;
-             /* User Assigned Signal Name : PD14_CAM_CLK  */
-             /*	Selected Function : PD14 O          */
-             /*	Output Buffers : Enabled          */
+       SIU.PCR[62].R = 0x0001;
+             /*	Selected Function : PD14          */
+             /*	Output Buffers : Disabled         */
              /*	Input Buffers : Disabled          */
              /*	Output Drain : Disabled           */
              /*	Slew Rate Control : Minimum       */
@@ -927,10 +926,9 @@ void siu_portD_init_fnc(void)
     /* ----------------------------------------------------------- */
     /*      Pad Configuration Register PCR[63]  PCS_1.2_eMIOS_0_27_ADC_0_ANS7_PD15 (88) */
     /* ----------------------------------------------------------- */
-       SIU.PCR[63].R = 0x0201;
-             /* User Assigned Signal Name : PD15_CAM_SI  */
-             /*	Selected Function : PD15 O          */
-             /*	Output Buffers : Enabled          */
+       SIU.PCR[63].R = 0x0001;
+             /*	Selected Function : PD15          */
+             /*	Output Buffers : Disabled         */
              /*	Input Buffers : Disabled          */
              /*	Output Drain : Disabled           */
              /*	Slew Rate Control : Minimum       */
@@ -1113,9 +1111,10 @@ void siu_portE_init_fnc(void)
     /* ----------------------------------------------------------- */
     /*      Pad Configuration Register PCR[76]  SIN_2_eMIOS_1_19_ADC_1_ANS7_PE12 (109) */
     /* ----------------------------------------------------------- */
-       SIU.PCR[76].R = 0x0001;
-             /*	Selected Function : PE12          */
-             /*	Output Buffers : Disabled         */
+       SIU.PCR[76].R = 0x0201;
+             /* User Assigned Signal Name : PE12_CAM1_CLK  */
+             /*	Selected Function : PE12 O          */
+             /*	Output Buffers : Enabled          */
              /*	Input Buffers : Disabled          */
              /*	Output Drain : Disabled           */
              /*	Slew Rate Control : Minimum       */
@@ -1126,9 +1125,10 @@ void siu_portE_init_fnc(void)
     /* ----------------------------------------------------------- */
     /*      Pad Configuration Register PCR[77]  SOUT_2_eMIOS_1_20_PE13 (103) */
     /* ----------------------------------------------------------- */
-       SIU.PCR[77].R = 0x0001;
-             /*	Selected Function : PE13          */
-             /*	Output Buffers : Disabled         */
+       SIU.PCR[77].R = 0x0201;
+             /* User Assigned Signal Name : PE13_CAM1_SI  */
+             /*	Selected Function : PE13 O          */
+             /*	Output Buffers : Enabled          */
              /*	Input Buffers : Disabled          */
              /*	Output Drain : Disabled           */
              /*	Slew Rate Control : Minimum       */
@@ -1139,9 +1139,10 @@ void siu_portE_init_fnc(void)
     /* ----------------------------------------------------------- */
     /*      Pad Configuration Register PCR[78]  SCK_2_eMIOS_1_21_PE14 (112) */
     /* ----------------------------------------------------------- */
-       SIU.PCR[78].R = 0x0001;
-             /*	Selected Function : PE14          */
-             /*	Output Buffers : Disabled         */
+       SIU.PCR[78].R = 0x0201;
+             /* User Assigned Signal Name : PE14_CAM2_CLK  */
+             /*	Selected Function : PE14 O          */
+             /*	Output Buffers : Enabled          */
              /*	Input Buffers : Disabled          */
              /*	Output Drain : Disabled           */
              /*	Slew Rate Control : Minimum       */
@@ -1152,9 +1153,10 @@ void siu_portE_init_fnc(void)
     /* ----------------------------------------------------------- */
     /*      Pad Configuration Register PCR[79]  PCS_2.0_eMIOS_1_22_PE15 (113) */
     /* ----------------------------------------------------------- */
-       SIU.PCR[79].R = 0x0001;
-             /*	Selected Function : PE15          */
-             /*	Output Buffers : Disabled         */
+       SIU.PCR[79].R = 0x0201;
+             /* User Assigned Signal Name : PE15_CAM2_SI  */
+             /*	Selected Function : PE15 O          */
+             /*	Output Buffers : Enabled          */
              /*	Input Buffers : Disabled          */
              /*	Output Drain : Disabled           */
              /*	Slew Rate Control : Minimum       */
