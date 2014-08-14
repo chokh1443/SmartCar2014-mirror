@@ -11,8 +11,26 @@ void Motor_init(Motor * this){
 	
 	board->timerInterrupt.setInterval(&board->timerInterrupt, 8000);*/
 }
-
+void Motor_Enable(void) {
+	GPIO_ON(DO_ENABLE);
+}
+void Motor_Disable(void) {
+	GPIO_OFF(DO_ENABLE);
+}
 void Motor_runAs(Motor * this, int16_t targetSpeed){
+	if (targetSpeed > 100 || targetSpeed <-100) {
+		
+		return;
+	}
+	if (targetSpeed >= 0) {
+		GPIO_ON(DO_AIN2);
+		GPIO_ON(DO_BIN2);
+	} else {
+		GPIO_OFF(DO_AIN2);
+		GPIO_OFF(DO_BIN2);
+		targetSpeed = 100 + targetSpeed;
+	}
+	
 	this->targetSpeed = targetSpeed;
 }
 void Motor_pidTick(Motor * this){

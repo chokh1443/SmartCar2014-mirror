@@ -5,7 +5,6 @@
 
 typedef struct {
 	Encoder * encoder;
-	
 	int16_t targetSpeed;
 } Motor;
 

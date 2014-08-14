@@ -56,7 +56,7 @@
 #define DO_SEG3_A       88//PF8_SEG3_OUTA
 #define DO_SEG3_B       89//PF9_SEG3_OUTB
 #define DO_SEG3_C       90//PF10_SEG3_OUTC
-#define DO_SEG3_D       91//PF11_BAR3_OUTD
+#define DO_SEG3_D       91//PF11_SEG3_OUTD
 
 
 #define DO_SEG1_1       96//PG0_SEG1_SEL1
