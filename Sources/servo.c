@@ -1,5 +1,5 @@
 #include "servo.h"
 
-void initServo(Servo * this){
+void Servo_init(Servo * this){
 	
 }

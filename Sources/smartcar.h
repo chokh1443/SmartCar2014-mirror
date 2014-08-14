@@ -9,7 +9,6 @@
 #include "motor.h"
 
 typedef struct {
-	Board board;
 	Encoder encoder;
 	Camera camera[2];
 	
@@ -20,4 +19,4 @@ typedef struct {
 	Motor motor;
 } SmartCar; 
 
-void initSmartCar(SmartCar * smartCar);
+void SmartCar_init(SmartCar * smartCar);

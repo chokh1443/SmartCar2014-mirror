@@ -2,13 +2,12 @@
 #include "typedefs.h"
 
 typedef struct {
-	void (*onTimer)(void * this);
-	void (*onTick)(void * this);
-	uint16_t (*get)(void * this);
-	
-	uint16_t count;
-	uint16_t speed;
+	int16_t count;
+	int16_t speed;
 } Encoder;
 
-void initEncoder(Encoder * encoder);
+void Encoder_init(Encoder * encoder);
+void Encoder_onTimer(Encoder * this);
+void Encoder_onTick(Encoder * this);
+int16_t Encoder_get(Encoder * this);
 

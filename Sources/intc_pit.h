@@ -37,13 +37,15 @@
 /********************  Dependent Include files here **********************/
 
 #include "jdp.h"
+#include "board.h"
 
 /**********************  Function Prototype here *************************/
+
+void regTest(EventHandler handler);
 
 void PIT_TIMER(void);
 void PIT_ENCODER(void);
 void PIT_CAMERA(void);
-
 
 #endif  /*_INTC_PIT_H*/
 

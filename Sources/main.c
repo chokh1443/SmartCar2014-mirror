@@ -21,22 +21,18 @@ void main(void) {
 	sys_init_fnc();
 	EnableExternalInterrupts();
 	
-	initSmartCar(&smartCar);
+	SmartCar_init(&smartCar);
 	
-	smartCar.board.led.on(0);
-	smartCar.board.led.off(1);
-	smartCar.board.led.on(2);
-	smartCar.board.led.off(3);
 	
-	smartCar.board.gpio.on(DO_SEG1_1);
-	smartCar.board.gpio.off(DO_SEG1_2);
-	smartCar.board.gpio.on(DO_SEG1_3);
-	smartCar.board.gpio.off(DO_SEG1_4);
 	
-	smartCar.board.gpio.on(DO_SEG1_A);
-	smartCar.board.gpio.off(DO_SEG1_B);
-	smartCar.board.gpio.off(DO_SEG1_C);
-	smartCar.board.gpio.off(DO_SEG1_D);
+	
+	Segment_print(&smartCar.segment[0], (uint16_t)1234);
+	Segment_print(&smartCar.segment[1], (uint16_t)1234);
+	Segment_print(&smartCar.segment[2], (uint16_t)1234);
+	
+	while(1);
+	//smartCar.segment[0].print(&smartCar.segment[0], 1234);
+	
 	
 	/*
 	 * usages :

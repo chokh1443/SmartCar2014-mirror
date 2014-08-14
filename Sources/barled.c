@@ -1,5 +1,5 @@
 #include "barled.h"
 
-void initBarLED(BarLED * this, Board * board, uint8_t id){
+void BarLED_init(BarLED * this, uint8_t id){
 	
 }

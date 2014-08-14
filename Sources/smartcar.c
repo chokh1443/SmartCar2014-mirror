@@ -1,21 +1,21 @@
 #include "smartcar.h"
 
-void initSmartCar(SmartCar * this){
+void SmartCar_init(SmartCar * this){
 	uint8_t i; 
 	
-	initBoard(&this->board);
-	initEncoder(&this->encoder);
+	Encoder_init(&this->encoder);
 	for(i = 0; i < 2; i++){
-		initCamera(&this->camera[i], &this->board, i);
+		Camera_init(&this->camera[i], i);
 	}
 	
 	for(i = 0; i < 3; i++){
-		initSegment(&this->segment[i], &this->board, i);
-	}
-	for(i = 2; i < 2; i++){
-		initBarLED(&this->barLED[i], &this->board, i);
+		Segment_init(&this->segment[i], i);
 	}
 	
-	initMotor(&this->motor, &this->board);
-	initServo(&this->servo);
+	for(i = 2; i < 2; i++){
+		BarLED_init(&this->barLED[i], i);
+	}
+	
+	Motor_init(&this->motor);
+	Servo_init(&this->servo);
 }

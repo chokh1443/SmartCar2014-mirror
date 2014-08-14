@@ -4,12 +4,11 @@
 #include "encoder.h"
 
 typedef struct {
-	void (*runAs)(void * this, int16_t);
-	void (*pidTick)(void * this);
-	
 	Encoder * encoder;
 	
 	int16_t targetSpeed;
 } Motor;
 
-void initMotor(Motor * this, Board * board);
+void Motor_init(Motor * this);
+void Motor_runAs(Motor * this, int16_t);
+void Motor_pidTick(Motor * this);

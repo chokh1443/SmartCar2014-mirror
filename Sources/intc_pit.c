@@ -47,12 +47,17 @@
 #include "intc_pit.h"
 
 
+
 /************************* INTERRUPT HANDLERS ************************/
+EventHandler __handler;
+void regTest(EventHandler handler){
+	__handler = handler; 
+}
 
 void PIT_TIMER (void)
 {
+	trigger(__handler);
     PIT.CH[0].TFLG.R = 0x00000001;
-
 }
 
 

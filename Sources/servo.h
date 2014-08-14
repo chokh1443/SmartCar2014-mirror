@@ -5,4 +5,4 @@ typedef struct {
 	void (*steer)(void * this, int32_t target);
 } Servo;
 
-void initServo(Servo * this);
+void Servo_init(Servo * this);

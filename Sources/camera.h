@@ -6,4 +6,4 @@ typedef struct {
 	void (*onTick)(void * this);
 } Camera;
 
-void initCamera(Camera * this, Board * board, uint8_t id);
+void Camera_init(Camera * this, uint8_t id);
