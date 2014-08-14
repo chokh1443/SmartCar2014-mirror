@@ -1,8 +1,11 @@
 #pragma once
 #include "typedefs.h"
+#include "board.h"
 
 typedef struct {
-	void (*steer)(void * this, int32_t target);
+	int16_t steer;
 } Servo;
 
 void Servo_init(Servo * this);
+void Servo_runAs(Servo * this, int16_t);
+void Servo_pidTick(Servo * this);

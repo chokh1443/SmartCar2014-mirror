@@ -1,8 +1,5 @@
 #include "motor.h"
 
-void MOTOR_RUN_AS(Motor * this, int16_t targetSpeed);
-void MOTOR_PID_TICK(Motor * this);
-
 void Motor_init(Motor * this){
 	//this->encoder = &board->;
 	
@@ -12,22 +9,23 @@ void Motor_init(Motor * this){
 	board->timerInterrupt.setInterval(&board->timerInterrupt, 8000);*/
 }
 void Motor_Enable(void) {
-	GPIO_ON(DO_ENABLE);
+	GPIO_ON(DO_ENABLE);//FIX ME : OOP
 }
 void Motor_Disable(void) {
-	GPIO_OFF(DO_ENABLE);
+	GPIO_OFF(DO_ENABLE);//FIX ME : OOP
 }
 void Motor_runAs(Motor * this, int16_t targetSpeed){
 	if (targetSpeed > 100 || targetSpeed <-100) {
-		
 		return;
 	}
 	if (targetSpeed >= 0) {
-		GPIO_ON(DO_AIN2);
-		GPIO_ON(DO_BIN2);
+		GPIO_ON(DO_AIN2);//FIX ME : OOP
+		GPIO_ON(DO_BIN2);//FIX ME : OOP
+		//FIX ME : HARDWARE!!! DO_AIN2 <-> DO_AIN1 or DO_BIN2 <-> DO_BIN1 
 	} else {
-		GPIO_OFF(DO_AIN2);
-		GPIO_OFF(DO_BIN2);
+		GPIO_OFF(DO_AIN2);//FIX ME : OOP
+		GPIO_OFF(DO_BIN2);//FIX ME : OOP
+		//FIX ME : HARDWARE!!! DO_AIN2 <-> DO_AIN1 or DO_BIN2 <-> DO_BIN1
 		targetSpeed = 100 + targetSpeed;
 	}
 	
@@ -39,4 +37,7 @@ void Motor_pidTick(Motor * this){
 	int32_t kd = 0x00000000;
 	
 	int16_t speed = Encoder_get(this->encoder);
+	
+	PWM_SET(PWM_AIN1 , this->targetSpeed);//FIX ME : OOP
+	PWM_SET(PWM_BIN1 , this->targetSpeed);//FIX ME : OOP
 }

@@ -11,3 +11,5 @@ typedef struct {
 void Motor_init(Motor * this);
 void Motor_runAs(Motor * this, int16_t);
 void Motor_pidTick(Motor * this);
+void Motor_Enable(void);
+void Motor_Disable(void);
