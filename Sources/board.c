@@ -9,6 +9,7 @@ void GPIO_ON(uint16_t ch);
 void GPIO_OFF(uint16_t ch);
 uint8_t GPIO_GET(uint16_t ch);
 void GPIO_SET(uint16_t ch, uint8_t value);
+void PWM_SET(uint16_t ch, uint16_t value);
 
 void ADD_TIMER_INTERRUPT(EventHandler handler);
 void ADD_CAMERA_INTERRUPT(EventHandler handler);
@@ -57,4 +58,7 @@ void ADD_CAMERA_INTERRUPT(EventHandler handler){
 }
 void ON_CAMERA(){
 	EventEmitter_emit(&camera);
+}
+void PWM_SET(uint16_t ch, uint16_t value) {
+	EMIOS_0.CH[ch].CADR.R = value;
 }
