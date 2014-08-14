@@ -1,8 +1,5 @@
 #include "motor.h"
 
-void MOTOR_RUN_AS(Motor * this, int16_t targetSpeed);
-void MOTOR_PID_TICK(Motor * this);
-
 void Motor_init(Motor * this){
 	//this->encoder = &board->;
 	

@@ -10,7 +10,8 @@ void GPIO_OFF(uint16_t ch);
 uint8_t GPIO_GET(uint16_t ch);
 void GPIO_SET(uint16_t ch, uint8_t value);
 
-void ADD_TIMER_INTERRUPT(EventHandler handler); 
+void ADD_TIMER_INTERRUPT(EventHandler handler);
+void ADD_CAMERA_INTERRUPT(EventHandler handler);
 
 Board board = {
 	//LED
@@ -18,7 +19,8 @@ Board board = {
 	//GPIO
 	{GPIO_ON, GPIO_OFF, GPIO_GET, GPIO_SET},
 	//Interrupt
-	ADD_TIMER_INTERRUPT
+	ADD_TIMER_INTERRUPT,
+	ADD_CAMERA_INTERRUPT
 };
 
 void LED_ON(uint16_t ledId) {
@@ -47,4 +49,12 @@ void ADD_TIMER_INTERRUPT(EventHandler handler){
 }
 void ON_TIMER(){
 	EventEmitter_emit(&timer);
+}
+
+EventEmitter camera = {{0,},0};
+void ADD_CAMERA_INTERRUPT(EventHandler handler){
+	EventEmitter_addHandler(&camera, handler);
+}
+void ON_CAMERA(){
+	EventEmitter_emit(&camera);
 }

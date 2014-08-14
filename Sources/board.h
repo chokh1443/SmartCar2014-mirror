@@ -21,8 +21,10 @@ typedef struct {
 	GPIO gpio;
 
 	void (*addTimerHandler)(EventHandler handler);
+	void (*addCameraHandler)(EventHandler handler);
 } Board;
 
 void ON_TIMER();
+void ON_CAMERA();
 
 extern Board board;

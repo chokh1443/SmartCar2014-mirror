@@ -62,8 +62,8 @@ void PIT_ENCODER (void)
 
 void PIT_CAMERA (void)
 {
+	ON_CAMERA();
     PIT.CH[2].TFLG.R = 0x00000001;
-
 }
 
 

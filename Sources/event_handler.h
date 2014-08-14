@@ -6,6 +6,8 @@
  * trigger(handler);
  */
 
+typedef void(*ThisCall)(void *);
+
 typedef struct {
 	void * that;
 	void (*onEvent)(void * that);
