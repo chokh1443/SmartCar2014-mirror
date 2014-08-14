@@ -23,12 +23,9 @@ void main(void) {
 	
 	SmartCar_init(&smartCar);
 	
-	
-	
-	
 	Segment_print(&smartCar.segment[0], (uint16_t)1234);
-	Segment_print(&smartCar.segment[1], (uint16_t)1234);
-	Segment_print(&smartCar.segment[2], (uint16_t)1234);
+	Segment_print(&smartCar.segment[1], (uint16_t)4567);
+	Segment_print(&smartCar.segment[2], (uint16_t)7890);
 	
 	while(1);
 	//smartCar.segment[0].print(&smartCar.segment[0], 1234);

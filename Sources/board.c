@@ -10,11 +10,15 @@ void GPIO_OFF(uint16_t ch);
 uint8_t GPIO_GET(uint16_t ch);
 void GPIO_SET(uint16_t ch, uint8_t value);
 
+void ADD_TIMER_INTERRUPT(EventHandler handler); 
+
 Board board = {
 	//LED
 	{LED_ON, LED_OFF},
 	//GPIO
-	{GPIO_ON, GPIO_OFF, GPIO_GET, GPIO_SET}
+	{GPIO_ON, GPIO_OFF, GPIO_GET, GPIO_SET},
+	//Interrupt
+	ADD_TIMER_INTERRUPT
 };
 
 void LED_ON(uint16_t ledId) {
@@ -34,4 +38,13 @@ uint8_t GPIO_GET(uint16_t ch) {
 }
 void GPIO_SET(uint16_t ch, uint8_t value){
 	SIU.GPDO[ch].B.PDO = value;
+}
+
+EventEmitter timer = {{0,},0};
+
+void ADD_TIMER_INTERRUPT(EventHandler handler){
+	EventEmitter_addHandler(&timer, handler);
+}
+void ON_TIMER(){
+	EventEmitter_emit(&timer);
 }

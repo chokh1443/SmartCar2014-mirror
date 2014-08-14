@@ -17,13 +17,12 @@ typedef struct {
 } GPIO;
 
 typedef struct {
-	EventEmitter emitter;
-	void (*setInterval)(void * this);
-} Interrupt;
-
-typedef struct {
 	LED led;
 	GPIO gpio;
+
+	void (*addTimerHandler)(EventHandler handler);
 } Board;
+
+void ON_TIMER();
 
 extern Board board;

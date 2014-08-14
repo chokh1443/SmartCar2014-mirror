@@ -41,8 +41,6 @@
 
 /**********************  Function Prototype here *************************/
 
-void regTest(EventHandler handler);
-
 void PIT_TIMER(void);
 void PIT_ENCODER(void);
 void PIT_CAMERA(void);
