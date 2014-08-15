@@ -16,7 +16,7 @@ typedef struct {
 	void (*set)(uint16_t ch, uint8_t value);
 } GPIO;
 typedef struct {
-	void (*set)(uint16_t value);
+	void (*set)(uint16_t ch, uint16_t value);
 } PWM;
 
 typedef struct {
