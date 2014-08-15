@@ -22,9 +22,9 @@
  *
  * Part Errata Fixes      : none
  *
- * Project Last Save Date : 11-Aug-2014 21:57:30
+ * Project Last Save Date : 16-Aug-2014 01:46:51
  *
- * Created on Date        : 11-Aug-2014 21:57:40
+ * Created on Date        : 16-Aug-2014 01:46:53
  *
  * Brief Description      : This  file contains  the interrupt service routine  for the SIU
  *
@@ -289,8 +289,8 @@ void intc_init_fnc (void)
 /* -------------------------------------------------------------------*/
 /*	           Priority Set Register for interrupt vector 41          */
 /* -------------------------------------------------------------------*/
-    INTC.PSR[41].R = 0x04;
-    /* SIU External IRQ 0-7 Priority is: 4        */
+    INTC.PSR[41].R = 0x01;
+    /* SIU External IRQ 0-7 Priority is: 1        */
 
 /* -------------------------------------------------------------------*/
 /*	           Priority Set Register for interrupt vector 42          */
@@ -367,20 +367,20 @@ void intc_init_fnc (void)
 /* -------------------------------------------------------------------*/
 /*	           Priority Set Register for interrupt vector 59          */
 /* -------------------------------------------------------------------*/
-    INTC.PSR[59].R = 0x01;
-    /* PIT Channel 0 Priority is: 1        */
+    INTC.PSR[59].R = 0x03;
+    /* PIT Channel 0 Priority is: 3        */
 
 /* -------------------------------------------------------------------*/
 /*	           Priority Set Register for interrupt vector 60          */
 /* -------------------------------------------------------------------*/
-    INTC.PSR[60].R = 0x02;
-    /* PIT Channel 1 Priority is: 2        */
+    INTC.PSR[60].R = 0x05;
+    /* PIT Channel 1 Priority is: 5        */
 
 /* -------------------------------------------------------------------*/
 /*	           Priority Set Register for interrupt vector 61          */
 /* -------------------------------------------------------------------*/
-    INTC.PSR[61].R = 0x03;
-    /* PIT Channel 2 Priority is: 3        */
+    INTC.PSR[61].R = 0x0A;
+    /* PIT Channel 2 Priority is: 10        */
 
 /* -------------------------------------------------------------------*/
 /*	           Priority Set Register for interrupt vector 62          */

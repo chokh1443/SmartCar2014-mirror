@@ -22,9 +22,9 @@
  *
  * Part Errata Fixes      : none
  *
- * Project Last Save Date : 11-Aug-2014 21:57:30
+ * Project Last Save Date : 16-Aug-2014 01:46:51
  *
- * Created on Date        : 11-Aug-2014 21:57:40
+ * Created on Date        : 16-Aug-2014 01:46:53
  *
  * Brief Description      : This  file contains  the interrupt service routine  for the Periodic Interrupt Timer
  *
@@ -37,13 +37,13 @@
 /********************  Dependent Include files here **********************/
 
 #include "jdp.h"
-#include "board.h"
 
 /**********************  Function Prototype here *************************/
 
-void PIT_TIMER(void);
 void PIT_ENCODER(void);
 void PIT_CAMERA(void);
+void PIT_DISPLAY(void);
+
 
 #endif  /*_INTC_PIT_H*/
 

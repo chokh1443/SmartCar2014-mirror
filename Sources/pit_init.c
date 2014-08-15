@@ -22,9 +22,9 @@
  *
  * Part Errata Fixes      : none
  *
- * Project Last Save Date : 11-Aug-2014 21:57:30
+ * Project Last Save Date : 16-Aug-2014 01:46:51
  *
- * Created on Date        : 11-Aug-2014 21:57:40
+ * Created on Date        : 16-Aug-2014 01:46:53
  *
  * Brief Description      : PIT Initialization file
  *
@@ -61,14 +61,14 @@ void pit_init_fnc(void)
 /*                     Configure Load Value Registers                */
 /* ----------------------------------------------------------- */
 
-    PIT.CH[0].LDVAL.R  = 0x0000FA01;    
-        /*value loaded in the Timer0: 64001    */
+    PIT.CH[0].LDVAL.R  = 0x00001900;    
+        /*value loaded in the Timer0: 6400    */
     
-    PIT.CH[1].LDVAL.R  = 0x0000027F;    
-        /*value loaded in the Timer1: 639    */
+    PIT.CH[1].LDVAL.R  = 0x00000FA0;    
+        /*value loaded in the Timer1: 4000    */
     
-    PIT.CH[2].LDVAL.R  = 0x00003E80;    
-        /*value loaded in the Timer2: 16000    */
+    PIT.CH[2].LDVAL.R  = 0x0004E200;    
+        /*value loaded in the Timer2: 320000    */
     
     PIT.CH[3].LDVAL.R  = 0x00000000;    
         /*value loaded in the Timer3: 0    */
@@ -97,8 +97,8 @@ void pit_init_fnc(void)
     PIT.CH[1].TCTRL.B.TIE  = 0x1;    
         /*Timer 1 Interrupt : Enabled    */
     
-    PIT.CH[2].TCTRL.B.TIE  = 0x0;    
-        /*Timer 2 Interrupt : Disabled    */
+    PIT.CH[2].TCTRL.B.TIE  = 0x1;    
+        /*Timer 2 Interrupt : Enabled    */
     
     PIT.CH[3].TCTRL.B.TIE  = 0x0;    
         /*Timer 3 Interrupt : Disabled    */

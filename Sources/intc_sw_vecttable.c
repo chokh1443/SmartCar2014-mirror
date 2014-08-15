@@ -22,9 +22,9 @@
  *
  * Part Errata Fixes      : none
  *
- * Project Last Save Date : 11-Aug-2014 21:57:30
+ * Project Last Save Date : 16-Aug-2014 01:46:51
  *
- * Created on Date        : 11-Aug-2014 21:57:40
+ * Created on Date        : 16-Aug-2014 01:46:53
  *
  * Brief Description      : This file contains  definition for the Interrupt Vector table 
  *
@@ -118,9 +118,9 @@ uint32_t IntcIsrVectorTable[] = {
     (uint32_t)&interrupt_handler,    /* Vector - 56    interrupt_handler*/
     (uint32_t)&interrupt_handler,    /* Vector - 57    interrupt_handler*/
     (uint32_t)&interrupt_handler,    /* Vector - 58    Reserved */
-    (uint32_t)&PIT_TIMER,    /* Vector - 59    PIT_TIMER*/
-    (uint32_t)&PIT_ENCODER,    /* Vector - 60    PIT_ENCODER*/
-    (uint32_t)&PIT_CAMERA,    /* Vector - 61    PIT_CAMERA*/
+    (uint32_t)&PIT_ENCODER,    /* Vector - 59    PIT_ENCODER*/
+    (uint32_t)&PIT_CAMERA,    /* Vector - 60    PIT_CAMERA*/
+    (uint32_t)&PIT_DISPLAY,    /* Vector - 61    PIT_DISPLAY*/
     (uint32_t)&interrupt_handler,    /* Vector - 62    interrupt_handler*/
     (uint32_t)&interrupt_handler,    /* Vector - 63    Reserved */
     (uint32_t)&interrupt_handler,    /* Vector - 64    interrupt_handler*/

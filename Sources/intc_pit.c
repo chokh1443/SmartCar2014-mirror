@@ -22,9 +22,9 @@
  *
  * Part Errata Fixes      : none
  *
- * Project Last Save Date : 11-Aug-2014 21:57:30
+ * Project Last Save Date : 16-Aug-2014 01:46:51
  *
- * Created on Date        : 11-Aug-2014 21:57:40
+ * Created on Date        : 16-Aug-2014 01:46:53
  *
  * Brief Description      : This  file contains  the interrupt service routine  for the Periodic Interrupt Timer
  *
@@ -46,24 +46,30 @@
 
 #include "intc_pit.h"
 
-/************************* INTERRUPT HANDLERS ************************/
-void PIT_TIMER (void)
-{
-	ON_DISPLAY();
-    PIT.CH[0].TFLG.R = 0x00000001;
-}
 
+/************************* INTERRUPT HANDLERS ************************/
 
 void PIT_ENCODER (void)
 {
-    PIT.CH[1].TFLG.R = 0x00000001;
+
+    PIT.CH[0].TFLG.R = 0x00000001;
+
 }
 
 
 void PIT_CAMERA (void)
 {
-	ON_CAMERA();
+    ON_CAMERA();
+    PIT.CH[1].TFLG.R = 0x00000001;
+
+}
+
+
+void PIT_DISPLAY (void)
+{
+    ON_DISPLAY();
     PIT.CH[2].TFLG.R = 0x00000001;
+
 }
 
 
