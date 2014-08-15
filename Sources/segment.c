@@ -1,6 +1,5 @@
 #include "segment.h"
 #include "zp_pin.h"
-#include "intc_pit.h"
 
 
 uint8_t ENABLE_PIN[3][4] = {
@@ -17,13 +16,15 @@ uint8_t NUMBER_PIN[3][4] = {
 void Segment_init(Segment * this, uint8_t id) {
 	uint32_t i;
 
-	board.addTimerHandler(bind(this, (void (*)(void *))Segment_onTick));
+	board.addTimerHandler(bind(this, (ThisCall)Segment_onTick));
 
 	for (i = 0; i < 4; i++) {
 		this->charArray[i] = 0;
 	}
 	this->ENABLE_PINS = ENABLE_PIN[id];
 	this->NUMBER_PINS = NUMBER_PIN[id];
+	
+	this->index = 0;
 }
 
 void Segment_print(Segment * this, uint16_t number) {
@@ -34,23 +35,20 @@ void Segment_print(Segment * this, uint16_t number) {
 }
 
 void Segment_onTick(Segment * this) {
-	static uint8_t index = 0;
 	register uint8_t i;
 	
 	for(i = 0; i < 4; i++){
-		if(i == index){
+		if(i == this->index){
 			board.gpio.off(this->ENABLE_PINS[i]);
 		} else {
 			board.gpio.on(this->ENABLE_PINS[i]);
 		}
 	}
-	board.led.on(1);
-	board.led.off(2);
 
-	board.gpio.set(this->NUMBER_PINS[0], this->charArray[index] & 0x01 ? 1 : 0);
-	board.gpio.set(this->NUMBER_PINS[1], this->charArray[index] & 0x02 ? 1 : 0);
-	board.gpio.set(this->NUMBER_PINS[2], this->charArray[index] & 0x04 ? 1 : 0);
-	board.gpio.set(this->NUMBER_PINS[3], this->charArray[index] & 0x08 ? 1 : 0);
+	board.gpio.set(this->NUMBER_PINS[0], this->charArray[this->index] & 0x01 ? 1 : 0);
+	board.gpio.set(this->NUMBER_PINS[1], this->charArray[this->index] & 0x02 ? 1 : 0);
+	board.gpio.set(this->NUMBER_PINS[2], this->charArray[this->index] & 0x04 ? 1 : 0);
+	board.gpio.set(this->NUMBER_PINS[3], this->charArray[this->index] & 0x08 ? 1 : 0);
 		
-	index = ++index % 4;
+	this->index = ++this->index % 4;
 }

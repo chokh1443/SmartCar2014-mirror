@@ -49,7 +49,7 @@
 /************************* INTERRUPT HANDLERS ************************/
 void PIT_TIMER (void)
 {
-	ON_TIMER();
+	ON_DISPLAY();
     PIT.CH[0].TFLG.R = 0x00000001;
 }
 

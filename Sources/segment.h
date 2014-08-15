@@ -10,6 +10,8 @@ typedef struct {
 	
 	uint8_t * ENABLE_PINS;
 	uint8_t * NUMBER_PINS;
+	
+	uint8_t index;
 } Segment;
 
 void Segment_init(Segment * this, uint8_t id);

@@ -1,8 +1,7 @@
 #include "motor.h"
 
 void Motor_init(Motor * this){
-	board->targetSpeed = 0;
-	
+	this->targetSpeed = 0;
 }
 void Motor_Enable(void) {
 	board.gpio.on(DO_ENABLE);

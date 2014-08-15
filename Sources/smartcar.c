@@ -12,7 +12,7 @@ void SmartCar_init(SmartCar * this){
 		Segment_init(&this->segment[i], i);
 	}
 	
-	for(i = 2; i < 2; i++){
+	for(i = 0; i < 2; i++){
 		BarLED_init(&this->barLED[i], i);
 	}
 	

@@ -50,7 +50,7 @@ EventEmitter timer = {{0,},0};
 void ADD_TIMER_INTERRUPT(EventHandler handler){
 	EventEmitter_addHandler(&timer, handler);
 }
-void ON_TIMER(){
+void ON_DISPLAY(){
 	EventEmitter_emit(&timer);
 }
 

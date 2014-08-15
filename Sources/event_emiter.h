@@ -4,7 +4,7 @@
 #include "event_handler.h"
 
 typedef struct {
-	EventHandler handler[5];
+	EventHandler handler[16];
 	uint8_t index;
 } EventEmitter;
 
