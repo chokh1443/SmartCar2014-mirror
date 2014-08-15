@@ -23,7 +23,7 @@ void Servo_pidTick(Servo * this){
 	if (cnt > 1000) {
 		//FIX ME : cnt > some number
 		//servo works every 160ms
-		PWM_SET(PWM_SERVO, this->steer);//FIX ME : OOP
+		board.pwm.set(PWM_SERVO, this->steer);
 		cnt = 0;
 	}
 }

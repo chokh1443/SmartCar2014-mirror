@@ -19,6 +19,8 @@ Board board = {
 	{LED_ON, LED_OFF},
 	//GPIO
 	{GPIO_ON, GPIO_OFF, GPIO_GET, GPIO_SET},
+	//PWM
+	{PWM_SET},
 	//Interrupt
 	ADD_TIMER_INTERRUPT,
 	ADD_CAMERA_INTERRUPT
