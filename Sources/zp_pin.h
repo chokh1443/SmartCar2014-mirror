@@ -16,10 +16,10 @@
 #define DO_LED4         71//PE7_LED3_Output
 
 //camera
-#define DO_CAM_CLK      76//PE12_CAM1_CLK
-#define DO_CAM_SI       77//PE13_CAM1_SI
-#define DO_CAM_CLK      78//PE14_CAM2_CLK
-#define DO_CAM_SI       79//PE15_CAM2_SI
+#define DO_CAM1_CLK      76//PE12_CAM1_CLK
+#define DO_CAM1_SI       77//PE13_CAM1_SI
+#define DO_CAM2_CLK      78//PE14_CAM2_CLK
+#define DO_CAM2_SI       79//PE15_CAM2_SI
 #define ADC_CAM1        14//PD10_CAM1_AO
 #define ADC_CAM1_GPIO   58//PD10_CAM1_AO
 #define ADC_CAM2        15//PD11_CAM2_AO
