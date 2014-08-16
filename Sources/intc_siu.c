@@ -45,14 +45,15 @@
 /********************  Dependent Include files here **********************/
 
 #include "intc_siu.h"
+#include "board.h"
 
 
 /************************* INTERRUPT HANDLERS ************************/
 
 void INTC_ENCODER (void)
 {
+	ON_ENCODER_TICK();
     SIU.ISR.R = 0x000000FF;
-
 }
 
 

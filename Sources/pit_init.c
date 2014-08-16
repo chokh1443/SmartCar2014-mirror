@@ -61,7 +61,7 @@ void pit_init_fnc(void)
 /*                     Configure Load Value Registers                */
 /* ----------------------------------------------------------- */
 
-    PIT.CH[0].LDVAL.R  = 0x00001900;    
+    PIT.CH[0].LDVAL.R  = 0x0002EE00;    
         /*value loaded in the Timer0: 6400    */
     
     PIT.CH[1].LDVAL.R  = 0x00000FA0;    

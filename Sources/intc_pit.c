@@ -55,7 +55,7 @@ void PIT_ENCODER (void)
 	static uint16_t count = 0;
 	ON_ENCODER();
 	
-	if(count++ > 300){
+	if(count++ > 10){
 		ON_MOTOR();
 		count = 0;
 	}

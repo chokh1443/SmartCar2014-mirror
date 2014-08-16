@@ -15,6 +15,7 @@ void ADD_TIMER_INTERRUPT(EventHandler handler);
 void ADD_CAMERA_INTERRUPT(EventHandler handler);
 void ADD_MOTOR_PID_INTERRUPT(EventHandler handler);
 void ADD_ENCODER_TIMER_INTERRUPT(EventHandler handler);
+void ADD_ENCODER_TICK_INTERRUPT(EventHandler handler);
 
 Board board = {
 	//LED
@@ -28,6 +29,7 @@ Board board = {
 	ADD_CAMERA_INTERRUPT,
 	ADD_MOTOR_PID_INTERRUPT,
 	ADD_ENCODER_TIMER_INTERRUPT,
+	ADD_ENCODER_TICK_INTERRUPT
 };
 
 void LED_ON(uint16_t ledId) {
@@ -71,6 +73,13 @@ void ADD_ENCODER_TIMER_INTERRUPT(EventHandler handler){
 }
 void ON_ENCODER(){
 	EventEmitter_emit(&encoderTimer);
+}
+EventEmitter encoderTick = {{0,},0};
+void ADD_ENCODER_TICK_INTERRUPT(EventHandler handler){
+	EventEmitter_addHandler(&encoderTick, handler);
+}
+void ON_ENCODER_TICK(){
+	EventEmitter_emit(&encoderTick);
 }
 
 EventEmitter motor = {{0,},0};

@@ -37,7 +37,12 @@ void main(void) {
 	Motor_Enable(&smartCar.motor);
 	Motor_runAs(&smartCar.motor, 50);
 	
-	
+	while(1){
+		int16_t speed = Encoder_get(&smartCar.encoder), i;
+		Segment_print(&smartCar.segment[0], speed);
+		
+		BarLED_print(&smartCar.barLED[0], (LEDData){{speed/10},1});
+	}
 	//testServo(&smartCar.servo, &smartCar.segment[0], &smartCar.segment[2]);
 	
 	while(1);
