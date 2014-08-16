@@ -17,8 +17,6 @@ void testServo(Servo * servo, Segment * segment, Segment * step);
 unsigned char newLine[2] = {'\r','\n'};
 /*********************  Initialization Function(s) ************************/
 
-
-
 void main(void) {
 	SmartCar smartCar;
 	LEDData data;
