@@ -30,11 +30,11 @@ void Camera_onTick(Camera * this) {
 	} else {
 		board.gpio.off(CAMERA_PINS[this->id].SI);
 	}
-	
+
 	board.gpio.on(CAMERA_PINS[this->id].CLK);
 
 	this->rawData[this->count] = A2D_GetSingleCh_10bit(CAMERA_PINS[this->id].CH);
-	
+
 	board.gpio.off(CAMERA_PINS[this->id].CLK);
 
 	this->count = ++this->count % 128;
