@@ -26,9 +26,13 @@ typedef struct {
 
 	void (*addTimerHandler)(EventHandler handler);
 	void (*addCameraHandler)(EventHandler handler);
+	void (*addMotorPIDHandler)(EventHandler handler);
+	void (*addEncoderTimerHander)(EventHandler handler);
 } Board;
 
 void ON_DISPLAY();
 void ON_CAMERA();
+void ON_ENCODER();
+void ON_MOTOR();
 
 extern Board board;

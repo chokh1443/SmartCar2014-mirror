@@ -35,10 +35,6 @@ void BarLED_print(BarLED * this, LEDData data) {
 }
 
 void BarLED_onTick(BarLED * this) {
-	board.led.off(1);
-	board.led.off(2);
-
-	
 	if(this->data.len == 0) return;
 	
 	if(this->index >= this->data.len){

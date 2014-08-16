@@ -1,7 +1,8 @@
 #include "servo.h"
+#include "board.h"
 
 void Servo_init(Servo * this){
-	
+	//board.addMotorPIDHandler(bind(this, (ThisCall)Servo_pidTick));
 }
 
 
@@ -15,6 +16,8 @@ void Servo_runAs(Servo * this, int16_t steer){
 	steer = 1615 + steer;//1615 is mid of servo
 	
 	this->steer=steer;
+	
+	board.pwm.set(PWM_SERVO, steer);
 }
 
 void Servo_pidTick(Servo * this){

@@ -63,7 +63,7 @@ void emios_0_init_fnc (void)
 /* ----------------------------------------------------------- */
 /*	EMIOS Module Configuration Register (EMIOS_MCR)            */
 /* ----------------------------------------------------------- */
-   EMIOS_0.MCR.R = 0x14000000;
+   EMIOS_0.MCR.R = 0x3400F900;
             /* Module : Enable    */
             /* Global Freeze: Disabled                  */
             /* Global Time Base Enable: Yes             */
@@ -90,8 +90,8 @@ void emios_0_init_fnc (void)
   EMIOS_0.CH[0].CADR.R = 0x000001F4;
             /*  [16-31]  Channel eMIOS_0_CADR0 Data Register - eMIOS_0_CADR0 : Value = 500*/
 
-  EMIOS_0.CH[0].CBDR.R = 0x000003E8;
-            /*  [16-31]  Channel eMIOS_0_CBDR0 Data Register - eMIOS_0_CBDR0 : Value = 1000*/
+  EMIOS_0.CH[0].CBDR.R = 0x000007D0	;
+            /*  [16-31]  Channel eMIOS_0_CBDR0 Data Register - eMIOS_0_CBDR0 : Value = 2000*/
 
   EMIOS_0.CH[0].CCR.R = 0x020006D8;
             /* Channel Control Register                 */
@@ -116,8 +116,8 @@ void emios_0_init_fnc (void)
   EMIOS_0.CH[1].CADR.R = 0x000001F4;
             /*  [16-31]  Channel eMIOS_0_CADR1 Data Register - eMIOS_0_CADR1 : Value = 500*/
 
-  EMIOS_0.CH[1].CBDR.R = 0x000003E8;
-            /*  [16-31]  Channel eMIOS_0_CBDR1 Data Register - eMIOS_0_CBDR1 : Value = 1000*/
+  EMIOS_0.CH[1].CBDR.R = 0x000007D0;
+            /*  [16-31]  Channel eMIOS_0_CBDR1 Data Register - eMIOS_0_CBDR1 : Value = 2000*/
 
   EMIOS_0.CH[1].CCR.R = 0x020006D8;
             /* Channel Control Register                 */
@@ -142,8 +142,8 @@ void emios_0_init_fnc (void)
   EMIOS_0.CH[2].CADR.R = 0x000001F4;
             /*  [16-31]  Channel eMIOS_0_CADR2 Data Register - eMIOS_0_CADR2 : Value = 500*/
 
-  EMIOS_0.CH[2].CBDR.R = 0x000003E8;
-            /*  [16-31]  Channel eMIOS_0_CBDR2 Data Register - eMIOS_0_CBDR2 : Value = 1000*/
+  EMIOS_0.CH[2].CBDR.R = 0x000007D0;
+            /*  [16-31]  Channel eMIOS_0_CBDR2 Data Register - eMIOS_0_CBDR2 : Value = 2000*/
 
   EMIOS_0.CH[2].CCR.R = 0x020006D8;
             /* Channel Control Register                 */

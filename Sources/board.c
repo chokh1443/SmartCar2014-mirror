@@ -13,6 +13,8 @@ void PWM_SET(uint16_t ch, uint16_t value);
 
 void ADD_TIMER_INTERRUPT(EventHandler handler);
 void ADD_CAMERA_INTERRUPT(EventHandler handler);
+void ADD_MOTOR_PID_INTERRUPT(EventHandler handler);
+void ADD_ENCODER_TIMER_INTERRUPT(EventHandler handler);
 
 Board board = {
 	//LED
@@ -23,7 +25,9 @@ Board board = {
 	{PWM_SET},
 	//Interrupt
 	ADD_TIMER_INTERRUPT,
-	ADD_CAMERA_INTERRUPT
+	ADD_CAMERA_INTERRUPT,
+	ADD_MOTOR_PID_INTERRUPT,
+	ADD_ENCODER_TIMER_INTERRUPT,
 };
 
 void LED_ON(uint16_t ledId) {
@@ -46,7 +50,6 @@ void GPIO_SET(uint16_t ch, uint8_t value){
 }
 
 EventEmitter timer = {{0,},0};
-
 void ADD_TIMER_INTERRUPT(EventHandler handler){
 	EventEmitter_addHandler(&timer, handler);
 }
@@ -61,6 +64,23 @@ void ADD_CAMERA_INTERRUPT(EventHandler handler){
 void ON_CAMERA(){
 	EventEmitter_emit(&camera);
 }
+
+EventEmitter encoderTimer = {{0,},0};
+void ADD_ENCODER_TIMER_INTERRUPT(EventHandler handler){
+	EventEmitter_addHandler(&encoderTimer, handler);
+}
+void ON_ENCODER(){
+	EventEmitter_emit(&encoderTimer);
+}
+
+EventEmitter motor = {{0,},0};
+void ADD_MOTOR_PID_INTERRUPT(EventHandler handler){
+	EventEmitter_addHandler(&motor, handler);
+}
+void ON_MOTOR(){
+	EventEmitter_emit(&motor);
+}
+
 void PWM_SET(uint16_t ch, uint16_t value) {
 	EMIOS_0.CH[ch].CADR.R = value;
 }

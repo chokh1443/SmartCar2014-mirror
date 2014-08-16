@@ -45,13 +45,21 @@
 /********************  Dependent Include files here **********************/
 
 #include "intc_pit.h"
+#include "board.h"
 
 
 /************************* INTERRUPT HANDLERS ************************/
 
 void PIT_ENCODER (void)
 {
-
+	static uint16_t count = 0;
+	ON_ENCODER();
+	
+	if(count++ > 300){
+		ON_MOTOR();
+		count = 0;
+	}
+	
     PIT.CH[0].TFLG.R = 0x00000001;
 
 }
