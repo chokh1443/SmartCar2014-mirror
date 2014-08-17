@@ -13,8 +13,13 @@
 
 void main(void);
 void testServo(Servo * servo, Segment * segment, Segment * step);
+void start(SmartCar * smartCar);
+void set_Line(uint16_t inputLine[][], uint16_t setLine[][]);
+void fix_Line(uint16_t line[][]);
 
 unsigned char newLine[2] = {'\r','\n'};
+
+
 /*********************  Initialization Function(s) ************************/
 
 void main(void) {
@@ -44,7 +49,7 @@ void main(void) {
 		BarLED_print(&smartCar.barLED[0], (LEDData){{speed/10},1});
 	}
 	//testServo(&smartCar.servo, &smartCar.segment[0], &smartCar.segment[2]);
-	
+
 	while(1);
 	
 	/*
@@ -56,6 +61,9 @@ void main(void) {
 	 * encoder.get(pEncoder);
 	 * encoder.onTick(pEncoder);
 	 */
+
+	
+
 }
 
 void testServo(Servo * servo, Segment * segment, Segment * step) {
@@ -91,5 +99,90 @@ void testServo(Servo * servo, Segment * segment, Segment * step) {
 		Segment_print(segment, value+1000);
 		Segment_print(step, value2);
 	}
+}
+
+//camera inputing	time = 0.04~0.06s(about 50ms)
+//servo motor moving time = 0.2s(200ms)
+//we have about 4 data for moving servo motor
+//make map useing 5 camera data
+
+void start(void){
+	SmartCar smartCar;
+	SmartCar_init(&smartCar);
+	uint8_t i, j;					// 0 left, 1 right
+	
+	uint16_t standardOfLine[2][128];// standard for checking Line.
+	uint16_t bufferOfLine[2][128];  // Line buffer
+	uint16_t map[2][5][128];	 	// map is queue(size 5).
+	
+	//set standard Line
+	set_Line(Camera_get(smartCar.camera),standardOfLine);
+	
+	
+		
+}
+
+//setLine
+void set_Line(uint16_t inputLine[][], uint16_t setLine[][]){
+	uint8_t i, j;
+	uint16_t standardOfcolor=0; 		// standard for checking color.
+	
+	for(i=0;i<2;i++){
+		for(j=0;j<128;j++){
+			standardOfcolor = standardOfcolor + inputLine[i][j]; 
+		}
+		
+		standardOfcolor = standardOfcolor / 128;
+		
+		for(j=0;j<128;j++){
+			if(inputLine[i][j] >= standardOfcolor){
+				setLine[i][j] = 0; // white(out or road)
+			} else{
+				setLine[i][j] = 1; // black(line)
+			}	
+		}
+	}
+	fix_Line(setLine);
+}
+
+//check standard Line and fix some value	
+void fix_Line(uint16_t line[][]){
+	uint8_t check_point=0;
+	uint8_t i,j;
+
+	// left camera fixing
+	for(i=0;i<12;i++){
+		check_point = 0;
+		
+		for(j=0;j<10;j++){
+			check_point = check_point + line[0][(i*10)+j];
+		}
+		
+		// 0100011000
+		if(check_point < 3){	
+			for(j=0;j<10;j++){
+				line[0][(i*10)+j] = 0;
+			}
+		} else if(check_point < 8){
+			for(j=0;j<7;j++){
+				check_point = 0;
+				check_point = line[0][(i*10)+j]+line[0][(i*10)+j+1]
+				                    +line[0][(i*10)+j+2]+line[0][(i*10)+j+3]; 
+				if(check_point < 3){
+					line[0][(i*10)+j] = 0;
+					line[0][(i*10)+j+1] = 0;
+					line[0][(i*10)+j+2] = 0;
+					line[0][(i*10)+j+3] = 1;
+				}
+			}
+		}
+	}
+	
+	// right camera fixing
+	for(i=0;i<118;i++){
+		
+		
+	}
+	
 }
 
