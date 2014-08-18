@@ -72,18 +72,20 @@ uint8_t BUTTON_IS_CLICK(uint16_t ch){
 	}
 }
 uint8_t BUTTON_READ(){
-	if (BUTTON_GET(1)) {
-		while (BUTTON_GET(1));
-		return 1;
-	} else if (BUTTON_GET(2)) {
-		while (BUTTON_GET(2));
-		return 2;
-	} else if (BUTTON_GET(3)) {
-		while (BUTTON_GET(3));
-		return 3;
-	} else if (BUTTON_GET(4)) {
-		while (BUTTON_GET(4));
-		return 4;
+	while(1){
+		if (BUTTON_GET(1)) {
+			while (BUTTON_GET(1));
+			return 1;
+		} else if (BUTTON_GET(2)) {
+			while (BUTTON_GET(2));
+			return 2;
+		} else if (BUTTON_GET(3)) {
+			while (BUTTON_GET(3));
+			return 3;
+		} else if (BUTTON_GET(4)) {
+			while (BUTTON_GET(4));
+			return 4;
+		}
 	}
 }
 
