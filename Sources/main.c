@@ -9,15 +9,19 @@
 
 #include "smartcar.h"
 #include "gpio_drv.h"
+#include "test.h"
+
 /**********************  Function Prototype here *************************/
 
 void main(void);
-void testServo(Servo * servo, Segment * segment, Segment * step);
+void preset(SmartCar * smartCar);
 void start(SmartCar * smartCar);
-void set_Line(uint16_t inputLine[][], uint16_t setLine[][]);
-void fix_Line(uint16_t line[][]);
-void insert_Line(uint16_t input[][], uint16_t map[][][]);
-void check_direction(uint16_t standard[][], uint16_t map[][][]);
+
+void testServo(Servo * servo, Segment * segment, Segment * step);
+void set_Line(uint16_t inputLine[2][128], uint16_t setLine[2][128]);
+void fix_Line(uint16_t line[2][128]);
+void insert_Line(uint16_t input[2][128], uint16_t map[10][2][128]);
+void check_direction(uint16_t standard[2][128], uint16_t map[10][2][128]);
 
 unsigned char newLine[2] = {'\r','\n'};
 
@@ -31,6 +35,20 @@ void main(void) {
 	EnableExternalInterrupts();
 	
 	SmartCar_init(&smartCar);
+	
+	while(1){
+		if(board.gpio.get(DI_S1) == 0){
+			while(board.gpio.get(DI_S1) == 0);
+			test(&smartCar);
+		} else if(board.gpio.get(DI_S2) == 0){
+			while(board.gpio.get(DI_S1) == 0);
+			start(&smartCar);
+		} else if(board.gpio.get(DI_S3) == 0){
+			while(board.gpio.get(DI_S1) == 0);
+			preset(&smartCar);
+		}
+		
+	}
 	
 	Segment_print(&smartCar.segment[0], (uint16_t)1234);
 	Segment_print(&smartCar.segment[1], (uint16_t)4567);
@@ -108,9 +126,7 @@ void testServo(Servo * servo, Segment * segment, Segment * step) {
 //we have about 4 data for moving servo motor
 //make map useing 5 camera data
 
-void start(void){
-	SmartCar smartCar;
-	SmartCar_init(&smartCar);
+void start(SmartCar * smartCar){
 	uint8_t i, j;					// 0 left, 1 right
 	
 	uint16_t standardOfLine[2][128];// standard for checking Line.
@@ -118,14 +134,18 @@ void start(void){
 	uint16_t map[2][5][128];	 	// map is queue(size 5).
 	
 	//set standard Line
-	set_Line(Camera_get(smartCar.camera),standardOfLine);
+	//set_Line(Camera_get(smartCar.camera),standardOfLine);
 	
 	
 		
 }
 
+void preset(SmartCar * smartCar){
+	
+}
+
 //setLine
-void set_Line(uint16_t inputLine[][], uint16_t setLine[][]){
+void set_Line(uint16_t inputLine[2][128], uint16_t setLine[2][128]){
 	uint8_t i, j;
 	uint16_t standardOfcolor=0; 		// standard for checking color.
 	
@@ -148,7 +168,7 @@ void set_Line(uint16_t inputLine[][], uint16_t setLine[][]){
 }
 
 //check standard Line and fix some value	
-void fix_Line(uint16_t line[][]){
+void fix_Line(uint16_t line[2][128]){
 	uint8_t check_point=0;
 	uint8_t i,j;
 
@@ -195,7 +215,7 @@ void fix_Line(uint16_t line[][]){
 		
 		for(j=0;j<10;j++){
 			if(line[1][(i*10)-j] == 1){
-				cehck_point++;
+				check_point++;
 			}
 		}
 		
