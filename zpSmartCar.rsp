@@ -19,12 +19,13 @@
 1.0 8/11/14 8:16 PM chokh SIU, LINFlex, System Clock Timers, ADC - 
 1.0 8/11/14 9:24 PM chokh  - 
 1.0 8/11/14 9:57 PM chokh  - 
-1.0 8/14/14 10:25 PM chokh  - </revisionBlock>
+1.0 8/14/14 10:25 PM chokh  - 
+1.0 8/16/14 1:46 AM chokh INTC, System Clock Timers - </revisionBlock>
         <projectDirectoryPath>C:\Users\chokh\Documents\GitHub\SmartCar</projectDirectoryPath>
         <sourceDirectoryPath>C:\zpSmartCar</sourceDirectoryPath>
         <projectLogPath></projectLogPath>
         <reportDirectoryPath>C:\Freescale\RAppID\RAppID Projects\5607B\Projects\report</reportDirectoryPath>
-        <lastSavedOn>2014-08-14T22:31:19.932+09:00</lastSavedOn>
+        <lastSavedOn>2014-08-16T01:46:51.252+09:00</lastSavedOn>
         <peripheralWizardMap>
             <entry>
                 <key>ADC</key>
@@ -133,11 +134,11 @@
                     <value>true</value>
                 </entry>
                 <entry>
-                    <key>can_sampler</key>
+                    <key>emios</key>
                     <value>true</value>
                 </entry>
                 <entry>
-                    <key>emios</key>
+                    <key>can_sampler</key>
                     <value>true</value>
                 </entry>
                 <entry>
@@ -12547,78 +12548,6 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR39</key>
-                <value>
-                    <signalName>eMIOS 7</signalName>
-                    <pinName>37</pinName>
-                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>eMIOS 7</groupName>
-                    <resetValue>0001</resetValue>
-                    <pinPort>PC7</pinPort>
-                    <padFunctionList>
-                        <PADFunction>
-                            <padType>A3</padType>
-                            <funcAssign>RXD_1</funcAssign>
-                            <funcDesc>LIN1 Receive</funcDesc>
-                            <IOType>I</IOType>
-                            <peripheralName>LINflex</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>A1</padType>
-                            <funcAssign>eMIOS_1_29</funcAssign>
-                            <funcDesc>eMIOS_1 CH29</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>eMIOS</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>G</padType>
-                            <funcAssign>PC7</funcAssign>
-                            <funcDesc>GPIO</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>GPIO</peripheralName>
-                        </PADFunction>
-                    </padFunctionList>
-                    <padRegister>
-                        <value>513</value>
-                        <deviceName>SIU</deviceName>
-                        <name>SIU_PCR39</name>
-                        <offset>0x8E</offset>
-                        <address>C3F9008E</address>
-                        <description>Pad Configuration Registers 39</description>
-                        <resetValue>0001</resetValue>
-                        <registerBitSize>16</registerBitSize>
-                        <padNumber>39</padNumber>
-                        <pinState>false</pinState>
-                    </padRegister>
-                    <comboBoxWidth>0</comboBoxWidth>
-                    <padPackageList>
-                        <PADPackage>
-                            <packageName>144</packageName>
-                            <pinName>37</pinName>
-                        </PADPackage>
-                    </padPackageList>
-                    <allocated>true</allocated>
-                    <conflictInAllocation>false</conflictInAllocation>
-                    <outputConflict>false</outputConflict>
-                    <objPADWizardDetailsAllocated>
-                        <peripheralName>GPIO</peripheralName>
-                        <padNumber>39</padNumber>
-                        <padType>G</padType>
-                        <allocationStatus>true</allocationStatus>
-                        <ioType>O</ioType>
-                        <output>true</output>
-                        <chkBoxName>PC7</chkBoxName>
-                        <attributeName>PC7</attributeName>
-                        <enabled>true</enabled>
-                        <peripheralValidationName>PC7</peripheralValidationName>
-                        <enableConflictCheckBox>true</enableConflictCheckBox>
-                        <groupSequenceNumber>3</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR39::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PC7 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
-                        <userAssignedSignal>PC7_BAR3_A</userAssignedSignal>
-                    </objPADWizardDetailsAllocated>
-                </value>
-            </entry>
-            <entry>
                 <key>SIU_PCR79</key>
                 <value>
                     <signalName>TA</signalName>
@@ -12691,32 +12620,32 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR38</key>
+                <key>SIU_PCR39</key>
                 <value>
-                    <signalName>eMIOS 6</signalName>
-                    <pinName>36</pinName>
+                    <signalName>eMIOS 7</signalName>
+                    <pinName>37</pinName>
                     <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>eMIOS 6</groupName>
+                    <groupName>eMIOS 7</groupName>
                     <resetValue>0001</resetValue>
-                    <pinPort>PC6</pinPort>
+                    <pinPort>PC7</pinPort>
                     <padFunctionList>
                         <PADFunction>
-                            <padType>P1</padType>
-                            <funcAssign>TXD_1</funcAssign>
-                            <funcDesc>LIN1 Transmit</funcDesc>
-                            <IOType>O</IOType>
+                            <padType>A3</padType>
+                            <funcAssign>RXD_1</funcAssign>
+                            <funcDesc>LIN1 Receive</funcDesc>
+                            <IOType>I</IOType>
                             <peripheralName>LINflex</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>A1</padType>
-                            <funcAssign>eMIOS_1_28</funcAssign>
-                            <funcDesc>eMIOS_1 CH28</funcDesc>
+                            <funcAssign>eMIOS_1_29</funcAssign>
+                            <funcDesc>eMIOS_1 CH29</funcDesc>
                             <IOType>IO</IOType>
                             <peripheralName>eMIOS</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>G</padType>
-                            <funcAssign>PC6</funcAssign>
+                            <funcAssign>PC7</funcAssign>
                             <funcDesc>GPIO</funcDesc>
                             <IOType>IO</IOType>
                             <peripheralName>GPIO</peripheralName>
@@ -12725,20 +12654,20 @@
                     <padRegister>
                         <value>513</value>
                         <deviceName>SIU</deviceName>
-                        <name>SIU_PCR38</name>
-                        <offset>0x8C</offset>
-                        <address>C3F9008C</address>
-                        <description>Pad Configuration Registers 38</description>
+                        <name>SIU_PCR39</name>
+                        <offset>0x8E</offset>
+                        <address>C3F9008E</address>
+                        <description>Pad Configuration Registers 39</description>
                         <resetValue>0001</resetValue>
                         <registerBitSize>16</registerBitSize>
-                        <padNumber>38</padNumber>
+                        <padNumber>39</padNumber>
                         <pinState>false</pinState>
                     </padRegister>
                     <comboBoxWidth>0</comboBoxWidth>
                     <padPackageList>
                         <PADPackage>
                             <packageName>144</packageName>
-                            <pinName>36</pinName>
+                            <pinName>37</pinName>
                         </PADPackage>
                     </padPackageList>
                     <allocated>true</allocated>
@@ -12746,19 +12675,19 @@
                     <outputConflict>false</outputConflict>
                     <objPADWizardDetailsAllocated>
                         <peripheralName>GPIO</peripheralName>
-                        <padNumber>38</padNumber>
+                        <padNumber>39</padNumber>
                         <padType>G</padType>
                         <allocationStatus>true</allocationStatus>
                         <ioType>O</ioType>
                         <output>true</output>
-                        <chkBoxName>PC6</chkBoxName>
-                        <attributeName>PC6</attributeName>
+                        <chkBoxName>PC7</chkBoxName>
+                        <attributeName>PC7</attributeName>
                         <enabled>true</enabled>
-                        <peripheralValidationName>PC6</peripheralValidationName>
+                        <peripheralValidationName>PC7</peripheralValidationName>
                         <enableConflictCheckBox>true</enableConflictCheckBox>
                         <groupSequenceNumber>3</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR38::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PC6 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
-                        <userAssignedSignal>PC6_BAR2_C</userAssignedSignal>
+                        <toolTip>Register::Bit_name :- SIU_PCR39::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PC7 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                        <userAssignedSignal>PC7_BAR3_A</userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -12835,6 +12764,78 @@
                 </value>
             </entry>
             <entry>
+                <key>SIU_PCR38</key>
+                <value>
+                    <signalName>eMIOS 6</signalName>
+                    <pinName>36</pinName>
+                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
+                    <groupName>eMIOS 6</groupName>
+                    <resetValue>0001</resetValue>
+                    <pinPort>PC6</pinPort>
+                    <padFunctionList>
+                        <PADFunction>
+                            <padType>P1</padType>
+                            <funcAssign>TXD_1</funcAssign>
+                            <funcDesc>LIN1 Transmit</funcDesc>
+                            <IOType>O</IOType>
+                            <peripheralName>LINflex</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>A1</padType>
+                            <funcAssign>eMIOS_1_28</funcAssign>
+                            <funcDesc>eMIOS_1 CH28</funcDesc>
+                            <IOType>IO</IOType>
+                            <peripheralName>eMIOS</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>G</padType>
+                            <funcAssign>PC6</funcAssign>
+                            <funcDesc>GPIO</funcDesc>
+                            <IOType>IO</IOType>
+                            <peripheralName>GPIO</peripheralName>
+                        </PADFunction>
+                    </padFunctionList>
+                    <padRegister>
+                        <value>513</value>
+                        <deviceName>SIU</deviceName>
+                        <name>SIU_PCR38</name>
+                        <offset>0x8C</offset>
+                        <address>C3F9008C</address>
+                        <description>Pad Configuration Registers 38</description>
+                        <resetValue>0001</resetValue>
+                        <registerBitSize>16</registerBitSize>
+                        <padNumber>38</padNumber>
+                        <pinState>false</pinState>
+                    </padRegister>
+                    <comboBoxWidth>0</comboBoxWidth>
+                    <padPackageList>
+                        <PADPackage>
+                            <packageName>144</packageName>
+                            <pinName>36</pinName>
+                        </PADPackage>
+                    </padPackageList>
+                    <allocated>true</allocated>
+                    <conflictInAllocation>false</conflictInAllocation>
+                    <outputConflict>false</outputConflict>
+                    <objPADWizardDetailsAllocated>
+                        <peripheralName>GPIO</peripheralName>
+                        <padNumber>38</padNumber>
+                        <padType>G</padType>
+                        <allocationStatus>true</allocationStatus>
+                        <ioType>O</ioType>
+                        <output>true</output>
+                        <chkBoxName>PC6</chkBoxName>
+                        <attributeName>PC6</attributeName>
+                        <enabled>true</enabled>
+                        <peripheralValidationName>PC6</peripheralValidationName>
+                        <enableConflictCheckBox>true</enableConflictCheckBox>
+                        <groupSequenceNumber>3</groupSequenceNumber>
+                        <toolTip>Register::Bit_name :- SIU_PCR38::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PC6 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                        <userAssignedSignal>PC6_BAR2_C</userAssignedSignal>
+                    </objPADWizardDetailsAllocated>
+                </value>
+            </entry>
+            <entry>
                 <key>SIU_PCR87</key>
                 <value>
                     <signalName>AD 15</signalName>
@@ -12903,78 +12904,6 @@
                         <groupSequenceNumber>6</groupSequenceNumber>
                         <toolTip>Register::Bit_name :- SIU_PCR87::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PF7 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
                         <userAssignedSignal>PF7_SEG2_OUTD</userAssignedSignal>
-                    </objPADWizardDetailsAllocated>
-                </value>
-            </entry>
-            <entry>
-                <key>SIU_PCR40</key>
-                <value>
-                    <signalName>eMIOS 8</signalName>
-                    <pinName>143</pinName>
-                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>eMIOS 8</groupName>
-                    <resetValue>0001</resetValue>
-                    <pinPort>PC8</pinPort>
-                    <padFunctionList>
-                        <PADFunction>
-                            <padType>P1</padType>
-                            <funcAssign>TXD_2</funcAssign>
-                            <funcDesc>LIN2 Transmit</funcDesc>
-                            <IOType>O</IOType>
-                            <peripheralName>LINflex</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>A1</padType>
-                            <funcAssign>eMIOS_0_3</funcAssign>
-                            <funcDesc>eMIOS_0 CH3</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>eMIOS</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>G</padType>
-                            <funcAssign>PC8</funcAssign>
-                            <funcDesc>GPIO</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>GPIO</peripheralName>
-                        </PADFunction>
-                    </padFunctionList>
-                    <padRegister>
-                        <value>513</value>
-                        <deviceName>SIU</deviceName>
-                        <name>SIU_PCR40</name>
-                        <offset>0x90</offset>
-                        <address>C3F90090</address>
-                        <description>Pad Configuration Registers 40</description>
-                        <resetValue>0001</resetValue>
-                        <registerBitSize>16</registerBitSize>
-                        <padNumber>40</padNumber>
-                        <pinState>false</pinState>
-                    </padRegister>
-                    <comboBoxWidth>0</comboBoxWidth>
-                    <padPackageList>
-                        <PADPackage>
-                            <packageName>144</packageName>
-                            <pinName>143</pinName>
-                        </PADPackage>
-                    </padPackageList>
-                    <allocated>true</allocated>
-                    <conflictInAllocation>false</conflictInAllocation>
-                    <outputConflict>false</outputConflict>
-                    <objPADWizardDetailsAllocated>
-                        <peripheralName>GPIO</peripheralName>
-                        <padNumber>40</padNumber>
-                        <padType>G</padType>
-                        <allocationStatus>true</allocationStatus>
-                        <ioType>O</ioType>
-                        <output>true</output>
-                        <chkBoxName>PC8</chkBoxName>
-                        <attributeName>PC8</attributeName>
-                        <enabled>true</enabled>
-                        <peripheralValidationName>PC8</peripheralValidationName>
-                        <enableConflictCheckBox>true</enableConflictCheckBox>
-                        <groupSequenceNumber>3</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR40::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PC8 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
-                        <userAssignedSignal>PC8_BAR3_B</userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -13054,6 +12983,78 @@
                         <groupSequenceNumber>6</groupSequenceNumber>
                         <toolTip>Register::Bit_name :- SIU_PCR88::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PF8 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
                         <userAssignedSignal>PF8_SEG3_OUTA</userAssignedSignal>
+                    </objPADWizardDetailsAllocated>
+                </value>
+            </entry>
+            <entry>
+                <key>SIU_PCR40</key>
+                <value>
+                    <signalName>eMIOS 8</signalName>
+                    <pinName>143</pinName>
+                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
+                    <groupName>eMIOS 8</groupName>
+                    <resetValue>0001</resetValue>
+                    <pinPort>PC8</pinPort>
+                    <padFunctionList>
+                        <PADFunction>
+                            <padType>P1</padType>
+                            <funcAssign>TXD_2</funcAssign>
+                            <funcDesc>LIN2 Transmit</funcDesc>
+                            <IOType>O</IOType>
+                            <peripheralName>LINflex</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>A1</padType>
+                            <funcAssign>eMIOS_0_3</funcAssign>
+                            <funcDesc>eMIOS_0 CH3</funcDesc>
+                            <IOType>IO</IOType>
+                            <peripheralName>eMIOS</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>G</padType>
+                            <funcAssign>PC8</funcAssign>
+                            <funcDesc>GPIO</funcDesc>
+                            <IOType>IO</IOType>
+                            <peripheralName>GPIO</peripheralName>
+                        </PADFunction>
+                    </padFunctionList>
+                    <padRegister>
+                        <value>513</value>
+                        <deviceName>SIU</deviceName>
+                        <name>SIU_PCR40</name>
+                        <offset>0x90</offset>
+                        <address>C3F90090</address>
+                        <description>Pad Configuration Registers 40</description>
+                        <resetValue>0001</resetValue>
+                        <registerBitSize>16</registerBitSize>
+                        <padNumber>40</padNumber>
+                        <pinState>false</pinState>
+                    </padRegister>
+                    <comboBoxWidth>0</comboBoxWidth>
+                    <padPackageList>
+                        <PADPackage>
+                            <packageName>144</packageName>
+                            <pinName>143</pinName>
+                        </PADPackage>
+                    </padPackageList>
+                    <allocated>true</allocated>
+                    <conflictInAllocation>false</conflictInAllocation>
+                    <outputConflict>false</outputConflict>
+                    <objPADWizardDetailsAllocated>
+                        <peripheralName>GPIO</peripheralName>
+                        <padNumber>40</padNumber>
+                        <padType>G</padType>
+                        <allocationStatus>true</allocationStatus>
+                        <ioType>O</ioType>
+                        <output>true</output>
+                        <chkBoxName>PC8</chkBoxName>
+                        <attributeName>PC8</attributeName>
+                        <enabled>true</enabled>
+                        <peripheralValidationName>PC8</peripheralValidationName>
+                        <enableConflictCheckBox>true</enableConflictCheckBox>
+                        <groupSequenceNumber>3</groupSequenceNumber>
+                        <toolTip>Register::Bit_name :- SIU_PCR40::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PC8 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                        <userAssignedSignal>PC8_BAR3_B</userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -14186,78 +14187,6 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR68</key>
-                <value>
-                    <signalName>SOUT_A</signalName>
-                    <pinName>132</pinName>
-                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>SOUT_A</groupName>
-                    <resetValue>0001</resetValue>
-                    <pinPort>PE4</pinPort>
-                    <padFunctionList>
-                        <PADFunction>
-                            <padType>P1</padType>
-                            <funcAssign>eMIOS_0_20</funcAssign>
-                            <funcDesc>eMIOS_0 CH20</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>eMIOS</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>A1</padType>
-                            <funcAssign>SCK_1</funcAssign>
-                            <funcDesc>DSPI1 Serial Clock</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>DSPI</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>G</padType>
-                            <funcAssign>PE4</funcAssign>
-                            <funcDesc>GPIO</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>GPIO</peripheralName>
-                        </PADFunction>
-                    </padFunctionList>
-                    <padRegister>
-                        <value>513</value>
-                        <deviceName>SIU</deviceName>
-                        <name>SIU_PCR68</name>
-                        <offset>0xC8</offset>
-                        <address>C3F900C8</address>
-                        <description>Pad Configuration Registers 68</description>
-                        <resetValue>0001</resetValue>
-                        <registerBitSize>16</registerBitSize>
-                        <padNumber>68</padNumber>
-                        <pinState>false</pinState>
-                    </padRegister>
-                    <comboBoxWidth>0</comboBoxWidth>
-                    <padPackageList>
-                        <PADPackage>
-                            <packageName>144</packageName>
-                            <pinName>132</pinName>
-                        </PADPackage>
-                    </padPackageList>
-                    <allocated>true</allocated>
-                    <conflictInAllocation>false</conflictInAllocation>
-                    <outputConflict>false</outputConflict>
-                    <objPADWizardDetailsAllocated>
-                        <peripheralName>GPIO</peripheralName>
-                        <padNumber>68</padNumber>
-                        <padType>G</padType>
-                        <allocationStatus>true</allocationStatus>
-                        <ioType>O</ioType>
-                        <output>true</output>
-                        <chkBoxName>PE4</chkBoxName>
-                        <attributeName>PE4</attributeName>
-                        <enabled>true</enabled>
-                        <peripheralValidationName>PE4</peripheralValidationName>
-                        <enableConflictCheckBox>true</enableConflictCheckBox>
-                        <groupSequenceNumber>5</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR68::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE4 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
-                        <userAssignedSignal>PE4_LED1_Output</userAssignedSignal>
-                    </objPADWizardDetailsAllocated>
-                </value>
-            </entry>
-            <entry>
                 <key>SIU_PCR28</key>
                 <value>
                     <signalName>TXD_G</signalName>
@@ -14337,6 +14266,78 @@
                 </value>
             </entry>
             <entry>
+                <key>SIU_PCR68</key>
+                <value>
+                    <signalName>SOUT_A</signalName>
+                    <pinName>132</pinName>
+                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
+                    <groupName>SOUT_A</groupName>
+                    <resetValue>0001</resetValue>
+                    <pinPort>PE4</pinPort>
+                    <padFunctionList>
+                        <PADFunction>
+                            <padType>P1</padType>
+                            <funcAssign>eMIOS_0_20</funcAssign>
+                            <funcDesc>eMIOS_0 CH20</funcDesc>
+                            <IOType>IO</IOType>
+                            <peripheralName>eMIOS</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>A1</padType>
+                            <funcAssign>SCK_1</funcAssign>
+                            <funcDesc>DSPI1 Serial Clock</funcDesc>
+                            <IOType>IO</IOType>
+                            <peripheralName>DSPI</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>G</padType>
+                            <funcAssign>PE4</funcAssign>
+                            <funcDesc>GPIO</funcDesc>
+                            <IOType>IO</IOType>
+                            <peripheralName>GPIO</peripheralName>
+                        </PADFunction>
+                    </padFunctionList>
+                    <padRegister>
+                        <value>513</value>
+                        <deviceName>SIU</deviceName>
+                        <name>SIU_PCR68</name>
+                        <offset>0xC8</offset>
+                        <address>C3F900C8</address>
+                        <description>Pad Configuration Registers 68</description>
+                        <resetValue>0001</resetValue>
+                        <registerBitSize>16</registerBitSize>
+                        <padNumber>68</padNumber>
+                        <pinState>false</pinState>
+                    </padRegister>
+                    <comboBoxWidth>0</comboBoxWidth>
+                    <padPackageList>
+                        <PADPackage>
+                            <packageName>144</packageName>
+                            <pinName>132</pinName>
+                        </PADPackage>
+                    </padPackageList>
+                    <allocated>true</allocated>
+                    <conflictInAllocation>false</conflictInAllocation>
+                    <outputConflict>false</outputConflict>
+                    <objPADWizardDetailsAllocated>
+                        <peripheralName>GPIO</peripheralName>
+                        <padNumber>68</padNumber>
+                        <padType>G</padType>
+                        <allocationStatus>true</allocationStatus>
+                        <ioType>O</ioType>
+                        <output>true</output>
+                        <chkBoxName>PE4</chkBoxName>
+                        <attributeName>PE4</attributeName>
+                        <enabled>true</enabled>
+                        <peripheralValidationName>PE4</peripheralValidationName>
+                        <enableConflictCheckBox>true</enableConflictCheckBox>
+                        <groupSequenceNumber>5</groupSequenceNumber>
+                        <toolTip>Register::Bit_name :- SIU_PCR68::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE4 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                        <userAssignedSignal>PE4_LED1_Output</userAssignedSignal>
+                    </objPADWizardDetailsAllocated>
+                </value>
+            </entry>
+            <entry>
                 <key>SIU_PCR67</key>
                 <value>
                     <signalName>SCK__A</signalName>
@@ -14405,85 +14406,6 @@
                         <groupSequenceNumber>5</groupSequenceNumber>
                         <toolTip>Register::Bit_name :- SIU_PCR67::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE3 as an Input&lt;br&gt;Device :-GPIO</toolTip>
                         <userAssignedSignal>PE3_Switch4_Input</userAssignedSignal>
-                    </objPADWizardDetailsAllocated>
-                </value>
-            </entry>
-            <entry>
-                <key>SIU_PCR69</key>
-                <value>
-                    <signalName>SIN__A</signalName>
-                    <pinName>133</pinName>
-                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>SIN__A</groupName>
-                    <resetValue>0001</resetValue>
-                    <pinPort>PE5</pinPort>
-                    <padFunctionList>
-                        <PADFunction>
-                            <padType>P1</padType>
-                            <funcAssign>eMIOS_0_21</funcAssign>
-                            <funcDesc>eMIOS_0 CH21</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>eMIOS</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>A1</padType>
-                            <funcAssign>PCS_1.0</funcAssign>
-                            <funcDesc>DSPI1 Chip Select 0</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>DSPI</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>A2</padType>
-                            <funcAssign>ADC_0_MA2</funcAssign>
-                            <funcDesc>ADC</funcDesc>
-                            <IOType>O</IOType>
-                            <peripheralName>ADC</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>G</padType>
-                            <funcAssign>PE5</funcAssign>
-                            <funcDesc>GPIO</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>GPIO</peripheralName>
-                        </PADFunction>
-                    </padFunctionList>
-                    <padRegister>
-                        <value>513</value>
-                        <deviceName>SIU</deviceName>
-                        <name>SIU_PCR69</name>
-                        <offset>0xCA</offset>
-                        <address>C3F900CA</address>
-                        <description>Pad Configuration Registers 69</description>
-                        <resetValue>0001</resetValue>
-                        <registerBitSize>16</registerBitSize>
-                        <padNumber>69</padNumber>
-                        <pinState>false</pinState>
-                    </padRegister>
-                    <comboBoxWidth>0</comboBoxWidth>
-                    <padPackageList>
-                        <PADPackage>
-                            <packageName>144</packageName>
-                            <pinName>133</pinName>
-                        </PADPackage>
-                    </padPackageList>
-                    <allocated>true</allocated>
-                    <conflictInAllocation>false</conflictInAllocation>
-                    <outputConflict>false</outputConflict>
-                    <objPADWizardDetailsAllocated>
-                        <peripheralName>GPIO</peripheralName>
-                        <padNumber>69</padNumber>
-                        <padType>G</padType>
-                        <allocationStatus>true</allocationStatus>
-                        <ioType>O</ioType>
-                        <output>true</output>
-                        <chkBoxName>PE5</chkBoxName>
-                        <attributeName>PE5</attributeName>
-                        <enabled>true</enabled>
-                        <peripheralValidationName>PE5</peripheralValidationName>
-                        <enableConflictCheckBox>true</enableConflictCheckBox>
-                        <groupSequenceNumber>5</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR69::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE5 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
-                        <userAssignedSignal>PE5_LED2_Output</userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -14563,6 +14485,85 @@
                         <groupSequenceNumber>2</groupSequenceNumber>
                         <toolTip>Register::Bit_name :- SIU_PCR29::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PB13 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
                         <userAssignedSignal>PB13_BAR1_A</userAssignedSignal>
+                    </objPADWizardDetailsAllocated>
+                </value>
+            </entry>
+            <entry>
+                <key>SIU_PCR69</key>
+                <value>
+                    <signalName>SIN__A</signalName>
+                    <pinName>133</pinName>
+                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
+                    <groupName>SIN__A</groupName>
+                    <resetValue>0001</resetValue>
+                    <pinPort>PE5</pinPort>
+                    <padFunctionList>
+                        <PADFunction>
+                            <padType>P1</padType>
+                            <funcAssign>eMIOS_0_21</funcAssign>
+                            <funcDesc>eMIOS_0 CH21</funcDesc>
+                            <IOType>IO</IOType>
+                            <peripheralName>eMIOS</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>A1</padType>
+                            <funcAssign>PCS_1.0</funcAssign>
+                            <funcDesc>DSPI1 Chip Select 0</funcDesc>
+                            <IOType>IO</IOType>
+                            <peripheralName>DSPI</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>A2</padType>
+                            <funcAssign>ADC_0_MA2</funcAssign>
+                            <funcDesc>ADC</funcDesc>
+                            <IOType>O</IOType>
+                            <peripheralName>ADC</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>G</padType>
+                            <funcAssign>PE5</funcAssign>
+                            <funcDesc>GPIO</funcDesc>
+                            <IOType>IO</IOType>
+                            <peripheralName>GPIO</peripheralName>
+                        </PADFunction>
+                    </padFunctionList>
+                    <padRegister>
+                        <value>513</value>
+                        <deviceName>SIU</deviceName>
+                        <name>SIU_PCR69</name>
+                        <offset>0xCA</offset>
+                        <address>C3F900CA</address>
+                        <description>Pad Configuration Registers 69</description>
+                        <resetValue>0001</resetValue>
+                        <registerBitSize>16</registerBitSize>
+                        <padNumber>69</padNumber>
+                        <pinState>false</pinState>
+                    </padRegister>
+                    <comboBoxWidth>0</comboBoxWidth>
+                    <padPackageList>
+                        <PADPackage>
+                            <packageName>144</packageName>
+                            <pinName>133</pinName>
+                        </PADPackage>
+                    </padPackageList>
+                    <allocated>true</allocated>
+                    <conflictInAllocation>false</conflictInAllocation>
+                    <outputConflict>false</outputConflict>
+                    <objPADWizardDetailsAllocated>
+                        <peripheralName>GPIO</peripheralName>
+                        <padNumber>69</padNumber>
+                        <padType>G</padType>
+                        <allocationStatus>true</allocationStatus>
+                        <ioType>O</ioType>
+                        <output>true</output>
+                        <chkBoxName>PE5</chkBoxName>
+                        <attributeName>PE5</attributeName>
+                        <enabled>true</enabled>
+                        <peripheralValidationName>PE5</peripheralValidationName>
+                        <enableConflictCheckBox>true</enableConflictCheckBox>
+                        <groupSequenceNumber>5</groupSequenceNumber>
+                        <toolTip>Register::Bit_name :- SIU_PCR69::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE5 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                        <userAssignedSignal>PE5_LED2_Output</userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -14844,85 +14845,6 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR70</key>
-                <value>
-                    <signalName>CLKOUT</signalName>
-                    <pinName>139</pinName>
-                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>CLKOUT</groupName>
-                    <resetValue>0001</resetValue>
-                    <pinPort>PE6</pinPort>
-                    <padFunctionList>
-                        <PADFunction>
-                            <padType>P1</padType>
-                            <funcAssign>eMIOS_0_22</funcAssign>
-                            <funcDesc>eMIOS_0 CH22</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>eMIOS</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>A1</padType>
-                            <funcAssign>PCS_0.3</funcAssign>
-                            <funcDesc>DSPI0 Chip Select 3</funcDesc>
-                            <IOType>O</IOType>
-                            <peripheralName>DSPI</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>A2</padType>
-                            <funcAssign>ADC_0_MA1</funcAssign>
-                            <funcDesc>ADC</funcDesc>
-                            <IOType>O</IOType>
-                            <peripheralName>ADC</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>G</padType>
-                            <funcAssign>PE6</funcAssign>
-                            <funcDesc>GPIO</funcDesc>
-                            <IOType>IO</IOType>
-                            <peripheralName>GPIO</peripheralName>
-                        </PADFunction>
-                    </padFunctionList>
-                    <padRegister>
-                        <value>513</value>
-                        <deviceName>SIU</deviceName>
-                        <name>SIU_PCR70</name>
-                        <offset>0xCC</offset>
-                        <address>C3F900CC</address>
-                        <description>Pad Configuration Registers 70</description>
-                        <resetValue>0001</resetValue>
-                        <registerBitSize>16</registerBitSize>
-                        <padNumber>70</padNumber>
-                        <pinState>false</pinState>
-                    </padRegister>
-                    <comboBoxWidth>0</comboBoxWidth>
-                    <padPackageList>
-                        <PADPackage>
-                            <packageName>144</packageName>
-                            <pinName>139</pinName>
-                        </PADPackage>
-                    </padPackageList>
-                    <allocated>true</allocated>
-                    <conflictInAllocation>false</conflictInAllocation>
-                    <outputConflict>false</outputConflict>
-                    <objPADWizardDetailsAllocated>
-                        <peripheralName>GPIO</peripheralName>
-                        <padNumber>70</padNumber>
-                        <padType>G</padType>
-                        <allocationStatus>true</allocationStatus>
-                        <ioType>O</ioType>
-                        <output>true</output>
-                        <chkBoxName>PE6</chkBoxName>
-                        <attributeName>PE6</attributeName>
-                        <enabled>true</enabled>
-                        <peripheralValidationName>PE6</peripheralValidationName>
-                        <enableConflictCheckBox>true</enableConflictCheckBox>
-                        <groupSequenceNumber>5</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR70::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE6 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
-                        <userAssignedSignal>PE6_LED3_Output</userAssignedSignal>
-                    </objPADWizardDetailsAllocated>
-                </value>
-            </entry>
-            <entry>
                 <key>SIU_PCR30</key>
                 <value>
                     <signalName>TXD_H</signalName>
@@ -15002,39 +14924,39 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR71</key>
+                <key>SIU_PCR70</key>
                 <value>
-                    <signalName>GPIO</signalName>
-                    <pinName>140</pinName>
+                    <signalName>CLKOUT</signalName>
+                    <pinName>139</pinName>
                     <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>GPIO</groupName>
+                    <groupName>CLKOUT</groupName>
                     <resetValue>0001</resetValue>
-                    <pinPort>PE7</pinPort>
+                    <pinPort>PE6</pinPort>
                     <padFunctionList>
                         <PADFunction>
                             <padType>P1</padType>
-                            <funcAssign>eMIOS_0_23</funcAssign>
-                            <funcDesc>eMIOS_0 CH23</funcDesc>
+                            <funcAssign>eMIOS_0_22</funcAssign>
+                            <funcDesc>eMIOS_0 CH22</funcDesc>
                             <IOType>IO</IOType>
                             <peripheralName>eMIOS</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>A1</padType>
-                            <funcAssign>PCS_0.2</funcAssign>
-                            <funcDesc>DSPI0 Chip Select 2</funcDesc>
+                            <funcAssign>PCS_0.3</funcAssign>
+                            <funcDesc>DSPI0 Chip Select 3</funcDesc>
                             <IOType>O</IOType>
                             <peripheralName>DSPI</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>A2</padType>
-                            <funcAssign>ADC_0_MA0</funcAssign>
+                            <funcAssign>ADC_0_MA1</funcAssign>
                             <funcDesc>ADC</funcDesc>
                             <IOType>O</IOType>
                             <peripheralName>ADC</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>G</padType>
-                            <funcAssign>PE7</funcAssign>
+                            <funcAssign>PE6</funcAssign>
                             <funcDesc>GPIO</funcDesc>
                             <IOType>IO</IOType>
                             <peripheralName>GPIO</peripheralName>
@@ -15043,20 +14965,20 @@
                     <padRegister>
                         <value>513</value>
                         <deviceName>SIU</deviceName>
-                        <name>SIU_PCR71</name>
-                        <offset>0xCE</offset>
-                        <address>C3F900CE</address>
-                        <description>Pad Configuration Registers 71</description>
+                        <name>SIU_PCR70</name>
+                        <offset>0xCC</offset>
+                        <address>C3F900CC</address>
+                        <description>Pad Configuration Registers 70</description>
                         <resetValue>0001</resetValue>
                         <registerBitSize>16</registerBitSize>
-                        <padNumber>71</padNumber>
+                        <padNumber>70</padNumber>
                         <pinState>false</pinState>
                     </padRegister>
                     <comboBoxWidth>0</comboBoxWidth>
                     <padPackageList>
                         <PADPackage>
                             <packageName>144</packageName>
-                            <pinName>140</pinName>
+                            <pinName>139</pinName>
                         </PADPackage>
                     </padPackageList>
                     <allocated>true</allocated>
@@ -15064,19 +14986,19 @@
                     <outputConflict>false</outputConflict>
                     <objPADWizardDetailsAllocated>
                         <peripheralName>GPIO</peripheralName>
-                        <padNumber>71</padNumber>
+                        <padNumber>70</padNumber>
                         <padType>G</padType>
                         <allocationStatus>true</allocationStatus>
                         <ioType>O</ioType>
                         <output>true</output>
-                        <chkBoxName>PE7</chkBoxName>
-                        <attributeName>PE7</attributeName>
+                        <chkBoxName>PE6</chkBoxName>
+                        <attributeName>PE6</attributeName>
                         <enabled>true</enabled>
-                        <peripheralValidationName>PE7</peripheralValidationName>
+                        <peripheralValidationName>PE6</peripheralValidationName>
                         <enableConflictCheckBox>true</enableConflictCheckBox>
                         <groupSequenceNumber>5</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR71::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE7 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
-                        <userAssignedSignal>PE7_LED4_Output</userAssignedSignal>
+                        <toolTip>Register::Bit_name :- SIU_PCR70::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE6 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                        <userAssignedSignal>PE6_LED3_Output</userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -15160,66 +15082,82 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR72</key>
+                <key>SIU_PCR71</key>
                 <value>
                     <signalName>GPIO</signalName>
-                    <pinName>13</pinName>
+                    <pinName>140</pinName>
                     <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
                     <groupName>GPIO</groupName>
                     <resetValue>0001</resetValue>
-                    <pinPort>PE8</pinPort>
+                    <pinPort>PE7</pinPort>
                     <padFunctionList>
                         <PADFunction>
                             <padType>P1</padType>
-                            <funcAssign>CNTX_2</funcAssign>
-                            <funcDesc>CAN2 Transmit</funcDesc>
-                            <IOType>O</IOType>
-                            <peripheralName>CAN</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>A1</padType>
-                            <funcAssign>eMIOS_0_22</funcAssign>
-                            <funcDesc>eMIOS_0 CH22</funcDesc>
+                            <funcAssign>eMIOS_0_23</funcAssign>
+                            <funcDesc>eMIOS_0 CH23</funcDesc>
                             <IOType>IO</IOType>
                             <peripheralName>eMIOS</peripheralName>
                         </PADFunction>
                         <PADFunction>
-                            <padType>A2</padType>
-                            <funcAssign>CNTX_3</funcAssign>
-                            <funcDesc>CAN3 Transmit</funcDesc>
+                            <padType>A1</padType>
+                            <funcAssign>PCS_0.2</funcAssign>
+                            <funcDesc>DSPI0 Chip Select 2</funcDesc>
                             <IOType>O</IOType>
-                            <peripheralName>CAN</peripheralName>
+                            <peripheralName>DSPI</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>A2</padType>
+                            <funcAssign>ADC_0_MA0</funcAssign>
+                            <funcDesc>ADC</funcDesc>
+                            <IOType>O</IOType>
+                            <peripheralName>ADC</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>G</padType>
-                            <funcAssign>PE8</funcAssign>
+                            <funcAssign>PE7</funcAssign>
                             <funcDesc>GPIO</funcDesc>
                             <IOType>IO</IOType>
                             <peripheralName>GPIO</peripheralName>
                         </PADFunction>
                     </padFunctionList>
                     <padRegister>
-                        <value>1</value>
+                        <value>513</value>
                         <deviceName>SIU</deviceName>
-                        <name>SIU_PCR72</name>
-                        <offset>0xD0</offset>
-                        <address>C3F900D0</address>
-                        <description>Pad Configuration Registers 72</description>
+                        <name>SIU_PCR71</name>
+                        <offset>0xCE</offset>
+                        <address>C3F900CE</address>
+                        <description>Pad Configuration Registers 71</description>
                         <resetValue>0001</resetValue>
                         <registerBitSize>16</registerBitSize>
-                        <padNumber>72</padNumber>
+                        <padNumber>71</padNumber>
                         <pinState>false</pinState>
                     </padRegister>
                     <comboBoxWidth>0</comboBoxWidth>
                     <padPackageList>
                         <PADPackage>
                             <packageName>144</packageName>
-                            <pinName>13</pinName>
+                            <pinName>140</pinName>
                         </PADPackage>
                     </padPackageList>
-                    <allocated>false</allocated>
+                    <allocated>true</allocated>
                     <conflictInAllocation>false</conflictInAllocation>
                     <outputConflict>false</outputConflict>
+                    <objPADWizardDetailsAllocated>
+                        <peripheralName>GPIO</peripheralName>
+                        <padNumber>71</padNumber>
+                        <padType>G</padType>
+                        <allocationStatus>true</allocationStatus>
+                        <ioType>O</ioType>
+                        <output>true</output>
+                        <chkBoxName>PE7</chkBoxName>
+                        <attributeName>PE7</attributeName>
+                        <enabled>true</enabled>
+                        <peripheralValidationName>PE7</peripheralValidationName>
+                        <enableConflictCheckBox>true</enableConflictCheckBox>
+                        <groupSequenceNumber>5</groupSequenceNumber>
+                        <toolTip>Register::Bit_name :- SIU_PCR71::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PE7 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                        <userAssignedSignal>PE7_LED4_Output</userAssignedSignal>
+                    </objPADWizardDetailsAllocated>
                 </value>
             </entry>
             <entry>
@@ -15304,39 +15242,39 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR73</key>
+                <key>SIU_PCR72</key>
                 <value>
                     <signalName>GPIO</signalName>
-                    <pinName>14</pinName>
+                    <pinName>13</pinName>
                     <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
                     <groupName>GPIO</groupName>
                     <resetValue>0001</resetValue>
-                    <pinPort>PE9</pinPort>
+                    <pinPort>PE8</pinPort>
                     <padFunctionList>
                         <PADFunction>
-                            <padType>A3</padType>
-                            <funcAssign>CNRX_2</funcAssign>
-                            <funcDesc>CAN2 Receive</funcDesc>
-                            <IOType>I</IOType>
+                            <padType>P1</padType>
+                            <funcAssign>CNTX_2</funcAssign>
+                            <funcDesc>CAN2 Transmit</funcDesc>
+                            <IOType>O</IOType>
                             <peripheralName>CAN</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>A1</padType>
-                            <funcAssign>eMIOS_0_23</funcAssign>
-                            <funcDesc>eMIOS_0 CH23</funcDesc>
+                            <funcAssign>eMIOS_0_22</funcAssign>
+                            <funcDesc>eMIOS_0 CH22</funcDesc>
                             <IOType>IO</IOType>
                             <peripheralName>eMIOS</peripheralName>
                         </PADFunction>
                         <PADFunction>
-                            <padType>A4</padType>
-                            <funcAssign>CNRX_3</funcAssign>
-                            <funcDesc>CAN3 Receive</funcDesc>
-                            <IOType>I</IOType>
+                            <padType>A2</padType>
+                            <funcAssign>CNTX_3</funcAssign>
+                            <funcDesc>CAN3 Transmit</funcDesc>
+                            <IOType>O</IOType>
                             <peripheralName>CAN</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>G</padType>
-                            <funcAssign>PE9</funcAssign>
+                            <funcAssign>PE8</funcAssign>
                             <funcDesc>GPIO</funcDesc>
                             <IOType>IO</IOType>
                             <peripheralName>GPIO</peripheralName>
@@ -15345,20 +15283,20 @@
                     <padRegister>
                         <value>1</value>
                         <deviceName>SIU</deviceName>
-                        <name>SIU_PCR73</name>
-                        <offset>0xD2</offset>
-                        <address>C3F900D2</address>
-                        <description>Pad Configuration Registers 73</description>
+                        <name>SIU_PCR72</name>
+                        <offset>0xD0</offset>
+                        <address>C3F900D0</address>
+                        <description>Pad Configuration Registers 72</description>
                         <resetValue>0001</resetValue>
                         <registerBitSize>16</registerBitSize>
-                        <padNumber>73</padNumber>
+                        <padNumber>72</padNumber>
                         <pinState>false</pinState>
                     </padRegister>
                     <comboBoxWidth>0</comboBoxWidth>
                     <padPackageList>
                         <PADPackage>
                             <packageName>144</packageName>
-                            <pinName>14</pinName>
+                            <pinName>13</pinName>
                         </PADPackage>
                     </padPackageList>
                     <allocated>false</allocated>
@@ -15447,68 +15385,66 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR59</key>
+                <key>SIU_PCR73</key>
                 <value>
-                    <signalName>PCS_B 1</signalName>
-                    <pinName>80</pinName>
+                    <signalName>GPIO</signalName>
+                    <pinName>14</pinName>
                     <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>PCS_B 1</groupName>
-                    <resetValue>0000</resetValue>
-                    <pinPort>PD11</pinPort>
+                    <groupName>GPIO</groupName>
+                    <resetValue>0001</resetValue>
+                    <pinPort>PE9</pinPort>
                     <padFunctionList>
                         <PADFunction>
-                            <padType>Z1</padType>
-                            <funcAssign>ADC_0_ADC_1_ANP15</funcAssign>
-                            <funcDesc>ADC_0_ADC_1_Precision Channel 15</funcDesc>
+                            <padType>A3</padType>
+                            <funcAssign>CNRX_2</funcAssign>
+                            <funcDesc>CAN2 Receive</funcDesc>
                             <IOType>I</IOType>
-                            <peripheralName>ADC</peripheralName>
+                            <peripheralName>CAN</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>A1</padType>
+                            <funcAssign>eMIOS_0_23</funcAssign>
+                            <funcDesc>eMIOS_0 CH23</funcDesc>
+                            <IOType>IO</IOType>
+                            <peripheralName>eMIOS</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>A4</padType>
+                            <funcAssign>CNRX_3</funcAssign>
+                            <funcDesc>CAN3 Receive</funcDesc>
+                            <IOType>I</IOType>
+                            <peripheralName>CAN</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>G</padType>
-                            <funcAssign>PD11</funcAssign>
-                            <funcDesc>GPI</funcDesc>
-                            <IOType>I</IOType>
+                            <funcAssign>PE9</funcAssign>
+                            <funcDesc>GPIO</funcDesc>
+                            <IOType>IO</IOType>
                             <peripheralName>GPIO</peripheralName>
                         </PADFunction>
                     </padFunctionList>
                     <padRegister>
-                        <value>8192</value>
+                        <value>1</value>
                         <deviceName>SIU</deviceName>
-                        <name>SIU_PCR59</name>
-                        <offset>0xB6</offset>
-                        <address>C3F900B6</address>
-                        <description>Pad Configuration Registers 59</description>
-                        <resetValue>0000</resetValue>
+                        <name>SIU_PCR73</name>
+                        <offset>0xD2</offset>
+                        <address>C3F900D2</address>
+                        <description>Pad Configuration Registers 73</description>
+                        <resetValue>0001</resetValue>
                         <registerBitSize>16</registerBitSize>
-                        <padNumber>59</padNumber>
+                        <padNumber>73</padNumber>
                         <pinState>false</pinState>
                     </padRegister>
                     <comboBoxWidth>0</comboBoxWidth>
                     <padPackageList>
                         <PADPackage>
                             <packageName>144</packageName>
-                            <pinName>80</pinName>
+                            <pinName>14</pinName>
                         </PADPackage>
                     </padPackageList>
-                    <allocated>true</allocated>
+                    <allocated>false</allocated>
                     <conflictInAllocation>false</conflictInAllocation>
                     <outputConflict>false</outputConflict>
-                    <objPADWizardDetailsAllocated>
-                        <peripheralName>ADC</peripheralName>
-                        <padNumber>59</padNumber>
-                        <padType>Z1</padType>
-                        <allocationStatus>true</allocationStatus>
-                        <ioType>I</ioType>
-                        <output>false</output>
-                        <chkBoxName>PD11</chkBoxName>
-                        <attributeName>ADC_0_ADC_1 ANP 15</attributeName>
-                        <enabled>true</enabled>
-                        <peripheralValidationName>ADC_0_ADC_1 ANP 15</peripheralValidationName>
-                        <enableConflictCheckBox>true</enableConflictCheckBox>
-                        <groupSequenceNumber>1</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR59::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-ADC_0_ADC_1 ANP 15 as an Input&lt;br&gt;Device :-ADC</toolTip>
-                        <userAssignedSignal>PD11_CAM2_AO</userAssignedSignal>
-                    </objPADWizardDetailsAllocated>
                 </value>
             </entry>
             <entry>
@@ -15607,25 +15543,25 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR58</key>
+                <key>SIU_PCR59</key>
                 <value>
-                    <signalName>PCS_B 2</signalName>
-                    <pinName>79</pinName>
+                    <signalName>PCS_B 1</signalName>
+                    <pinName>80</pinName>
                     <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>PCS_B 2</groupName>
+                    <groupName>PCS_B 1</groupName>
                     <resetValue>0000</resetValue>
-                    <pinPort>PD10</pinPort>
+                    <pinPort>PD11</pinPort>
                     <padFunctionList>
                         <PADFunction>
                             <padType>Z1</padType>
-                            <funcAssign>ADC_0_ADC_1_ANP14</funcAssign>
-                            <funcDesc>ADC_0_ADC_1_Precision Channel 14</funcDesc>
+                            <funcAssign>ADC_0_ADC_1_ANP15</funcAssign>
+                            <funcDesc>ADC_0_ADC_1_Precision Channel 15</funcDesc>
                             <IOType>I</IOType>
                             <peripheralName>ADC</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>G</padType>
-                            <funcAssign>PD10</funcAssign>
+                            <funcAssign>PD11</funcAssign>
                             <funcDesc>GPI</funcDesc>
                             <IOType>I</IOType>
                             <peripheralName>GPIO</peripheralName>
@@ -15634,20 +15570,20 @@
                     <padRegister>
                         <value>8192</value>
                         <deviceName>SIU</deviceName>
-                        <name>SIU_PCR58</name>
-                        <offset>0xB4</offset>
-                        <address>C3F900B4</address>
-                        <description>Pad Configuration Registers 58</description>
+                        <name>SIU_PCR59</name>
+                        <offset>0xB6</offset>
+                        <address>C3F900B6</address>
+                        <description>Pad Configuration Registers 59</description>
                         <resetValue>0000</resetValue>
                         <registerBitSize>16</registerBitSize>
-                        <padNumber>58</padNumber>
+                        <padNumber>59</padNumber>
                         <pinState>false</pinState>
                     </padRegister>
                     <comboBoxWidth>0</comboBoxWidth>
                     <padPackageList>
                         <PADPackage>
                             <packageName>144</packageName>
-                            <pinName>79</pinName>
+                            <pinName>80</pinName>
                         </PADPackage>
                     </padPackageList>
                     <allocated>true</allocated>
@@ -15655,19 +15591,19 @@
                     <outputConflict>false</outputConflict>
                     <objPADWizardDetailsAllocated>
                         <peripheralName>ADC</peripheralName>
-                        <padNumber>58</padNumber>
+                        <padNumber>59</padNumber>
                         <padType>Z1</padType>
                         <allocationStatus>true</allocationStatus>
                         <ioType>I</ioType>
                         <output>false</output>
-                        <chkBoxName>PD10</chkBoxName>
-                        <attributeName>ADC_0_ADC_1 ANP 14</attributeName>
+                        <chkBoxName>PD11</chkBoxName>
+                        <attributeName>ADC_0_ADC_1 ANP 15</attributeName>
                         <enabled>true</enabled>
-                        <peripheralValidationName>ADC_0_ADC_1 ANP 14</peripheralValidationName>
+                        <peripheralValidationName>ADC_0_ADC_1 ANP 15</peripheralValidationName>
                         <enableConflictCheckBox>true</enableConflictCheckBox>
                         <groupSequenceNumber>1</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR58::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-ADC_0_ADC_1 ANP 14 as an Input&lt;br&gt;Device :-ADC</toolTip>
-                        <userAssignedSignal>PD10_CAM1_AO</userAssignedSignal>
+                        <toolTip>Register::Bit_name :- SIU_PCR59::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-ADC_0_ADC_1 ANP 15 as an Input&lt;br&gt;Device :-ADC</toolTip>
+                        <userAssignedSignal>PD11_CAM2_AO</userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -15768,67 +15704,67 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR57</key>
+                <key>SIU_PCR58</key>
                 <value>
-                    <signalName>RXD_B</signalName>
-                    <pinName>78</pinName>
+                    <signalName>PCS_B 2</signalName>
+                    <pinName>79</pinName>
                     <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>RXD_B</groupName>
+                    <groupName>PCS_B 2</groupName>
                     <resetValue>0000</resetValue>
-                    <pinPort>PD9</pinPort>
+                    <pinPort>PD10</pinPort>
                     <padFunctionList>
                         <PADFunction>
                             <padType>Z1</padType>
-                            <funcAssign>ADC_0_ADC_1_ANP13</funcAssign>
-                            <funcDesc>ADC_0_ADC_1_Precision Channel 13</funcDesc>
+                            <funcAssign>ADC_0_ADC_1_ANP14</funcAssign>
+                            <funcDesc>ADC_0_ADC_1_Precision Channel 14</funcDesc>
                             <IOType>I</IOType>
                             <peripheralName>ADC</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>G</padType>
-                            <funcAssign>PD9</funcAssign>
+                            <funcAssign>PD10</funcAssign>
                             <funcDesc>GPI</funcDesc>
                             <IOType>I</IOType>
                             <peripheralName>GPIO</peripheralName>
                         </PADFunction>
                     </padFunctionList>
                     <padRegister>
-                        <value>0</value>
+                        <value>8192</value>
                         <deviceName>SIU</deviceName>
-                        <name>SIU_PCR57</name>
-                        <offset>0xB2</offset>
-                        <address>C3F900B2</address>
-                        <description>Pad Configuration Registers 57</description>
+                        <name>SIU_PCR58</name>
+                        <offset>0xB4</offset>
+                        <address>C3F900B4</address>
+                        <description>Pad Configuration Registers 58</description>
                         <resetValue>0000</resetValue>
                         <registerBitSize>16</registerBitSize>
-                        <padNumber>57</padNumber>
+                        <padNumber>58</padNumber>
                         <pinState>false</pinState>
                     </padRegister>
                     <comboBoxWidth>0</comboBoxWidth>
                     <padPackageList>
                         <PADPackage>
                             <packageName>144</packageName>
-                            <pinName>78</pinName>
+                            <pinName>79</pinName>
                         </PADPackage>
                     </padPackageList>
-                    <allocated>false</allocated>
+                    <allocated>true</allocated>
                     <conflictInAllocation>false</conflictInAllocation>
                     <outputConflict>false</outputConflict>
                     <objPADWizardDetailsAllocated>
                         <peripheralName>ADC</peripheralName>
-                        <padNumber>57</padNumber>
+                        <padNumber>58</padNumber>
                         <padType>Z1</padType>
-                        <allocationStatus>false</allocationStatus>
+                        <allocationStatus>true</allocationStatus>
                         <ioType>I</ioType>
                         <output>false</output>
-                        <chkBoxName>PD9</chkBoxName>
-                        <attributeName>ADC_0_ADC_1 ANP 13</attributeName>
+                        <chkBoxName>PD10</chkBoxName>
+                        <attributeName>ADC_0_ADC_1 ANP 14</attributeName>
                         <enabled>true</enabled>
-                        <peripheralValidationName>ADC_0_ADC_1 ANP 13</peripheralValidationName>
+                        <peripheralValidationName>ADC_0_ADC_1 ANP 14</peripheralValidationName>
                         <enableConflictCheckBox>true</enableConflictCheckBox>
                         <groupSequenceNumber>1</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR57::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-ADC_0_ADC_1 ANP 13 as an Input&lt;br&gt;Device :-ADC</toolTip>
-                        <userAssignedSignal>PD9_ADC13</userAssignedSignal>
+                        <toolTip>Register::Bit_name :- SIU_PCR58::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-ADC_0_ADC_1 ANP 14 as an Input&lt;br&gt;Device :-ADC</toolTip>
+                        <userAssignedSignal>PD10_CAM1_AO</userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -15907,6 +15843,71 @@
                         <enableConflictCheckBox>true</enableConflictCheckBox>
                         <groupSequenceNumber>2</groupSequenceNumber>
                         <toolTip>Register::Bit_name :- SIU_PCR17::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PB1 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                    </objPADWizardDetailsAllocated>
+                </value>
+            </entry>
+            <entry>
+                <key>SIU_PCR57</key>
+                <value>
+                    <signalName>RXD_B</signalName>
+                    <pinName>78</pinName>
+                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
+                    <groupName>RXD_B</groupName>
+                    <resetValue>0000</resetValue>
+                    <pinPort>PD9</pinPort>
+                    <padFunctionList>
+                        <PADFunction>
+                            <padType>Z1</padType>
+                            <funcAssign>ADC_0_ADC_1_ANP13</funcAssign>
+                            <funcDesc>ADC_0_ADC_1_Precision Channel 13</funcDesc>
+                            <IOType>I</IOType>
+                            <peripheralName>ADC</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>G</padType>
+                            <funcAssign>PD9</funcAssign>
+                            <funcDesc>GPI</funcDesc>
+                            <IOType>I</IOType>
+                            <peripheralName>GPIO</peripheralName>
+                        </PADFunction>
+                    </padFunctionList>
+                    <padRegister>
+                        <value>0</value>
+                        <deviceName>SIU</deviceName>
+                        <name>SIU_PCR57</name>
+                        <offset>0xB2</offset>
+                        <address>C3F900B2</address>
+                        <description>Pad Configuration Registers 57</description>
+                        <resetValue>0000</resetValue>
+                        <registerBitSize>16</registerBitSize>
+                        <padNumber>57</padNumber>
+                        <pinState>false</pinState>
+                    </padRegister>
+                    <comboBoxWidth>0</comboBoxWidth>
+                    <padPackageList>
+                        <PADPackage>
+                            <packageName>144</packageName>
+                            <pinName>78</pinName>
+                        </PADPackage>
+                    </padPackageList>
+                    <allocated>false</allocated>
+                    <conflictInAllocation>false</conflictInAllocation>
+                    <outputConflict>false</outputConflict>
+                    <objPADWizardDetailsAllocated>
+                        <peripheralName>ADC</peripheralName>
+                        <padNumber>57</padNumber>
+                        <padType>Z1</padType>
+                        <allocationStatus>false</allocationStatus>
+                        <ioType>I</ioType>
+                        <output>false</output>
+                        <chkBoxName>PD9</chkBoxName>
+                        <attributeName>ADC_0_ADC_1 ANP 13</attributeName>
+                        <enabled>true</enabled>
+                        <peripheralValidationName>ADC_0_ADC_1 ANP 13</peripheralValidationName>
+                        <enableConflictCheckBox>true</enableConflictCheckBox>
+                        <groupSequenceNumber>1</groupSequenceNumber>
+                        <toolTip>Register::Bit_name :- SIU_PCR57::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-ADC_0_ADC_1 ANP 13 as an Input&lt;br&gt;Device :-ADC</toolTip>
+                        <userAssignedSignal>PD9_ADC13</userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -19241,71 +19242,6 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR54</key>
-                <value>
-                    <signalName>TXD_A</signalName>
-                    <pinName>69</pinName>
-                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>TXD_A</groupName>
-                    <resetValue>0000</resetValue>
-                    <pinPort>PD6</pinPort>
-                    <padFunctionList>
-                        <PADFunction>
-                            <padType>Z1</padType>
-                            <funcAssign>ADC_0_ADC_1_ANP10</funcAssign>
-                            <funcDesc>ADC_0_ADC_1_Precision Channel 10</funcDesc>
-                            <IOType>I</IOType>
-                            <peripheralName>ADC</peripheralName>
-                        </PADFunction>
-                        <PADFunction>
-                            <padType>G</padType>
-                            <funcAssign>PD6</funcAssign>
-                            <funcDesc>GPI</funcDesc>
-                            <IOType>I</IOType>
-                            <peripheralName>GPIO</peripheralName>
-                        </PADFunction>
-                    </padFunctionList>
-                    <padRegister>
-                        <value>0</value>
-                        <deviceName>SIU</deviceName>
-                        <name>SIU_PCR54</name>
-                        <offset>0xAC</offset>
-                        <address>C3F900AC</address>
-                        <description>Pad Configuration Registers 54</description>
-                        <resetValue>0000</resetValue>
-                        <registerBitSize>16</registerBitSize>
-                        <padNumber>54</padNumber>
-                        <pinState>false</pinState>
-                    </padRegister>
-                    <comboBoxWidth>0</comboBoxWidth>
-                    <padPackageList>
-                        <PADPackage>
-                            <packageName>144</packageName>
-                            <pinName>69</pinName>
-                        </PADPackage>
-                    </padPackageList>
-                    <allocated>false</allocated>
-                    <conflictInAllocation>false</conflictInAllocation>
-                    <outputConflict>false</outputConflict>
-                    <objPADWizardDetailsAllocated>
-                        <peripheralName>ADC</peripheralName>
-                        <padNumber>54</padNumber>
-                        <padType>Z1</padType>
-                        <allocationStatus>false</allocationStatus>
-                        <ioType>I</ioType>
-                        <output>false</output>
-                        <chkBoxName>PD6</chkBoxName>
-                        <attributeName>ADC_0_ADC_1 ANP 10</attributeName>
-                        <enabled>true</enabled>
-                        <peripheralValidationName>ADC_0_ADC_1 ANP 10</peripheralValidationName>
-                        <enableConflictCheckBox>true</enableConflictCheckBox>
-                        <groupSequenceNumber>1</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR54::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-ADC_0_ADC_1 ANP 10 as an Input&lt;br&gt;Device :-ADC</toolTip>
-                        <userAssignedSignal>PD6_ADC10</userAssignedSignal>
-                    </objPADWizardDetailsAllocated>
-                </value>
-            </entry>
-            <entry>
                 <key>SIU_PCR118</key>
                 <value>
                     <signalName>AN 19</signalName>
@@ -19377,25 +19313,25 @@
                 </value>
             </entry>
             <entry>
-                <key>SIU_PCR55</key>
+                <key>SIU_PCR54</key>
                 <value>
-                    <signalName>RXD_A</signalName>
-                    <pinName>70</pinName>
+                    <signalName>TXD_A</signalName>
+                    <pinName>69</pinName>
                     <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
-                    <groupName>RXD_A</groupName>
+                    <groupName>TXD_A</groupName>
                     <resetValue>0000</resetValue>
-                    <pinPort>PD7</pinPort>
+                    <pinPort>PD6</pinPort>
                     <padFunctionList>
                         <PADFunction>
                             <padType>Z1</padType>
-                            <funcAssign>ADC_0_ADC_1_ANP11</funcAssign>
-                            <funcDesc>ADC_0_ADC_1_Precision Channel 11</funcDesc>
+                            <funcAssign>ADC_0_ADC_1_ANP10</funcAssign>
+                            <funcDesc>ADC_0_ADC_1_Precision Channel 10</funcDesc>
                             <IOType>I</IOType>
                             <peripheralName>ADC</peripheralName>
                         </PADFunction>
                         <PADFunction>
                             <padType>G</padType>
-                            <funcAssign>PD7</funcAssign>
+                            <funcAssign>PD6</funcAssign>
                             <funcDesc>GPI</funcDesc>
                             <IOType>I</IOType>
                             <peripheralName>GPIO</peripheralName>
@@ -19404,20 +19340,20 @@
                     <padRegister>
                         <value>0</value>
                         <deviceName>SIU</deviceName>
-                        <name>SIU_PCR55</name>
-                        <offset>0xAE</offset>
-                        <address>C3F900AE</address>
-                        <description>Pad Configuration Registers 55</description>
+                        <name>SIU_PCR54</name>
+                        <offset>0xAC</offset>
+                        <address>C3F900AC</address>
+                        <description>Pad Configuration Registers 54</description>
                         <resetValue>0000</resetValue>
                         <registerBitSize>16</registerBitSize>
-                        <padNumber>55</padNumber>
+                        <padNumber>54</padNumber>
                         <pinState>false</pinState>
                     </padRegister>
                     <comboBoxWidth>0</comboBoxWidth>
                     <padPackageList>
                         <PADPackage>
                             <packageName>144</packageName>
-                            <pinName>70</pinName>
+                            <pinName>69</pinName>
                         </PADPackage>
                     </padPackageList>
                     <allocated>false</allocated>
@@ -19425,19 +19361,19 @@
                     <outputConflict>false</outputConflict>
                     <objPADWizardDetailsAllocated>
                         <peripheralName>ADC</peripheralName>
-                        <padNumber>55</padNumber>
+                        <padNumber>54</padNumber>
                         <padType>Z1</padType>
                         <allocationStatus>false</allocationStatus>
                         <ioType>I</ioType>
                         <output>false</output>
-                        <chkBoxName>PD7</chkBoxName>
-                        <attributeName>ADC_0_ADC_1 ANP 11</attributeName>
+                        <chkBoxName>PD6</chkBoxName>
+                        <attributeName>ADC_0_ADC_1 ANP 10</attributeName>
                         <enabled>true</enabled>
-                        <peripheralValidationName>ADC_0_ADC_1 ANP 11</peripheralValidationName>
+                        <peripheralValidationName>ADC_0_ADC_1 ANP 10</peripheralValidationName>
                         <enableConflictCheckBox>true</enableConflictCheckBox>
                         <groupSequenceNumber>1</groupSequenceNumber>
-                        <toolTip>Register::Bit_name :- SIU_PCR55::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-ADC_0_ADC_1 ANP 11 as an Input&lt;br&gt;Device :-ADC</toolTip>
-                        <userAssignedSignal>PD7_ADC11</userAssignedSignal>
+                        <toolTip>Register::Bit_name :- SIU_PCR54::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-ADC_0_ADC_1 ANP 10 as an Input&lt;br&gt;Device :-ADC</toolTip>
+                        <userAssignedSignal>PD6_ADC10</userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -19502,6 +19438,71 @@
                         <enableConflictCheckBox>true</enableConflictCheckBox>
                         <groupSequenceNumber>8</groupSequenceNumber>
                         <toolTip>Register::Bit_name :- SIU_PCR117::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-PH5 as an Ouptut&lt;br&gt;Device :-GPIO</toolTip>
+                    </objPADWizardDetailsAllocated>
+                </value>
+            </entry>
+            <entry>
+                <key>SIU_PCR55</key>
+                <value>
+                    <signalName>RXD_A</signalName>
+                    <pinName>70</pinName>
+                    <padFields>PA,OBE,IBE,ODE,SRC,WPE,WPS,SMC</padFields>
+                    <groupName>RXD_A</groupName>
+                    <resetValue>0000</resetValue>
+                    <pinPort>PD7</pinPort>
+                    <padFunctionList>
+                        <PADFunction>
+                            <padType>Z1</padType>
+                            <funcAssign>ADC_0_ADC_1_ANP11</funcAssign>
+                            <funcDesc>ADC_0_ADC_1_Precision Channel 11</funcDesc>
+                            <IOType>I</IOType>
+                            <peripheralName>ADC</peripheralName>
+                        </PADFunction>
+                        <PADFunction>
+                            <padType>G</padType>
+                            <funcAssign>PD7</funcAssign>
+                            <funcDesc>GPI</funcDesc>
+                            <IOType>I</IOType>
+                            <peripheralName>GPIO</peripheralName>
+                        </PADFunction>
+                    </padFunctionList>
+                    <padRegister>
+                        <value>0</value>
+                        <deviceName>SIU</deviceName>
+                        <name>SIU_PCR55</name>
+                        <offset>0xAE</offset>
+                        <address>C3F900AE</address>
+                        <description>Pad Configuration Registers 55</description>
+                        <resetValue>0000</resetValue>
+                        <registerBitSize>16</registerBitSize>
+                        <padNumber>55</padNumber>
+                        <pinState>false</pinState>
+                    </padRegister>
+                    <comboBoxWidth>0</comboBoxWidth>
+                    <padPackageList>
+                        <PADPackage>
+                            <packageName>144</packageName>
+                            <pinName>70</pinName>
+                        </PADPackage>
+                    </padPackageList>
+                    <allocated>false</allocated>
+                    <conflictInAllocation>false</conflictInAllocation>
+                    <outputConflict>false</outputConflict>
+                    <objPADWizardDetailsAllocated>
+                        <peripheralName>ADC</peripheralName>
+                        <padNumber>55</padNumber>
+                        <padType>Z1</padType>
+                        <allocationStatus>false</allocationStatus>
+                        <ioType>I</ioType>
+                        <output>false</output>
+                        <chkBoxName>PD7</chkBoxName>
+                        <attributeName>ADC_0_ADC_1 ANP 11</attributeName>
+                        <enabled>true</enabled>
+                        <peripheralValidationName>ADC_0_ADC_1 ANP 11</peripheralValidationName>
+                        <enableConflictCheckBox>true</enableConflictCheckBox>
+                        <groupSequenceNumber>1</groupSequenceNumber>
+                        <toolTip>Register::Bit_name :- SIU_PCR55::PA&lt;br&gt;Bit :-4~5&lt;br&gt;&lt;br&gt;PA Selected :-ADC_0_ADC_1 ANP 11 as an Input&lt;br&gt;Device :-ADC</toolTip>
+                        <userAssignedSignal>PD7_ADC11</userAssignedSignal>
                     </objPADWizardDetailsAllocated>
                 </value>
             </entry>
@@ -23078,11 +23079,11 @@
                 <value>false</value>
             </entry>
             <entry>
-                <key>eMIOS_0 Channel 18</key>
+                <key>LINFLEX_0_TX</key>
                 <value>false</value>
             </entry>
             <entry>
-                <key>LINFLEX_0_TX</key>
+                <key>eMIOS_0 Channel 18</key>
                 <value>false</value>
             </entry>
             <entry>
@@ -23090,19 +23091,19 @@
                 <value>false</value>
             </entry>
             <entry>
-                <key>DSPI_0_RX</key>
-                <value>false</value>
-            </entry>
-            <entry>
                 <key>DSPI_1_TX</key>
                 <value>false</value>
             </entry>
             <entry>
-                <key>DSPI_5_RX</key>
+                <key>DSPI_0_RX</key>
                 <value>false</value>
             </entry>
             <entry>
                 <key>Always Enabled_3</key>
+                <value>false</value>
+            </entry>
+            <entry>
+                <key>DSPI_5_RX</key>
                 <value>false</value>
             </entry>
             <entry>
@@ -23228,32 +23229,32 @@
                 <value>0x04</value>
             </entry>
             <entry>
-                <key>eMIOS_0 Channel 18</key>
-                <value>0x14</value>
-            </entry>
-            <entry>
                 <key>LINFLEX_0_TX</key>
                 <value>0x22</value>
+            </entry>
+            <entry>
+                <key>eMIOS_0 Channel 18</key>
+                <value>0x14</value>
             </entry>
             <entry>
                 <key>DEFAULT</key>
                 <value>0x00</value>
             </entry>
             <entry>
-                <key>DSPI_0_RX</key>
-                <value>0x02</value>
-            </entry>
-            <entry>
                 <key>DSPI_1_TX</key>
                 <value>0x03</value>
             </entry>
             <entry>
-                <key>DSPI_5_RX</key>
-                <value>0x0C</value>
+                <key>DSPI_0_RX</key>
+                <value>0x02</value>
             </entry>
             <entry>
                 <key>Always Enabled_3</key>
                 <value>0x3F</value>
+            </entry>
+            <entry>
+                <key>DSPI_5_RX</key>
+                <value>0x0C</value>
             </entry>
             <entry>
                 <key>Always Enabled_0</key>
@@ -23378,11 +23379,11 @@
                 <value>Not Assigned</value>
             </entry>
             <entry>
-                <key>eMIOS_0 Channel 18</key>
+                <key>LINFLEX_0_TX</key>
                 <value>Not Assigned</value>
             </entry>
             <entry>
-                <key>LINFLEX_0_TX</key>
+                <key>eMIOS_0 Channel 18</key>
                 <value>Not Assigned</value>
             </entry>
             <entry>
@@ -23390,19 +23391,19 @@
                 <value>Not Assigned</value>
             </entry>
             <entry>
-                <key>DSPI_0_RX</key>
-                <value>Not Assigned</value>
-            </entry>
-            <entry>
                 <key>DSPI_1_TX</key>
                 <value>Not Assigned</value>
             </entry>
             <entry>
-                <key>DSPI_5_RX</key>
+                <key>DSPI_0_RX</key>
                 <value>Not Assigned</value>
             </entry>
             <entry>
                 <key>Always Enabled_3</key>
+                <value>Not Assigned</value>
+            </entry>
+            <entry>
+                <key>DSPI_5_RX</key>
                 <value>Not Assigned</value>
             </entry>
             <entry>
@@ -27096,7 +27097,7 @@
                     <value>
                         <INTC_PSR_List>
                             <INTC_PSR>
-<value>4</value>
+<value>1</value>
 <deviceName>INTC</deviceName>
 <name>INTC_PSR41</name>
 <offset>0x63</offset>
@@ -28857,7 +28858,7 @@
                     <value>
                         <INTC_PSR_List>
                             <INTC_PSR>
-<value>1</value>
+<value>3</value>
 <deviceName>INTC</deviceName>
 <name>INTC_PSR59</name>
 <offset>0x70</offset>
@@ -28867,13 +28868,13 @@
 <registerBitSize>8</registerBitSize>
 <sourceNum>59</sourceNum>
 <sourceName>PIT</sourceName>
-<functionName>PIT_TIMER</functionName>
+<functionName>PIT_ENCODER</functionName>
 <descriptionForInterruptSource>PIT Channel 0</descriptionForInterruptSource>
 <codeStatementList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">PIT.CH[0].TFLG.R = 0x00000001;</codeStatementList>
 <isPresent>true</isPresent>
                             </INTC_PSR>
                             <INTC_PSR>
-<value>2</value>
+<value>5</value>
 <deviceName>INTC</deviceName>
 <name>INTC_PSR60</name>
 <offset>0x71</offset>
@@ -28883,13 +28884,13 @@
 <registerBitSize>8</registerBitSize>
 <sourceNum>60</sourceNum>
 <sourceName>PIT</sourceName>
-<functionName>PIT_ENCODER</functionName>
+<functionName>PIT_CAMERA</functionName>
 <descriptionForInterruptSource>PIT Channel 1</descriptionForInterruptSource>
 <codeStatementList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">PIT.CH[1].TFLG.R = 0x00000001;</codeStatementList>
 <isPresent>true</isPresent>
                             </INTC_PSR>
                             <INTC_PSR>
-<value>3</value>
+<value>10</value>
 <deviceName>INTC</deviceName>
 <name>INTC_PSR61</name>
 <offset>0x72</offset>
@@ -28899,7 +28900,7 @@
 <registerBitSize>8</registerBitSize>
 <sourceNum>61</sourceNum>
 <sourceName>PIT</sourceName>
-<functionName>PIT_CAMERA</functionName>
+<functionName>PIT_DISPLAY</functionName>
 <descriptionForInterruptSource>PIT Channel 2</descriptionForInterruptSource>
 <codeStatementList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">PIT.CH[2].TFLG.R = 0x00000001;</codeStatementList>
 <isPresent>true</isPresent>
@@ -30317,6 +30318,29 @@
                     </value>
                 </entry>
                 <entry>
+                    <key>I2C</key>
+                    <value>
+                        <INTC_PSR_List>
+                            <INTC_PSR>
+<value>0</value>
+<deviceName>INTC</deviceName>
+<name>INTC_PSR125</name>
+<offset>0xAA</offset>
+<address>FFF480BD</address>
+<description>INTC Priority Select Register</description>
+<resetValue>00</resetValue>
+<registerBitSize>8</registerBitSize>
+<sourceNum>125</sourceNum>
+<sourceName>I2C</sourceName>
+<functionName>interrupt_handler</functionName>
+<descriptionForInterruptSource>I2C_SR[IBAL] I2C_SR[TCF] I2C_SR[IAAS]</descriptionForInterruptSource>
+<codeStatementList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">I2C_0.IBSR.B.IBIF = 1;</codeStatementList>
+<isPresent>true</isPresent>
+                            </INTC_PSR>
+                        </INTC_PSR_List>
+                    </value>
+                </entry>
+                <entry>
                     <key>MC_ME</key>
                     <value>
                         <INTC_PSR_List>
@@ -30384,29 +30408,6 @@
 <functionName>interrupt_handler</functionName>
 <descriptionForInterruptSource>Invalid Mode Config</descriptionForInterruptSource>
 <codeStatementList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ME.IS.R = 0x00000008;</codeStatementList>
-<isPresent>true</isPresent>
-                            </INTC_PSR>
-                        </INTC_PSR_List>
-                    </value>
-                </entry>
-                <entry>
-                    <key>I2C</key>
-                    <value>
-                        <INTC_PSR_List>
-                            <INTC_PSR>
-<value>0</value>
-<deviceName>INTC</deviceName>
-<name>INTC_PSR125</name>
-<offset>0xAA</offset>
-<address>FFF480BD</address>
-<description>INTC Priority Select Register</description>
-<resetValue>00</resetValue>
-<registerBitSize>8</registerBitSize>
-<sourceNum>125</sourceNum>
-<sourceName>I2C</sourceName>
-<functionName>interrupt_handler</functionName>
-<descriptionForInterruptSource>I2C_SR[IBAL] I2C_SR[TCF] I2C_SR[IAAS]</descriptionForInterruptSource>
-<codeStatementList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">I2C_0.IBSR.B.IBIF = 1;</codeStatementList>
 <isPresent>true</isPresent>
                             </INTC_PSR>
                         </INTC_PSR_List>
@@ -30594,7 +30595,7 @@
                 </value>
             </entry>
             <entry>
-                <key>5010</key>
+                <key>5018</key>
                 <value>
                     <sectionName>Default</sectionName>
                     <memoryAreaName>Default</memoryAreaName>
@@ -30602,7 +30603,7 @@
                 </value>
             </entry>
             <entry>
-                <key>5018</key>
+                <key>5010</key>
                 <value>
                     <sectionName>Default</sectionName>
                     <memoryAreaName>Default</memoryAreaName>
@@ -30746,7 +30747,7 @@
                 </value>
             </entry>
             <entry>
-                <key>4</key>
+                <key>5003</key>
                 <value>
                     <sectionName>Default</sectionName>
                     <memoryAreaName>Default</memoryAreaName>
@@ -30754,7 +30755,7 @@
                 </value>
             </entry>
             <entry>
-                <key>5003</key>
+                <key>4</key>
                 <value>
                     <sectionName>Default</sectionName>
                     <memoryAreaName>Default</memoryAreaName>
@@ -30908,16 +30909,6 @@
                 </value>
             </entry>
             <entry>
-                <key>5002</key>
-                <value>
-                    <enabledForCodeGeneration>true</enabledForCodeGeneration>
-                    <name>5002</name>
-                    <value>intc_edma.c</value>
-                    <variableMap/>
-                    <functionMap/>
-                </value>
-            </entry>
-            <entry>
                 <key>5015</key>
                 <value>
                     <enabledForCodeGeneration>true</enabledForCodeGeneration>
@@ -30928,11 +30919,11 @@
                 </value>
             </entry>
             <entry>
-                <key>5014</key>
+                <key>5002</key>
                 <value>
                     <enabledForCodeGeneration>true</enabledForCodeGeneration>
-                    <name>5014</name>
-                    <value>intc_flexcan.c</value>
+                    <name>5002</name>
+                    <value>intc_edma.c</value>
                     <variableMap/>
                     <functionMap/>
                 </value>
@@ -30948,11 +30939,11 @@
                 </value>
             </entry>
             <entry>
-                <key>5004</key>
+                <key>5014</key>
                 <value>
                     <enabledForCodeGeneration>true</enabledForCodeGeneration>
-                    <name>5004</name>
-                    <value>intc_stm.c</value>
+                    <name>5014</name>
+                    <value>intc_flexcan.c</value>
                     <variableMap/>
                     <functionMap/>
                 </value>
@@ -30968,11 +30959,11 @@
                 </value>
             </entry>
             <entry>
-                <key>5003</key>
+                <key>5004</key>
                 <value>
                     <enabledForCodeGeneration>true</enabledForCodeGeneration>
-                    <name>5003</name>
-                    <value>intc_swt.c</value>
+                    <name>5004</name>
+                    <value>intc_stm.c</value>
                     <variableMap/>
                     <functionMap/>
                 </value>
@@ -30983,6 +30974,16 @@
                     <enabledForCodeGeneration>true</enabledForCodeGeneration>
                     <name>5012</name>
                     <value>intc_pit.c</value>
+                    <variableMap/>
+                    <functionMap/>
+                </value>
+            </entry>
+            <entry>
+                <key>5003</key>
+                <value>
+                    <enabledForCodeGeneration>true</enabledForCodeGeneration>
+                    <name>5003</name>
+                    <value>intc_swt.c</value>
                     <variableMap/>
                     <functionMap/>
                 </value>
@@ -31005,19 +31006,19 @@
                     <value>intc_init.c</value>
                     <variableMap>
                         <entry>
-                            <key>93</key>
-                            <value>
-<enabledForCodeGeneration>false</enabledForCodeGeneration>
-<name>93</name>
-<value>vects</value>
-                            </value>
-                        </entry>
-                        <entry>
                             <key>700</key>
                             <value>
 <enabledForCodeGeneration>false</enabledForCodeGeneration>
 <name>700</name>
 <value>IntcIsrVectorTable_z0</value>
+                            </value>
+                        </entry>
+                        <entry>
+                            <key>93</key>
+                            <value>
+<enabledForCodeGeneration>false</enabledForCodeGeneration>
+<name>93</name>
+<value>vects</value>
                             </value>
                         </entry>
                         <entry>
@@ -35576,19 +35577,19 @@
                             </value>
                         </entry>
                         <entry>
-                            <key>133</key>
-                            <value>
-<enabledForCodeGeneration>true</enabledForCodeGeneration>
-<name>133</name>
-<value>DSPI2_TxQUE</value>
-                            </value>
-                        </entry>
-                        <entry>
                             <key>128</key>
                             <value>
 <enabledForCodeGeneration>true</enabledForCodeGeneration>
 <name>128</name>
 <value>DSPI0_RxQUE</value>
+                            </value>
+                        </entry>
+                        <entry>
+                            <key>133</key>
+                            <value>
+<enabledForCodeGeneration>true</enabledForCodeGeneration>
+<name>133</name>
+<value>DSPI2_TxQUE</value>
                             </value>
                         </entry>
                         <entry>
@@ -35624,19 +35625,19 @@
                             </value>
                         </entry>
                         <entry>
-                            <key>129</key>
-                            <value>
-<enabledForCodeGeneration>true</enabledForCodeGeneration>
-<name>129</name>
-<value>DSPI0_TxQUE</value>
-                            </value>
-                        </entry>
-                        <entry>
                             <key>131</key>
                             <value>
 <enabledForCodeGeneration>true</enabledForCodeGeneration>
 <name>131</name>
 <value>DSPI1_TxQUE</value>
+                            </value>
+                        </entry>
+                        <entry>
+                            <key>129</key>
+                            <value>
+<enabledForCodeGeneration>true</enabledForCodeGeneration>
+<name>129</name>
+<value>DSPI0_TxQUE</value>
                             </value>
                         </entry>
                         <entry>
@@ -41108,7 +41109,7 @@
                 </value>
             </entry>
             <entry>
-                <key>45</key>
+                <key>240</key>
                 <value>
                     <sectionName>Default</sectionName>
                     <memoryAreaName>Default</memoryAreaName>
@@ -41116,7 +41117,7 @@
                 </value>
             </entry>
             <entry>
-                <key>240</key>
+                <key>45</key>
                 <value>
                     <sectionName>Default</sectionName>
                     <memoryAreaName>Default</memoryAreaName>
@@ -41318,21 +41319,21 @@
                 </value>
             </entry>
             <entry>
-                <key>236</key>
-                <value>
-                    <enabledForCodeGeneration>true</enabledForCodeGeneration>
-                    <name>236</name>
-                    <value>ebi_init.h</value>
-                    <variableMap/>
-                    <functionMap/>
-                </value>
-            </entry>
-            <entry>
                 <key>102</key>
                 <value>
                     <enabledForCodeGeneration>true</enabledForCodeGeneration>
                     <name>102</name>
                     <value>main.c</value>
+                    <variableMap/>
+                    <functionMap/>
+                </value>
+            </entry>
+            <entry>
+                <key>236</key>
+                <value>
+                    <enabledForCodeGeneration>true</enabledForCodeGeneration>
+                    <name>236</name>
+                    <value>ebi_init.h</value>
                     <variableMap/>
                     <functionMap/>
                 </value>
@@ -48337,7 +48338,7 @@
                 <entry>
                     <key>0</key>
                     <value>
-                        <value>64001</value>
+                        <value>6400</value>
                         <deviceName>PITRTI</deviceName>
                         <name>LDVAL0</name>
                         <offset>0x100</offset>
@@ -48351,7 +48352,7 @@
                 <entry>
                     <key>1</key>
                     <value>
-                        <value>639</value>
+                        <value>4000</value>
                         <deviceName>PITRTI</deviceName>
                         <name>LDVAL1</name>
                         <offset>0x110</offset>
@@ -48365,7 +48366,7 @@
                 <entry>
                     <key>2</key>
                     <value>
-                        <value>16000</value>
+                        <value>320000</value>
                         <deviceName>PITRTI</deviceName>
                         <name>LDVAL2</name>
                         <offset>0x120</offset>
@@ -48479,7 +48480,7 @@
                 <entry>
                     <key>2</key>
                     <value>
-                        <value>1</value>
+                        <value>3</value>
                         <deviceName>PITRTI</deviceName>
                         <name>TCTRL2</name>
                         <offset>0x128</offset>
@@ -49832,7 +49833,7 @@
                 </value>
             </entry>
             <entry>
-                <key>520</key>
+                <key>226</key>
                 <value>
                     <sectionName>Default</sectionName>
                     <memoryAreaName>Default</memoryAreaName>
@@ -49840,7 +49841,7 @@
                 </value>
             </entry>
             <entry>
-                <key>226</key>
+                <key>520</key>
                 <value>
                     <sectionName>Default</sectionName>
                     <memoryAreaName>Default</memoryAreaName>
@@ -49901,16 +49902,6 @@
                     <enabledForCodeGeneration>true</enabledForCodeGeneration>
                     <name>535</name>
                     <value>pcu_init.c</value>
-                    <variableMap/>
-                    <functionMap/>
-                </value>
-            </entry>
-            <entry>
-                <key>520</key>
-                <value>
-                    <enabledForCodeGeneration>true</enabledForCodeGeneration>
-                    <name>520</name>
-                    <value>stm_init.c</value>
                     <variableMap/>
                     <functionMap/>
                 </value>
@@ -50031,11 +50022,11 @@
                 </value>
             </entry>
             <entry>
-                <key>230</key>
+                <key>520</key>
                 <value>
                     <enabledForCodeGeneration>true</enabledForCodeGeneration>
-                    <name>230</name>
-                    <value>pit_init.c</value>
+                    <name>520</name>
+                    <value>stm_init.c</value>
                     <variableMap/>
                     <functionMap/>
                 </value>
@@ -50051,6 +50042,16 @@
                 </value>
             </entry>
             <entry>
+                <key>230</key>
+                <value>
+                    <enabledForCodeGeneration>true</enabledForCodeGeneration>
+                    <name>230</name>
+                    <value>pit_init.c</value>
+                    <variableMap/>
+                    <functionMap/>
+                </value>
+            </entry>
+            <entry>
                 <key>228</key>
                 <value>
                     <enabledForCodeGeneration>true</enabledForCodeGeneration>
@@ -50061,21 +50062,21 @@
                 </value>
             </entry>
             <entry>
-                <key>231</key>
-                <value>
-                    <enabledForCodeGeneration>true</enabledForCodeGeneration>
-                    <name>231</name>
-                    <value>pit_init.h</value>
-                    <variableMap/>
-                    <functionMap/>
-                </value>
-            </entry>
-            <entry>
                 <key>229</key>
                 <value>
                     <enabledForCodeGeneration>true</enabledForCodeGeneration>
                     <name>229</name>
                     <value>swt_init.h</value>
+                    <variableMap/>
+                    <functionMap/>
+                </value>
+            </entry>
+            <entry>
+                <key>231</key>
+                <value>
+                    <enabledForCodeGeneration>true</enabledForCodeGeneration>
+                    <name>231</name>
+                    <value>pit_init.h</value>
                     <variableMap/>
                     <functionMap/>
                 </value>
@@ -51079,6 +51080,16 @@
                 </value>
             </entry>
             <entry>
+                <key>10023</key>
+                <value>
+                    <enabledForCodeGeneration>true</enabledForCodeGeneration>
+                    <name>10023</name>
+                    <value>adc_trigger_init.h</value>
+                    <variableMap/>
+                    <functionMap/>
+                </value>
+            </entry>
+            <entry>
                 <key>10010</key>
                 <value>
                     <enabledForCodeGeneration>true</enabledForCodeGeneration>
@@ -51151,16 +51162,6 @@
                             </value>
                         </entry>
                     </functionMap>
-                </value>
-            </entry>
-            <entry>
-                <key>10023</key>
-                <value>
-                    <enabledForCodeGeneration>true</enabledForCodeGeneration>
-                    <name>10023</name>
-                    <value>adc_trigger_init.h</value>
-                    <variableMap/>
-                    <functionMap/>
                 </value>
             </entry>
             <entry>
