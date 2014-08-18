@@ -18,10 +18,15 @@ void Camera_init(Camera * this, uint8_t id) {
 	this->count = 0;
 	board.addCameraHandler(bind(this, (ThisCall)Camera_onTick));
 	
-	/*PIT.CH[1].LDVAL.R  = 0x00000FA0; 4000 ~ 12000*/    
+	/*PIT.CH[1].LDVAL.R  = 0x00000FA0; 4000 ~ 12000*/
+	Camera_setInterval(this, 12000);
 }
 uint16_t * Camera_get(Camera * this){
 	
+}
+
+void Camera_setInterval(Camera * this, uint32_t value){
+	PIT.CH[1].LDVAL.R = value;
 }
 void Camera_onTick(Camera * this) {
 	
