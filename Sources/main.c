@@ -16,6 +16,8 @@ void testServo(Servo * servo, Segment * segment, Segment * step);
 void start(SmartCar * smartCar);
 void set_Line(uint16_t inputLine[][], uint16_t setLine[][]);
 void fix_Line(uint16_t line[][]);
+void insert_Line(uint16_t input[][], uint16_t map[][][]);
+void check_direction(uint16_t standard[][], uint16_t map[][][]);
 
 unsigned char newLine[2] = {'\r','\n'};
 
@@ -150,39 +152,76 @@ void fix_Line(uint16_t line[][]){
 	uint8_t check_point=0;
 	uint8_t i,j;
 
-	// left camera fixing
+	// left camera fixing. throw array 121~127.
 	for(i=0;i<12;i++){
 		check_point = 0;
 		
 		for(j=0;j<10;j++){
-			check_point = check_point + line[0][(i*10)+j];
+			if(line[0][(i*10)+j]==1){
+				check_point++;
+			}
 		}
 		
-		// 0100011000
-		if(check_point < 3){	
+		// 0100011000 (1 == Line) 
+		if(check_point < 4){ 			// under 30%	
 			for(j=0;j<10;j++){
 				line[0][(i*10)+j] = 0;
 			}
-		} else if(check_point < 8){
+		// 0011111111 
+		} else if(check_point < 9){ 	// under 80%
 			for(j=0;j<7;j++){
 				check_point = 0;
 				check_point = line[0][(i*10)+j]+line[0][(i*10)+j+1]
 				                    +line[0][(i*10)+j+2]+line[0][(i*10)+j+3]; 
-				if(check_point < 3){
+				if(check_point < 2){	// line data push to right
 					line[0][(i*10)+j] = 0;
 					line[0][(i*10)+j+1] = 0;
 					line[0][(i*10)+j+2] = 0;
 					line[0][(i*10)+j+3] = 1;
 				}
+			}					
+		} else{							// over 80%
+			if(check_point != 10){
+				for(j=0;j<10;j++){
+					line[0][(i*10)+j] = 1;
+				}
+			}
+		}		
+	}
+	
+	// right camera fixing. throw array 121~127
+	for(i=12;i>0;i--){
+		check_point = 0;
+		
+		for(j=0;j<10;j++){
+			if(line[1][(i*10)-j] == 1){
+				cehck_point++;
+			}
+		}
+		
+		if(check_point < 4){
+			for(j=0;j<10;j++){
+				line[1][(i*10)-j] = 0;
+			}
+		} else if(check_point < 9){
+			for(j=0;j<7;j++){
+				check_point = 0;
+				check_point = line[1][(i*10)-j] + line[1][(i*10)-j-1]
+				                    + line[1][(i*10)-j-2] + line[1][(i*10)-j];
+				if(check_point < 2){
+					line[1][(i*10)-j] = 0;
+					line[1][(i*10)-j-1] = 0;
+					line[1][(i*10)-j-2] = 0;
+					line[1][(i*10)-j-3] = 1;
+				}
+			}
+		} else {
+			if(check_point != 10){
+				for(j=0;j<10;j++){
+					line[1][(i*10)-j] = 1;
+				}
 			}
 		}
 	}
-	
-	// right camera fixing
-	for(i=0;i<118;i++){
-		
-		
-	}
-	
 }
 
