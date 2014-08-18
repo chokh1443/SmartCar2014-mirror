@@ -37,17 +37,17 @@ void main(void) {
 	SmartCar_init(&smartCar);
 	
 	while(1){
-		if(board.gpio.get(DI_S1) == 0){
-			while(board.gpio.get(DI_S1) == 0);
+		switch(board.button.read()){
+		case 1:
 			test(&smartCar);
-		} else if(board.gpio.get(DI_S2) == 0){
-			while(board.gpio.get(DI_S1) == 0);
+			break;
+		case 2:
 			start(&smartCar);
-		} else if(board.gpio.get(DI_S3) == 0){
-			while(board.gpio.get(DI_S1) == 0);
+			break;
+		case 3:
 			preset(&smartCar);
+			break;
 		}
-		
 	}
 	
 	Segment_print(&smartCar.segment[0], (uint16_t)1234);

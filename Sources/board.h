@@ -18,11 +18,17 @@ typedef struct {
 typedef struct {
 	void (*set)(uint16_t ch, uint16_t value);
 } PWM;
+typedef struct {
+	uint8_t (*get)(uint16_t ch);
+	uint8_t (*isClick)(uint16_t ch);
+	uint8_t (*read)();
+} BUTTON;
 
 typedef struct {
 	LED led;
 	GPIO gpio;
 	PWM pwm;
+	BUTTON button;
 
 	void (*addTimerHandler)(EventHandler handler);
 	void (*addCameraHandler)(EventHandler handler);

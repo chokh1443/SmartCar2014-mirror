@@ -17,21 +17,21 @@ void test(SmartCar * smartCar) {
 
 	while (1) {
 		Segment_print(&smartCar->segment[1], menu);
-		if (board.gpio.get(DI_S1) == 0) {
-			while (board.gpio.get(DI_S1) == 0);
+
+		switch (board.button.read()) {
+		case 1:
 			menu++;
-		} else if (board.gpio.get(DI_S2) == 0) {
-			while (board.gpio.get(DI_S2) == 0);
+			break;
+		case 2:
 			menu--;
-		} else if (board.gpio.get(DI_S3) == 0) {
-			while (board.gpio.get(DI_S3) == 0);
+			break;
+		case 3:
 			enterTest(smartCar, menu);
-		} else if (board.gpio.get(DI_S4) == 0) {
-			while (board.gpio.get(DI_S4) == 0);
+			break;
+		case 4:
 			Segment_print(&smartCar->segment[0], 0);
 			return;
 		}
-		Segment_print(&smartCar->segment[0], menu);
 	}
 }
 void enterTest(SmartCar * smartCar, uint8_t menu) {
@@ -65,14 +65,14 @@ void segmentTest(SmartCar * smartCar) {
 		Segment_print(&smartCar->segment[1], (uint16_t) 4567);
 		Segment_print(&smartCar->segment[2], (uint16_t) 7890);
 
-		if (board.gpio.get(DI_S4) == 0) {
-			while (board.gpio.get(DI_S4) == 0);
+		//TODO BARLED TEST
+
+		if (board.button.isClick(4)) {
 			return;
 		}
 	}
 }
 void servoTest(SmartCar * smartCar) {
-
 }
 void motorTest(SmartCar * smartCar) {
 
