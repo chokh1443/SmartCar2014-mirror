@@ -69,9 +69,9 @@ void segmentTest(SmartCar * smartCar) {
 	
 	while (1) {
 		//segment test
-		Segment_print(&smartCar->segment[0], (uint16_t) numeber[0][0]*1000 + number[0][1]*100 + number[0][2]*10 + number[0][3]);
-		Segment_print(&smartCar->segment[1], (uint16_t) numeber[1][0]*1000 + number[1][1]*100 + number[1][2]*10 + number[1][3]);
-		Segment_print(&smartCar->segment[2], (uint16_t) numeber[2][0]*1000 + number[2][1]*100 + number[2][2]*10 + number[2][3]);
+		Segment_print(&smartCar->segment[0], (uint16_t) (number[0][0]*1000 + number[0][1]*100 + number[0][2]*10 + number[0][3]));
+		Segment_print(&smartCar->segment[1], (uint16_t) (number[1][0]*1000 + number[1][1]*100 + number[1][2]*10 + number[1][3]));
+		Segment_print(&smartCar->segment[2], (uint16_t) (number[2][0]*1000 + number[2][1]*100 + number[2][2]*10 + number[2][3]));
 		
 		for(i=0;i<3;i++){
 			for(j=0;j<4;j++){
@@ -86,13 +86,17 @@ void segmentTest(SmartCar * smartCar) {
 		//BARLED TEST
 		//On
 		for(i=0;i<8;i++){
-			BarLED_add(&LED,i);
+			LEDData_add(&LED,i);
 		}
 		
 		BarLED_print(&smartCar->barLED[0], LED);
+		BarLED_print(&smartCar->barLED[1], LED);
+		BarLED_print(&smartCar->barLED[2], LED);
+		BarLED_print(&smartCar->barLED[3], LED);
+		
 		
 		//Just interval
-		for(i=0;i<10000;i++); 
+		for(i=0;i<10000000;i++); 
 		
 		//OFF
 		LED.len = 0;
@@ -134,8 +138,8 @@ void motorTest(SmartCar * smartCar) {
 	while(1){
 		Motor_runAs(&smartCar->motor, speed);
 		
-		Segment(&smartCar->segment[0], smartCar->motor->targetSpeed);
-		Segment(&smartCar->segment[1], smartCar->encoder->speed);
+		Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
+		Segment_print(&smartCar->segment[1], smartCar->encoder.speed);
 		
 		switch (board.button.read()) {
 		// fast
