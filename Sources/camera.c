@@ -22,7 +22,7 @@ void Camera_init(Camera * this, uint8_t id) {
 	Camera_setInterval(this, 12000);
 }
 uint16_t * Camera_get(Camera * this){
-	
+	return this->rawData;
 }
 
 void Camera_setInterval(Camera * this, uint32_t value){
