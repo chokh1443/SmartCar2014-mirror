@@ -7,6 +7,7 @@ void presetMotor(SmartCar * smartCar);
 void presetKp(SmartCar * smartCar);
 void presetKi(SmartCar * smartCar);
 void presetKd(SmartCar * smartCar);
+void presetCheckPID(SmartCar * smartCar);
 
 
 void preset(SmartCar * smartCar){
@@ -30,8 +31,8 @@ void preset(SmartCar * smartCar){
 			return;
 		}
 		if(menu < 1){
-			menu = 6;
-		} else if(menu > 6){
+			menu = 7;
+		} else if(menu > 7){
 			menu = 1;
 		}
 	}
@@ -57,6 +58,9 @@ void enterPreset(SmartCar * smartCar, int menu) {
 		break;
 	case 6:
 		presetKd(smartCar);
+		break;
+	case 7:
+		presetCheckPID(smartCar);
 		break;
 	}
 }
@@ -207,5 +211,25 @@ void presetKd(SmartCar * smartCar) {
 		}
 		
 		Motor_setkd(&smartCar->motor,kd);
+	}
+}
+
+void presetCheckPID(SmartCar * smartCar) {
+	int i = 0;
+	for( i=0 ; i<16 ; i++){
+		LEDData_add(&smartCar->barLED[0].data,i);
+		LEDData_add(&smartCar->barLED[1].data,i);
+	}
+	
+	BarLED_print(&smartCar->barLED[0], smartCar->barLED[0].data);
+	BarLED_print(&smartCar->barLED[1], smartCar->barLED[1].data);
+	Segment_print(&smartCar->segment[0], (uint16_t)smartCar->motor.kp);
+	Segment_print(&smartCar->segment[1], (uint16_t)smartCar->motor.ki);
+	Segment_print(&smartCar->segment[2], (uint16_t)smartCar->motor.kd);
+	while(1){
+		switch(board.button.read()){
+		case 4:
+			return;
+		}
 	}
 }
