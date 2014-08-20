@@ -1,13 +1,6 @@
-/*
- * preset.h
- *
- *  Created on: Aug 20, 2014
- *      Author: chokh
- */
+#pragma once
 
-#ifndef PRESET_H_
-#define PRESET_H_
+#include "smartcar.h"
 
 
-
-#endif /* PRESET_H_ */
+void preset(SmartCar * smartCar);
