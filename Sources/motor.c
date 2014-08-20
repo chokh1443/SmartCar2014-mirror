@@ -3,6 +3,10 @@
 void Motor_init(Motor * this){
 	this->targetSpeed = 0;
 	
+	Motor_setkp(this,0);
+	Motor_setki(this,0);
+	Motor_setkd(this,0);
+	
 	board.addMotorPIDHandler(bind(this, (ThisCall)Motor_pidTick));
 }
 void Motor_Enable(Motor * this) {
@@ -17,10 +21,20 @@ void Motor_runAs(Motor * this, int16_t targetSpeed){
 	}
 	this->targetSpeed = targetSpeed;
 }
+void Motor_setkp(Motor * this, int32_t val){
+	this->kp = val;
+}
+void Motor_setki(Motor * this, int32_t val){
+	this->ki = val;
+}
+void Motor_setkd(Motor * this, int32_t val){
+	this->kd = val;
+}
+
 void Motor_pidTick(Motor * this){
-	int32_t kp = 0x00000000;
-	int32_t ki = 0x00000000;
-	int32_t kd = 0x00000000;
+	int32_t kp = this->kp;
+	int32_t ki = this->ki;
+	int32_t kd = this->kd;
 
 	//int16_t speed = Encoder_get(this->encoder);
 

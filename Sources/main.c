@@ -11,11 +11,11 @@
 #include "gpio_drv.h"
 #include "test.h"
 #include "utils.h"
+#include "preset.h"
 
 /**********************  Function Prototype here *************************/
 
 void main(void);
-void preset(SmartCar * smartCar);
 void start(SmartCar * smartCar);
 
 unsigned char newLine[2] = {'\r','\n'};
@@ -39,7 +39,7 @@ void main(void) {
 			start(&smartCar);
 			break;
 		case 3:
-			preset(&smartCar);
+			//preset(&smartCar);
 			break;
 		}
 	}
@@ -109,6 +109,7 @@ void getDifferentialData(uint16_t * data, DifferentialData * result){
 	result->range.low = min;
 	result->range.high = max;
 }
+
 void binarization(DifferentialData * differentialData, uint8_t * result){
 	int16_t lowCrit = ((int16_t)differentialData->range.low)/2;
 	int16_t highCrit = ((int16_t)differentialData->range.high)/2;
@@ -140,8 +141,4 @@ int8_t findIndex(uint8_t * data){
 		}
 		
 	}
-}
-
-void preset(SmartCar * smartCar){
-	
 }
