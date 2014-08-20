@@ -6,6 +6,10 @@
 typedef struct {
 	Encoder * encoder;
 	int16_t targetSpeed;
+	
+	int32_t kp = 0x00000000;
+	int32_t ki = 0x00000000;
+	int32_t kd = 0x00000000;
 } Motor;
 
 void Motor_init(Motor * this);

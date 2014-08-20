@@ -18,9 +18,9 @@ void Motor_runAs(Motor * this, int16_t targetSpeed){
 	this->targetSpeed = targetSpeed;
 }
 void Motor_pidTick(Motor * this){
-	int32_t kp = 0x00000000;
-	int32_t ki = 0x00000000;
-	int32_t kd = 0x00000000;
+	int32_t kp = this->kp;
+	int32_t ki = this->ki;
+	int32_t kd = this->kd;
 
 	//int16_t speed = Encoder_get(this->encoder);
 
