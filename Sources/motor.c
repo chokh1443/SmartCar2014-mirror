@@ -1,6 +1,7 @@
 #include "motor.h"
 
-void Motor_init(Motor * this){
+void Motor_init(Motor * this, Encoder * encoder){
+	this->encoder = encoder;
 	this->targetSpeed = 0;
 	
 	Motor_setkp(this,400);
@@ -41,7 +42,7 @@ int32_t Motor_PID(Motor * this){//FIX ME!!
 	int32_t encoderSpeed = 0;
 	int32_t deltaSpeed = 0;
 	
-	newErr = targetEncoderSpeed - realEncoderSeped;//FIX ME
+	newErr = targetEncoderSpeed - Encoder_get(this->encoder);//FIX ME
 
 	Motor_addErr(this , newErr);
 	

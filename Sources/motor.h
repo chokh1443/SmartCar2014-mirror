@@ -5,6 +5,7 @@
 
 typedef struct {
 	Encoder * encoder;
+	
 	int16_t targetSpeed;
 	
 	int32_t kp;
@@ -14,7 +15,7 @@ typedef struct {
 	int32_t err[3];
 } Motor;
 
-void Motor_init(Motor * this);
+void Motor_init(Motor * this, Encoder * encoder);
 void Motor_runAs(Motor * this, int16_t);
 void Motor_Enable(Motor * this);
 void Motor_Disable(Motor * this);

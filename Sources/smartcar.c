@@ -17,7 +17,7 @@ void SmartCar_init(SmartCar * this){
 		BarLED_init(&this->barLED[i], i);
 	}
 	
-	Motor_init(&this->motor);
+	Motor_init(&this->motor, &this->encoder);
 	Servo_init(&this->servo);
 	
 	SmartCar_setCameraPIT(this, 12000);
