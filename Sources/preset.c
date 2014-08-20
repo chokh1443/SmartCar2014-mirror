@@ -26,8 +26,7 @@ void preset(SmartCar * smartCar){
 		}
 		if(menu < 1){
 			menu = 6;
-		}
-		if(menu > 6){
+		} else if(menu > 6){
 			menu = 1;
 		}
 	}
@@ -63,29 +62,39 @@ void presetCamera(SmartCar * smartCar) {
 	}
 }
 void presetChangePIT(SmartCar * smartCar) {
-	int pitValue;
 	int minVal[2] = {9999};
 	int maxVal[2] = {0};
+	uint32_t pitVal = 0;
 	
+	pitVal = smartCar->cameraPIT;
 	while(1){
 		minVal[0] = Camera_minValue(&smartCar->camera[0]);
 		minVal[1] = Camera_minValue(&smartCar->camera[1]);
-
 		maxVal[0] = Camera_maxValue(&smartCar->camera[0]);
 		maxVal[1] = Camera_maxValue(&smartCar->camera[1]);
+		
+		switch(board.button.read()){
+		case 1:
+			pitVal += 1000;
+			break;
+		case 2:
+			pitVal -= 1000;
+			break;
+		case 4:
+			return;
+		}
+		
+		if(pitVal < 4000){
+			pitVal = 4000;
+		} else if(pitVal > 12000){
+			pitVal = 12000;
+		}
+		
+		SmartCar_setCameraPIT(smartCar, pitVal);
+		
+		BarLED_print(&smartCar->barLED[0], (LEDData){{pitVal/1000},1});
+		
+		Segment_print(&smartCar->segment[1], (uint16_t)(minVal[0] < minVal[1]) ? minVal[0] : minVal[1]);
+		Segment_print(&smartCar->segment[2], (uint16_t)(maxVal[0] < maxVal[1]) ? maxVal[1] : maxVal[0]);
 	}
-
-	switch(board.button.read()){
-	case 1:
-		break;
-	case 2:
-		break;
-	case 3:
-		break;
-	case 4:
-		break;
-	}
-
-	Segment_print(&smartCar->segment[1], (minVal[0] < minVal[1]) ? minVal[0] : minVal[1]);
-	Segment_print(&smartCar->segment[2], (maxVal[0] < maxVal[1]) ? maxVal[1] : maxVal[0]);
 }
