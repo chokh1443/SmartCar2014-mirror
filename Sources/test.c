@@ -60,12 +60,16 @@ void enterTest(SmartCar * smartCar, uint8_t menu) {
 }
 
 void segmentTest(SmartCar * smartCar) {
-	uint8_t i, j;
-	uint16_t segmentInput[3] = { { 0123 }, { 3456 }, { 6789 } };
-	uint8_t tempOfcalc[4] = { 0, 0, 0, 0 };
-
+	uint8_t number[3][4] = 
+		{{0,1,2,3}, 
+		 {3,4,5,6}, 
+		 {6,7,8,9}};
+	uint8_t i,j;
+	LEDData LED;
+	
 	while (1) {
 		//segment test
+<<<<<<< HEAD
 
 		//BARLED TEST
 		//button4 is clicked, and segment test end
@@ -118,15 +122,71 @@ void segmentTest(SmartCar * smartCar) {
 
 		for (i = 0; i < 3; i++) {
 			Segment_print(&smartCar->segment[i], segmentInput[i]);
+=======
+		Segment_print(&smartCar->segment[0], (uint16_t) (number[0][0]*1000 + number[0][1]*100 + number[0][2]*10 + number[0][3]));
+		Segment_print(&smartCar->segment[1], (uint16_t) (number[1][0]*1000 + number[1][1]*100 + number[1][2]*10 + number[1][3]));
+		Segment_print(&smartCar->segment[2], (uint16_t) (number[2][0]*1000 + number[2][1]*100 + number[2][2]*10 + number[2][3]));
+		
+		for(i=0;i<3;i++){
+			for(j=0;j<4;j++){
+				if(number[i][j] > 9){
+					number[i][j] = 0;
+				} else{
+					number[i][j]++;
+				}
+			}
+		}
+		
+		//BARLED TEST
+		//On
+		for(i=0;i<8;i++){
+			LEDData_add(&LED,i);
+		}
+		
+		BarLED_print(&smartCar->barLED[0], LED);
+		BarLED_print(&smartCar->barLED[1], LED);
+		BarLED_print(&smartCar->barLED[2], LED);
+		BarLED_print(&smartCar->barLED[3], LED);
+		
+		
+		//Just interval
+		for(i=0;i<10000000;i++); 
+		
+		//OFF
+		LED.len = 0;
+		BarLED_print(&smartCar->barLED[0], LED);
+		
+		for(i=0;i<10000;i++); // Just interval
+		
+		//button4 is clicked, and segment test end
+		if (board.button.isClick(4)) {
+			return;
+>>>>>>> parent of bbb000f... except ledtest, fix test
 		}
 	}
 }
 void servoTest(SmartCar * smartCar) {
+<<<<<<< HEAD
 	uint8_t degree = 0;
 
 	while (1) {
 		Servo_runAs(&smartCar->servo, degree);
 
+=======
+	uint8_t i=30, j;
+	
+	while(1){
+		Servo_runAs(&smartCar->servo, i);
+		
+		for(j=0;j<10000;j++); 
+		
+		Servo_runAs(&smartCar->servo, i);
+		
+		for(j=0;j<10000;j++);
+		
+		i = i + 10;
+		
+>>>>>>> parent of bbb000f... except ledtest, fix test
 		//button4 is clicked, and servo test end
 		switch (board.button.read()) {
 		// degree up
@@ -148,13 +208,13 @@ void servoTest(SmartCar * smartCar) {
 	}
 }
 void motorTest(SmartCar * smartCar) {
-	uint8_t speed = 30;
-
+	uint8_t speed=30;
+	
 	Motor_Enable(&smartCar->motor);
-
-	while (1) {
+	
+	while(1){
 		Motor_runAs(&smartCar->motor, speed);
-
+		
 		Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[1], smartCar->encoder.speed);
 		
@@ -163,25 +223,29 @@ void motorTest(SmartCar * smartCar) {
 		case 1:
 			speed++;
 			break;
-			// slow
+		// slow
 		case 2:
 			speed--;
 			break;
+<<<<<<< HEAD
 			//reverse motor speed
+=======
+		//reverse
+>>>>>>> parent of bbb000f... except ledtest, fix test
 		case 3:
 			speed = -speed;
 			break;
-			//motor test end
+		//motor test end
 		case 4:
 			return;
 		}
 	}
 }
 void ledTest(SmartCar * smartCar) {
-
+	
 }
-
 void cameraTest(SmartCar * smartCar) {
+<<<<<<< HEAD
 	uint16_t *(line[2]);
 	uint8_t i, j, k;
 	uint8_t check_point[2], check_line;
@@ -238,4 +302,7 @@ void cameraTest(SmartCar * smartCar) {
 			return;
 		}
 	}
+=======
+	
+>>>>>>> parent of bbb000f... except ledtest, fix test
 }
