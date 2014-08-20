@@ -3,6 +3,7 @@
 void enterPreset(SmartCar * smartCar, int menu);
 void presetCamera(SmartCar * smartCar);
 void presetChangePIT(SmartCar * smartCar);
+void presetMotor(SmartCar * smartCar);
 
 void preset(SmartCar * smartCar){
 	int menu = 0;
@@ -42,6 +43,7 @@ void enterPreset(SmartCar * smartCar, int menu) {
 		presetChangePIT(smartCar);
 		break;
 	case 3:
+		presetMotor(smartCar);
 		break;
 	case 4:
 		return;
@@ -74,6 +76,11 @@ void presetChangePIT(SmartCar * smartCar) {
 		maxVal[0] = Camera_maxValue(&smartCar->camera[0]);
 		maxVal[1] = Camera_maxValue(&smartCar->camera[1]);
 		
+		BarLED_print(&smartCar->barLED[0], (LEDData){{pitVal/1000},1});
+		
+		Segment_print(&smartCar->segment[1], (uint16_t)(minVal[0] < minVal[1]) ? minVal[0] : minVal[1]);
+		Segment_print(&smartCar->segment[2], (uint16_t)(maxVal[0] < maxVal[1]) ? maxVal[1] : maxVal[0]);
+		
 		switch(board.button.read()){
 		case 1:
 			pitVal += 1000;
@@ -92,10 +99,26 @@ void presetChangePIT(SmartCar * smartCar) {
 		}
 		
 		SmartCar_setCameraPIT(smartCar, pitVal);
-		
-		BarLED_print(&smartCar->barLED[0], (LEDData){{pitVal/1000},1});
-		
-		Segment_print(&smartCar->segment[1], (uint16_t)(minVal[0] < minVal[1]) ? minVal[0] : minVal[1]);
-		Segment_print(&smartCar->segment[2], (uint16_t)(maxVal[0] < maxVal[1]) ? maxVal[1] : maxVal[0]);
 	}
+}
+void presetMotor(SmartCar * smartCar) {
+	int16_t speed = 0;
+	
+	speed = smartCar->motor.targetSpeed;
+	while(1){
+		Segment_print(&smartCar->segment[1], (uint16_t)smartCar->motor.targetSpeed);
+		Segment_print(&smartCar->segment[2], (uint16_t)smartCar->encoder.speed);
+		switch(board.button.read()){
+		case 1:
+			speed += 1;
+			break;
+		case 2:
+			speed -= 1;
+			break;
+		case 4:
+			return;
+		}
+		
+		Motor_runAs(&smartCar->motor, speed);
+	}	
 }
