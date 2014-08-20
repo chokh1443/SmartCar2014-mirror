@@ -3,9 +3,9 @@
 void Motor_init(Motor * this){
 	this->targetSpeed = 0;
 	
-	Motor_setkp(this,0);
-	Motor_setki(this,0);
-	Motor_setkd(this,0);
+	Motor_setkp(this,400);
+	Motor_setki(this,1);
+	Motor_setkd(this,1);
 	
 	board.addMotorPIDHandler(bind(this, (ThisCall)Motor_pidTick));
 }
