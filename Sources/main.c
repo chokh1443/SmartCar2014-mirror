@@ -68,12 +68,10 @@ typedef struct {
 
 void getDifferentialData(uint16_t * data, DifferentialData * result);
 void binarization(DifferentialData * differentialData, uint8_t * result);
-
 int8_t findLine(Camera * camera);
 
 void start(SmartCar * smartCar){
 	uint8_t i, j;					// 0 left, 1 right
-	
 	while(1){
 		int8_t pos[2];
 		pos[0] = findLine(&smartCar->camera[0]);
@@ -81,6 +79,7 @@ void start(SmartCar * smartCar){
 		
 	}
 }
+int8_t findIndex(uint8_t * data);
 
 int8_t findLine(Camera * camera){
 	
@@ -90,7 +89,7 @@ int8_t findLine(Camera * camera){
 	
 	getDifferentialData(data, &differentialData);
 	binarization(&differentialData, result);
-	
+	findIndex(result);
 }
 void getDifferentialData(uint16_t * data, DifferentialData * result){
 	int16_t min = 0, max = 0;
@@ -111,8 +110,8 @@ void getDifferentialData(uint16_t * data, DifferentialData * result){
 	result->range.high = max;
 }
 void binarization(DifferentialData * differentialData, uint8_t * result){
-	int16_t lowCrit = differentialData->range.low/2;
-	int16_t highCrit = differentialData->range.high/2;
+	int16_t lowCrit = ((int16_t)differentialData->range.low)/2;
+	int16_t highCrit = ((int16_t)differentialData->range.high)/2;
 	int16_t * diffedData = differentialData->data;
 	
 	register uint16_t i;
@@ -126,6 +125,20 @@ void binarization(DifferentialData * differentialData, uint8_t * result){
 		} else {
 			result[i] = result[i-1];
 		}
+	}
+}
+int8_t findIndex(uint8_t * data){
+	register uint16_t i;
+	
+	uint16_t first, last;
+	for(i = 0; i < 128; i++){
+		if(data[i] == 1){
+			last = i;
+		} else {
+			
+			first = i;
+		}
+		
 	}
 }
 
