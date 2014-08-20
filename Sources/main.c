@@ -10,11 +10,11 @@
 #include "smartcar.h"
 #include "gpio_drv.h"
 #include "test.h"
+#include "preset.h"
 
 /**********************  Function Prototype here *************************/
 
 void main(void);
-void preset(SmartCar * smartCar);
 void start(SmartCar * smartCar);
 
 void testServo(Servo * servo, Segment * segment, Segment * step);
@@ -45,7 +45,7 @@ void main(void) {
 			start(&smartCar);
 			break;
 		case 3:
-			preset(&smartCar);
+			//preset(&smartCar);
 			break;
 		}
 	}
@@ -86,9 +86,7 @@ void findLine(Camera * camera){
 	}
 }
 
-void preset(SmartCar * smartCar){
-	
-}
+
 
 //setLine
 void set_Line(uint16_t inputLine[2][128], uint16_t setLine[2][128]){
