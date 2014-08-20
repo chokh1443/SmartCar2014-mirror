@@ -39,6 +39,7 @@ void enterPreset(SmartCar * smartCar, int menu) {
 		presetCamera(smartCar);
 		break;
 	case 2:
+		presetChangePIT(smartCar);
 		break;
 	case 3:
 		break;
