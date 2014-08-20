@@ -81,8 +81,7 @@ void findLine(Camera * camera){
 	
 	uint16_t value = data[0];
 	for(i = 1; i < 128; i++){
-		if(data[i] - data[i-1] > 400){ //XXX
-			
+		if(data[i] - data[i-1] > 400){ //XXX			
 		}
 	}
 }

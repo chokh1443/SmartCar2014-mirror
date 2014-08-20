@@ -20,6 +20,7 @@ struct {
 void BarLED_init(BarLED * this, uint8_t id) {
 	this->id = id;
 	this->index = 0;
+	this->data = (LEDData){{0,},0};
 	board.addTimerHandler(bind(this, (ThisCall)BarLED_onTick));
 }
 
