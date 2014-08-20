@@ -73,25 +73,25 @@ void segmentTest(SmartCar * smartCar) {
 		//BarLED ON
 		case 1:
 			for (i = 0; i < 16; i++) {
-				LEDData_add(&smartCar->barLED[0], i);
-				LEDData_add(&smartCar->barLED[1], i);
+				LEDData_add(&smartCar->barLED[0].data, i);
+				LEDData_add(&smartCar->barLED[1].data, i);
 			}
 			break;
-		
-		//BarLED OFF
+
+			//BarLED OFF
 		case 2:
 			for (i = 0; i < 2; i++) {
-				smartCar->barLED[2]->data->len = 0;
+				smartCar->barLED[2].data.len = 0;
 			}
 			break;
-		
-		//add each segment value
+
+			//add each segment value
 		case 3:
 			for (i = 0; i < 3; i++) {
-				tempOfcalc[0] = segmentInput[i] / 1000;
-				tempOfcalc[1] = (segmentInput[i] % 1000) / 100;
-				tempOfcalc[2] = (segmentInput[i] % 100) / 10;
-				tempOfcalc[3] = segmentInput[i] % 10;
+				tempOfcalc[0] = (uint8_t) (segmentInput[i] / 1000);
+				tempOfcalc[1] = (uint8_t) ((segmentInput[i] % 1000) / 100);
+				tempOfcalc[2] = (uint8_t) ((segmentInput[i] % 100) / 10);
+				tempOfcalc[3] = (uint8_t) (segmentInput[i] % 10);
 
 				for (j = 0; j < 4; j++) {
 					if (tempOfcalc[j] > 9) {
@@ -107,14 +107,14 @@ void segmentTest(SmartCar * smartCar) {
 				}
 			}
 			break;
-		
-		//segment Test end
+
+			//segment Test end
 		case 4:
 			return;
 		}
 
-		BarLED_print(&smartCar->barLED[0], LED);
-		BarLED_print(&smartCar->barLED[1], LED);
+		BarLED_print(&smartCar->barLED[0], smartCar->barLED[0].data);
+		BarLED_print(&smartCar->barLED[1], smartCar->barLED[1].data);
 
 		for (i = 0; i < 3; i++) {
 			Segment_print(&smartCar->segment[i], segmentInput[i]);
@@ -122,23 +122,27 @@ void segmentTest(SmartCar * smartCar) {
 	}
 }
 void servoTest(SmartCar * smartCar) {
-	uint8_t i = 30, j;
+	uint8_t degree = 0;
 
 	while (1) {
-		Servo_runAs(&smartCar->servo, i);
-
-		for (j = 0; j < 10000; j++)
-			;
-
-		Servo_runAs(&smartCar->servo, i);
-
-		for (j = 0; j < 10000; j++)
-			;
-
-		i = i + 10;
+		Servo_runAs(&smartCar->servo, degree);
 
 		//button4 is clicked, and servo test end
-		if (board.button.isClick(4)) {
+		switch (board.button.read()) {
+		// degree up
+		case 1:
+			degree = degree+10;
+			break;
+		// degree down
+		case 2:
+			degree = degree-10;
+			break;
+		// reverse degree
+		case 3:
+			degree = -(degree);
+			break;
+		// end servo test
+		case 4:
 			return;
 		}
 	}
@@ -153,7 +157,7 @@ void motorTest(SmartCar * smartCar) {
 
 		Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[1], smartCar->encoder.speed);
-
+		
 		switch (board.button.read()) {
 		// fast
 		case 1:
@@ -163,9 +167,9 @@ void motorTest(SmartCar * smartCar) {
 		case 2:
 			speed--;
 			break;
-			//reverse
+			//reverse motor speed
 		case 3:
-			-(speed);
+			speed = -speed;
 			break;
 			//motor test end
 		case 4:
@@ -178,18 +182,17 @@ void ledTest(SmartCar * smartCar) {
 }
 
 void cameraTest(SmartCar * smartCar) {
-	uint16_t line[2][128];
+	uint16_t *(line[2]);
 	uint8_t i, j, k;
 	uint8_t check_point[2], check_line;
 	while (1) {
 		//get camera data
-		line[0] = Camera_get(smartCar->camera[0]);
-		line[1] = Camera_get(smartCar->camera[1]);
+		line[0] = Camera_get(&smartCar->camera[0]);
+		line[1] = Camera_get(&smartCar->camera[1]);
 
 		// set check_point(for checking line)
-		check_point = 0;
-
 		for (i = 0; i < 2; i++) {
+			check_point[i] = 0;
 			for (j = 0; j < 128; j++) {
 				check_point[i] = check_point[i] + line[i][j];
 			}
@@ -205,13 +208,13 @@ void cameraTest(SmartCar * smartCar) {
 				check_line = 0;
 
 				for (j = 0; j < 8; j++) {
-					if (line[k][i * 16 + j] > check_point) {
+					if (line[k][i * 16 + j] > check_point[k]) {
 						check_line++;
 					}
 				}
 
 				if (check_line > 4) { // over 50%, check line
-					LEDData_add(smartCar->barLED[k], i);
+					LEDData_add(&smartCar->barLED[k].data, i);
 				}
 
 			}
@@ -227,7 +230,7 @@ void cameraTest(SmartCar * smartCar) {
 		 * 	  	1 BarLED is same 8 camera sensor
 		 */
 		for (i = 0; i < 2; i++) {
-			BarLED_print(smartCar->barLED[i]);
+			BarLED_print(&smartCar->barLED[i],smartCar->barLED[i].data);
 		}
 
 		// end camera test
