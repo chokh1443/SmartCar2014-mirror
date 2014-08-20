@@ -6,7 +6,7 @@ void Motor_init(Motor * this, Encoder * encoder){
 	
 	Motor_setkp(this,400);
 	Motor_setki(this,1);
-	Motor_setkd(this,1);
+	Motor_setkd(this,3);
 	
 	board.addMotorPIDHandler(bind(this, (ThisCall)Motor_pidTick));
 }
@@ -35,14 +35,12 @@ void Motor_addErr(Motor * this, int32_t newErr) {
 	this->err[0] = this->err[1];//n-2
 	this->err[1] = this->err[2];//n-1
 	this->err[2] = newErr;//n
-	
 }
-int32_t Motor_PID(Motor * this){//FIX ME!!
+int32_t Motor_PID(Motor * this){
 	int32_t newErr = 0;
-	int32_t encoderSpeed = 0;
 	int32_t deltaSpeed = 0;
 	
-	newErr = targetEncoderSpeed - Encoder_get(this->encoder);//FIX ME
+	newErr = this->encoder->target - this->encoder->speed;
 
 	Motor_addErr(this , newErr);
 	
@@ -50,12 +48,12 @@ int32_t Motor_PID(Motor * this){//FIX ME!!
 			+ this->ki*(this->err[2])
 			+ this->kd*(this->err[2] - 2*this->err[1] + this->err[0]);
 	
-	deltaSpeed /= 1000;
+	deltaSpeed /= 100;
 	
 	return deltaSpeed;
 }
 void Motor_pidTick(Motor * this){
-
+	int32_t dSpeed = 0;
 	//int16_t speed = Encoder_get(this->encoder);
 
 	if (this->targetSpeed >= 0) {
