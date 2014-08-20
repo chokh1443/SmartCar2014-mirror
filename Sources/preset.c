@@ -4,6 +4,10 @@ void enterPreset(SmartCar * smartCar, int menu);
 void presetCamera(SmartCar * smartCar);
 void presetChangePIT(SmartCar * smartCar);
 void presetMotor(SmartCar * smartCar);
+void presetKp(SmartCar * smartCar);
+void presetKi(SmartCar * smartCar);
+void presetKd(SmartCar * smartCar);
+
 
 void preset(SmartCar * smartCar){
 	int menu = 0;
@@ -46,7 +50,14 @@ void enterPreset(SmartCar * smartCar, int menu) {
 		presetMotor(smartCar);
 		break;
 	case 4:
-		return;
+		presetKp(smartCar);
+		break;
+	case 5:
+		presetKi(smartCar);
+		break;
+	case 6:
+		presetKd(smartCar);
+		break;
 	}
 }
 
@@ -121,4 +132,80 @@ void presetMotor(SmartCar * smartCar) {
 		
 		Motor_runAs(&smartCar->motor, speed);
 	}	
+}
+void presetKp(SmartCar * smartCar) {
+	uint32_t kp;
+	kp = smartCar->motor.kp;
+	while(1){
+		Segment_print(&smartCar->segment[1], (uint16_t)smartCar->motor.targetSpeed);
+		Segment_print(&smartCar->segment[2], (uint16_t)kp);
+		switch(board.button.read()){
+		case 1:
+			kp += 1;
+			break;
+		case 2:
+			kp -= 1;
+			break;
+		case 4:
+			return;
+		}
+		if(kp < 1){
+			kp = 1;
+		} else if (kp > 100){
+			kp = 100;
+		}
+		
+		Motor_setkp(&smartCar->motor,kp);
+	}
+}
+void presetKi(SmartCar * smartCar) {
+	uint32_t ki;
+	ki = smartCar->motor.ki;
+	while(1){
+		Segment_print(&smartCar->segment[1], (uint16_t)smartCar->motor.targetSpeed);
+		Segment_print(&smartCar->segment[2], (uint16_t)ki);
+		switch(board.button.read()){
+		case 1:
+			ki += 1;
+			break;
+		case 2:
+			ki -= 1;
+			break;
+		case 4:
+			return;
+		}
+		if(ki < 1){
+			ki = 1;
+		} else if (ki > 100){
+			ki = 100;
+		}
+		
+		Motor_setki(&smartCar->motor,ki);
+	}
+}
+
+void presetKd(SmartCar * smartCar) {
+	uint32_t kd;
+	kd = smartCar->motor.kd;
+	while(1){
+		Segment_print(&smartCar->segment[1], (uint16_t)smartCar->motor.targetSpeed);
+		Segment_print(&smartCar->segment[2], (uint16_t)kd);
+		switch(board.button.read()){
+		case 1:
+			kd += 1;
+			break;
+		case 2:
+			kd -= 1;
+			break;
+		case 4:
+			return;
+		}
+		if(kd < 1){
+			kd = 1;
+		} else if (kd > 100){
+			kd = 100;
+		}
+		
+		Motor_setkd(&smartCar->motor,kd);
+	}
 }
