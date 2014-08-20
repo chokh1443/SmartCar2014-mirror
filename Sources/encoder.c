@@ -19,3 +19,6 @@ void Encoder_onTick(Encoder * this){
 int16_t Encoder_get(Encoder * this) {
 	return this->speed;
 }
+void Encoer_setTarget(Encoder * this, uint16_t val){
+	this->target = val;
+}
