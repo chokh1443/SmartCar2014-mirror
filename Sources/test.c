@@ -50,7 +50,7 @@ void enterTest(SmartCar * smartCar, uint8_t menu) {
 		break;
 	case 4:
 		// led
-		ledTest(smartCar);
+		//ledTest(smartCar);
 		break;
 	case 5:
 		// camera
