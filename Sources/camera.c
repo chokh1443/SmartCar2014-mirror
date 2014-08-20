@@ -45,3 +45,23 @@ void Camera_onTick(Camera * this) {
 
 	this->count = ++this->count % 128;
 }
+uint16_t Camera_minValue(Camera * this){
+	int minVal = 1000;
+	int i;
+	for( i=10 ; i<118 ; i++){
+		if(this->rawData[i] < minVal){
+			minVal = this->rawData[i];
+		}
+	}
+	return minVal;
+}
+uint16_t Camera_maxValue(Camera * this){
+	int maxVal = 0;
+	int i;
+	for( i=10 ; i<118 ; i++){
+		if(this->rawData[i] > maxVal){
+			maxVal = this->rawData[i];
+		}
+	}
+	return maxVal;
+}
