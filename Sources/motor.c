@@ -32,7 +32,8 @@ void Motor_pidTick(Motor * this){
 		board.gpio.off(DO_AIN2);
 		board.gpio.off(DO_BIN2);
 		//FIX ME : HARDWARE!!! DO_AIN2 <-> DO_AIN1 or DO_BIN2 <-> DO_BIN1
-		//targetSpeed = 100 + targetSpeed;
+
+		this->targetSpeed = 100 + this->targetSpeed;
 	}
 	
 	board.pwm.set(PWM_AIN1 , this->targetSpeed * 20);

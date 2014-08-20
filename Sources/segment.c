@@ -22,7 +22,6 @@ void Segment_init(Segment * this, uint8_t id) {
 		this->charArray[i] = 0;
 	}
 	
-	
 	this->id = id;
 	
 	this->index = 0;

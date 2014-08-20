@@ -65,6 +65,7 @@ void segmentTest(SmartCar * smartCar) {
 	uint8_t i, j;
 
 	while (1) {
+
 		//BARLED TEST
 		for (i = 0; i < 2; i++) {
 			BarLED_print(&smartCar->barLED[i], smartCar->barLED[i].data);
@@ -116,6 +117,9 @@ void segmentTest(SmartCar * smartCar) {
 
 			//segment Test end
 		case 4:
+			Segment_print(&smartCar->segment[0], 0);
+			Segment_print(&smartCar->segment[1], 0);
+			Segment_print(&smartCar->segment[2], 0);
 			return;
 		}
 	}
