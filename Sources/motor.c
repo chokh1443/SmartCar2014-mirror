@@ -22,13 +22,7 @@ void Motor_runAs(Motor * this, int16_t targetSpeed){
 	}
 	this->targetSpeed = targetSpeed;
 }
-<<<<<<< HEAD
-void Motor_pidTick(Motor * this){
-	int16_t speed = this->targetSpeed;
-	int32_t kp = 0x00000000;
-	int32_t ki = 0x00000000;
-	int32_t kd = 0x00000000;
-=======
+
 void Motor_setkp(Motor * this, int32_t val){
 	this->kp = val;
 }
@@ -48,7 +42,6 @@ int32_t Motor_PID(Motor * this){
 	int32_t deltaSpeed = 0;
 	
 	newErr = this->encoder->target - this->encoder->speed;
->>>>>>> origin/master
 
 	Motor_addErr(this , newErr);
 	
