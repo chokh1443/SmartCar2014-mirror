@@ -4,8 +4,8 @@ void enterTest(SmartCar * smartCar, uint8_t);
 void segmentTest(SmartCar * smartCar);
 void servoTest(SmartCar * smartCar);
 void motorTest(SmartCar * smartCar);
-void ledTest(SmartCar * smartCar);
 void cameraTest(SmartCar * smartCar);
+LEDData getLine(Camera * camera);
 
 void test(SmartCar * smartCar) {
 	uint8_t menu = 0;
@@ -26,7 +26,12 @@ void test(SmartCar * smartCar) {
 			menu--;
 			break;
 		case 3:
+			if(menu > 4 || menu < 1){
+				menu = 1;
+				continue;
+			}
 			enterTest(smartCar, menu);
+			Segment_print(&smartCar->segment[0], 0);
 			break;
 		case 4:
 			Segment_print(&smartCar->segment[0], 0);
@@ -49,10 +54,6 @@ void enterTest(SmartCar * smartCar, uint8_t menu) {
 		motorTest(smartCar);
 		break;
 	case 4:
-		// led
-		ledTest(smartCar);
-		break;
-	case 5:
 		// camera
 		cameraTest(smartCar);
 		break;
@@ -60,22 +61,19 @@ void enterTest(SmartCar * smartCar, uint8_t menu) {
 }
 
 void segmentTest(SmartCar * smartCar) {
-	uint16_t segmentInput[3] = { (uint16_t)1234, (uint16_t)4567, (uint16_t) 7890};
+	int16_t segmentInput[3] = { (uint16_t)1234, (uint16_t)4567, (uint16_t) 7890};
 	uint8_t tempOfcalc[4] = { 0, 0, 0, 0 };
 	uint8_t i, j;
 
 	while (1) {
-
-		//BARLED TEST
 		for (i = 0; i < 2; i++) {
 			BarLED_print(&smartCar->barLED[i], smartCar->barLED[i].data);
 		}
 		for (i = 0; i < 3; i++) {
 			Segment_print(&smartCar->segment[i], segmentInput[i]);
 		}
-
+		
 		//button4 is clicked, and segment test end
-
 		switch (board.button.read()) {
 		//BarLED ON
 		case 1:
@@ -85,7 +83,7 @@ void segmentTest(SmartCar * smartCar) {
 			}
 			break;
 
-			//BarLED OFF
+		//BarLED OFF
 		case 2:
 			for (i = 0; i < 2; i++) {
 				smartCar->barLED[i].data.len = 0;
@@ -94,10 +92,14 @@ void segmentTest(SmartCar * smartCar) {
 
 			//add each segment value
 		case 3:
+			for(i=0;i<4;i++){
+				tempOfcalc[i] =0;
+			}
+			
 			for (i = 0; i < 3; i++) {
-				tempOfcalc[0] = (uint8_t) (segmentInput[i] / 1000);
-				tempOfcalc[1] = (uint8_t) ((segmentInput[i] % 1000) / 100);
-				tempOfcalc[2] = (uint8_t) ((segmentInput[i] % 100) / 10);
+				tempOfcalc[0] = (uint8_t) ((segmentInput[i] / 1000) % 10);
+				tempOfcalc[1] = (uint8_t) ((segmentInput[i] / 100) % 10);
+				tempOfcalc[2] = (uint8_t) ((segmentInput[i] / 10) % 10);
 				tempOfcalc[3] = (uint8_t) (segmentInput[i] % 10);
 
 				for (j = 0; j < 4; j++) {
@@ -109,144 +111,131 @@ void segmentTest(SmartCar * smartCar) {
 
 				}
 
-				for (j = 0; j < 4; j++) {
-					segmentInput[i] = tempOfcalc[j];
-				}
+				segmentInput[i] = (uint16_t) tempOfcalc[0]*1000;
+				segmentInput[i] = segmentInput[i] + (uint16_t) tempOfcalc[1]*100;
+				segmentInput[i] = segmentInput[i] + (uint16_t) tempOfcalc[2]*10;
+				segmentInput[i] = segmentInput[i] + (uint16_t) tempOfcalc[3];
 			}
 			break;
 
 			//segment Test end
 		case 4:
-			Segment_print(&smartCar->segment[0], 0);
-			Segment_print(&smartCar->segment[1], 0);
-			Segment_print(&smartCar->segment[2], 0);
+			for(i=0;i<3;i++){
+				segmentInput[i] = 0;
+				Segment_print(&smartCar->segment[i], segmentInput[i]);
+			}
+			
+			for (i = 0; i < 2; i++) {
+				smartCar->barLED[i].data.len = 0;
+			}
 			return;
 		}
 	}
 }
 void servoTest(SmartCar * smartCar) {
-	int16_t degree = 0;
+	smartCar->servo.steer = 0;
 	while (1) {
-		Servo_runAs(&smartCar->servo, degree);
-		if(degree >= 0){
-			Segment_print(&smartCar->segment[0], (uint16_t) degree);
-		} else{
-			Segment_print(&smartCar->segment[0], (uint16_t) (-degree));
-		}
+		Servo_runAs(&smartCar->servo, smartCar->servo.steer);
+	
+		Segment_print(&smartCar->segment[1], smartCar->servo.steer);
 			
 		switch (board.button.read()) {
 		case 1:
-			degree = degree + 10;
-
+			if(smartCar->servo.steer < 100){	
+				smartCar->servo.steer = smartCar->servo.steer + 10;
+			} else {
+				smartCar->servo.steer = 100;
+			}
 			break;
 		case 2:
-			degree = degree - 10;
+			if(smartCar->servo.steer > -100){
+				smartCar->servo.steer = smartCar->servo.steer - 10;
+			} else{
+				smartCar->servo.steer = -100;
+			}
 			break;
 		case 3:
-			degree = -degree;
+			smartCar->servo.steer = -smartCar->servo.steer;
 			break;
 		case 4:
+			smartCar->servo.steer = 0;
+			Servo_runAs(&smartCar->servo, smartCar->servo.steer);
+			Segment_print(&smartCar->segment[1], smartCar->servo.steer);
 			return;
 		}
 	}
 }
 void motorTest(SmartCar * smartCar) {
-	int8_t speed = 30;
+	int16_t speed = 30;
 
 	Motor_Enable(&smartCar->motor);
 
 	while (1) {
 		Motor_runAs(&smartCar->motor, speed);
 		
-		if(smartCar->motor.targetSpeed >= 0){
-			Segment_print(&smartCar->segment[0], (uint16_t) smartCar->motor.targetSpeed);
-		} else{
-			Segment_print(&smartCar->segment[0], (uint16_t) (-smartCar->motor.targetSpeed));
-		}
-		
-		if(smartCar->encoder.speed >= 0){
-			Segment_print(&smartCar->segment[1], (uint16_t) smartCar->encoder.speed);
-		} else{
-			Segment_print(&smartCar->segment[1], (uint16_t) (-smartCar->encoder.speed));
-		}
-		
+		Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
+
+		Segment_print(&smartCar->segment[1], Encoder_get(&smartCar->encoder));
+
 		switch (board.button.read()) {
 		// fast
 		case 1:
-			speed++;
+			if(speed < 100){
+				speed = speed + 10;
+			} else {
+				speed = 100;
+			}
 			break;
-			// slow
+		// slow
 		case 2:
-			speed--;
+			if(smartCar->motor.targetSpeed > -100){
+				speed = speed - 10;
+			} else{
+				speed = -100;
+			}
 			break;
-			// reverse
+		// reverse
 		case 3:
 			speed = -speed;
 			break;
 			//motor test end
 		case 4:
+			speed = 0;
+			Segment_print(&smartCar->segment[0], speed);
+			Segment_print(&smartCar->segment[1], speed);
 			return;
 		}
 	}
 }
-/*
-void ledTest(SmartCar * smartCar) {
 
-}
-*/
 void cameraTest(SmartCar * smartCar) {
-	uint16_t *(line[2]);
-	uint8_t i, j, k;
-	uint16_t check_point[2], check_line;
-	while (1) {
-		//get camera data
-		line[0] = Camera_get(&smartCar->camera[0]);
-		line[1] = Camera_get(&smartCar->camera[1]);
-
-		// set check_point(for checking line)
-		for (i = 0; i < 2; i++) {
-			check_point[i] = 0;
+	/*	       ¡á¡á¡á¡á					¡á¡á¡á¡á   
+	 *   	\         /        \           /
+	 * 		left camera         right camera
+	 * 		
+	 * 				 Bar LED show(1 is on)	
+	 * 	  0000011110000000    00000011110000000
+	 * 	  
+	 * 	  	1 BarLED is same 8 camera sensor
+	 */
+	LEDData led[2];
+	uint8_t i,j;
+	
+	//init led
+	for(i=0;i<2;i++){
+		for(j=0;j<16;j++){
+			led[i].data[j] = 0;
 		}
-
-		for (i = 0; i < 2; i++) {
-			for (j = 0; j < 128; j++) {
-				check_point[i] = check_point[i] + line[i][j];
-			}
-		}
-
-		for (i = 0; i < 2; i++) {
-			check_point[i] = check_point[i] / 128;
-		}
-
-		// check line by check_point
-		for (k = 0; k < 2; k++) {
-			for (i = 0; i < 16; i++) {
-				check_line = 0;
-
-				for (j = 0; j < 8; j++) {
-					if (line[k][i * 16 + j] > check_point[k]) {
-						check_line++;
-					}
-				}
-
-				if (check_line > 4) { // over 50%, check line
-					LEDData_add(&smartCar->barLED[k].data, i);
-				}
-
-			}
-		}
-
-		/*	       ¡á¡á¡á¡á					¡á¡á¡á¡á   
-		 *   	\         /        \           /
-		 * 		left camera         right camera
-		 * 		
-		 * 				 Bar LED show(1 is on)	
-		 * 	  0000011110000000    00000011110000000
-		 * 	  
-		 * 	  	1 BarLED is same 8 camera sensor
-		 */
+		led[i].len = 0;
+	}
+	
+	while(1){
 		for (i = 0; i < 2; i++) {
 			BarLED_print(&smartCar->barLED[i], smartCar->barLED[i].data);
+		}
+		
+		for(i=0;i<2;i++){
+			led[i] = getLine(&smartCar->camera[i]);
 		}
 
 		// end camera test
@@ -254,4 +243,11 @@ void cameraTest(SmartCar * smartCar) {
 			return;
 		}
 	}
+}
+
+// input getLine Algorithm to camera
+LEDData getLine(Camera * camera){
+	LEDData led;
+	
+	return led;
 }

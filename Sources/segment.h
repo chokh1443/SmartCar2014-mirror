@@ -14,5 +14,5 @@ typedef struct {
 } Segment;
 
 void Segment_init(Segment * this, uint8_t id);
-void Segment_print(Segment * this, uint16_t number);
+void Segment_print(Segment * this, int16_t number);
 void Segment_onTick(Segment * this);

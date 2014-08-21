@@ -28,12 +28,18 @@ void Segment_init(Segment * this, uint8_t id) {
 	this->holdCount = 60;
 }
 
-void Segment_print(Segment * this, uint16_t number) {
+void Segment_print(Segment * this, int16_t number) {
 	if(this->holdCount > 60){
+		//for negative value
+		if(number < 0){
+			number= -number;
+			this->charArray[0] = 12;
+		} else {
+			this->charArray[0] = (uint8_t) (number/1000 % 10);
+		}
 		this->charArray[3] = (uint8_t) (number % 10);
 		this->charArray[2] = (uint8_t) (number/10 % 10);
 		this->charArray[1] = (uint8_t) (number/100 % 10);
-		this->charArray[0] = (uint8_t) (number/1000 % 10);
 		this->holdCount = 0;
 	}
 }

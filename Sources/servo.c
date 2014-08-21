@@ -5,7 +5,7 @@ void Servo_init(Servo * this){
 	//board.addMotorPIDHandler(bind(this, (ThisCall)Servo_pidTick));
 	//init that servo is mid
 	this->steer = 0;
-
+	board.pwm.set(PWM_SERVO, 1615);
 }
 
 
