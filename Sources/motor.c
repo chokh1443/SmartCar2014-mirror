@@ -70,15 +70,15 @@ void Motor_pidTick(Motor * this){
 		board.gpio.on(DO_BIN2);
 		//FIX ME : HARDWARE!!! DO_AIN2 <-> DO_AIN1 or DO_BIN2 <-> DO_BIN1 
 		
-		speed = this->targetSpeed;
+		dSpeed = this->targetSpeed;
 	} else {
 		board.gpio.off(DO_AIN2);
 		board.gpio.off(DO_BIN2);
 		//FIX ME : HARDWARE!!! DO_AIN2 <-> DO_AIN1 or DO_BIN2 <-> DO_BIN1
 
-		speed = -this->targetSpeed;
+		dSpeed = -this->targetSpeed;
 	}
 	
-	board.pwm.set(PWM_AIN1 , speed * 20);
-	board.pwm.set(PWM_BIN1 , speed * 20);
+	board.pwm.set(PWM_AIN1 , dSpeed * 20);
+	board.pwm.set(PWM_BIN1 , dSpeed * 20);
 }

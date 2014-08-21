@@ -54,13 +54,6 @@ void enterTest(SmartCar * smartCar, uint8_t menu) {
 		motorTest(smartCar);
 		break;
 	case 4:
-<<<<<<< HEAD
-=======
-		// led
-		//ledTest(smartCar);
-		break;
-	case 5:
->>>>>>> origin/master
 		// camera
 		cameraTest(smartCar);
 		break;
