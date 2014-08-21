@@ -27,9 +27,9 @@ void main(void) {
 	SmartCar smartCar;
 	sys_init_fnc();
 	EnableExternalInterrupts();
-	
+
 	SmartCar_init(&smartCar);
-	
+
 	while(1){
 		switch(board.button.read()){
 		case 1:
@@ -43,12 +43,12 @@ void main(void) {
 			break;
 		}
 	}
-	
+
 	/*
 	 * usages :
 	 * board.gpio.on(68);
 	 * board.led.off(1);
-	 * 
+	 *
 	 * pEncoder = board.encoder;
 	 * encoder.get(pEncoder);
 	 * encoder.onTick(pEncoder);
@@ -68,37 +68,43 @@ typedef struct {
 
 void getDifferentialData(uint16_t * data, DifferentialData * result);
 void binarization(DifferentialData * differentialData, uint8_t * result);
+int8_t findIndex(uint8_t * data);
 int8_t findLine(Camera * camera);
 
 void start(SmartCar * smartCar){
-	uint8_t i, j;					// 0 left, 1 right
+	uint16_t handle, speed;
+	Servo_runAs(&smartCar->servo, 0);
+	Motor_runAs(&smartCar->motor, 30);
 	while(1){
 		int8_t pos[2];
 		pos[0] = findLine(&smartCar->camera[0]);
 		pos[1] = findLine(&smartCar->camera[1]);
+
+		//decide handling value
+		Servo_runAs(&smartCar->servo, (pos[0] + pos[1])/2);
+		//decide speed value
 		
 	}
 }
-int8_t findIndex(uint8_t * data);
 
 int8_t findLine(Camera * camera){
-	
+
 	uint16_t * data = Camera_get(camera);
 	DifferentialData differentialData;
 	uint8_t result[128];
-	
+
 	getDifferentialData(data, &differentialData);
 	binarization(&differentialData, result);
-	findIndex(result);
+	return findIndex(result);
 }
 void getDifferentialData(uint16_t * data, DifferentialData * result){
 	int16_t min = 0, max = 0;
 	register uint16_t i;
-	
+
 	result->data[0] = data[0];
 	for(i = 1; i < 128; i++){
 		result->data[i] = data[i-1] - data[i];
-		
+
 		if(min > result->data[i]){
 			min = result->data[i];
 		}
@@ -114,7 +120,7 @@ void binarization(DifferentialData * differentialData, uint8_t * result){
 	int16_t lowCrit = ((int16_t)differentialData->range.low)/2;
 	int16_t highCrit = ((int16_t)differentialData->range.high)/2;
 	int16_t * diffedData = differentialData->data;
-	
+
 	register uint16_t i;
 
 	result[0] = 0;
@@ -129,16 +135,20 @@ void binarization(DifferentialData * differentialData, uint8_t * result){
 	}
 }
 int8_t findIndex(uint8_t * data){
+	//TODO nozie controll
 	register uint16_t i;
-	
+
 	uint16_t first, last;
 	for(i = 0; i < 128; i++){
 		if(data[i] == 1){
 			last = i;
 		} else {
-			
 			first = i;
+			if(last - first <= 2){
+				//nozie
+			} else {
+				return (last + first)/2;
+			}
 		}
-		
 	}
 }

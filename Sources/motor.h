@@ -24,5 +24,4 @@ void Motor_setkp(Motor * this, int32_t val);
 void Motor_setki(Motor * this, int32_t val);
 void Motor_setkd(Motor * this, int32_t val);
 void Motor_addErr(Motor * this, int32_t newErr);
-int32_t Motor_PID(Motor * this);
 void Motor_pidTick(Motor * this);
