@@ -1,6 +1,7 @@
 #include "camera.h"
 #include "adc_drv.h"
 
+
 void Camera_onTick(Camera * this);
 
 struct {
@@ -18,17 +19,12 @@ void Camera_init(Camera * this, uint8_t id) {
 	this->count = 0;
 	board.addCameraHandler(bind(this, (ThisCall)Camera_onTick));
 	
-	/*PIT.CH[1].LDVAL.R  = 0x00000FA0; 4000 ~ 12000*/
-	Camera_setInterval(this, 12000);
 }
 uint16_t * Camera_get(Camera * this){
 	
 	return this->rawData;
 }
 
-void Camera_setInterval(Camera * this, uint32_t value){
-	PIT.CH[1].LDVAL.R = value;
-}
 void Camera_onTick(Camera * this) {
 	
 	if (this->count == 0 || this->count == 1) {
@@ -44,4 +40,24 @@ void Camera_onTick(Camera * this) {
 	board.gpio.off(CAMERA_PINS[this->id].CLK);
 
 	this->count = ++this->count % 128;
+}
+uint16_t Camera_minValue(Camera * this){
+	int minVal = 1000;
+	int i;
+	for( i=10 ; i<118 ; i++){
+		if(this->rawData[i] < minVal){
+			minVal = this->rawData[i];
+		}
+	}
+	return minVal;
+}
+uint16_t Camera_maxValue(Camera * this){
+	int maxVal = 0;
+	int i;
+	for( i=10 ; i<118 ; i++){
+		if(this->rawData[i] > maxVal){
+			maxVal = this->rawData[i];
+		}
+	}
+	return maxVal;
 }
