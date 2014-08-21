@@ -50,6 +50,7 @@ void Motor_pidTick(Motor * this){
 		board.gpio.on(DO_BIN2);
 
 		speed = this->targetSpeed;
+
 	} else {
 		board.gpio.off(DO_AIN2);
 		board.gpio.off(DO_BIN2);
