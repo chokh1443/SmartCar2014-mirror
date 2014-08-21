@@ -55,6 +55,14 @@ int32_t Motor_PID(Motor * this){
 void Motor_pidTick(Motor * this){
 	int32_t dSpeed = 0;
 	//int16_t speed = Encoder_get(this->encoder);
+	
+//	dSpeed = Motor_PID(this);
+//	
+//	if(dSpeed > 10) {
+//		dSpeed = 10;
+//	} else if (dSpeed < -10) {
+//		dSpeed = -10;
+//	}
 
 	if (this->targetSpeed >= 0) {
 		board.gpio.on(DO_AIN2);
