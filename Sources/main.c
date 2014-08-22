@@ -12,6 +12,7 @@
 #include "test.h"
 #include "utils.h"
 #include "preset.h"
+#include "main.h"
 
 /**********************  Function Prototype here *************************/
 
@@ -61,11 +62,6 @@ void main(void) {
 //we have about 4 data for moving servo motor
 //make map using 5 camera data
 
-typedef struct {
-	int16_t data[128];
-	Range range;
-} DifferentialData;
-
 void getDifferentialData(uint16_t * data, DifferentialData * result);
 void binarization(DifferentialData * differentialData, uint8_t * result);
 int8_t findIndex(uint8_t * data);
@@ -83,7 +79,6 @@ void start(SmartCar * smartCar){
 		//decide handling value
 		Servo_runAs(&smartCar->servo, (pos[0] + pos[1])/2);
 		//decide speed value
-		
 	}
 }
 
@@ -97,6 +92,7 @@ int8_t findLine(Camera * camera){
 	binarization(&differentialData, result);
 	return findIndex(result);
 }
+
 void getDifferentialData(uint16_t * data, DifferentialData * result){
 	int16_t min = 0, max = 0;
 	register uint16_t i;
