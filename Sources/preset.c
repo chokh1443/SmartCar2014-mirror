@@ -125,10 +125,10 @@ void presetMotor(SmartCar * smartCar) {
 		Segment_print(&smartCar->segment[2], (uint16_t)smartCar->encoder.speed);
 		switch(board.button.read()){
 		case 1:
-			speed += 1;
+			speed += 20;
 			break;
 		case 2:
-			speed -= 1;
+			speed -= 20;
 			break;
 		case 4:
 			return;

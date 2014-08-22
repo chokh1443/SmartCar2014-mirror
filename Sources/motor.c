@@ -7,6 +7,10 @@ void Motor_init(Motor * this, Encoder * encoder){
 	this->targetSpeed = 0;
 	this->currentSpeed = 0;
 
+	Motor_addErr(this,0);//init Motor->err[0]
+	Motor_addErr(this,0);//init Motor->err[1]
+	Motor_addErr(this,0);//init Motor->err[2]
+	
 	Motor_setkp(this,400);
 	Motor_setki(this,1);
 	Motor_setkd(this,3);
@@ -20,7 +24,7 @@ void Motor_Disable(Motor * this) {
 	board.gpio.off(DO_ENABLE);
 }
 void Motor_runAs(Motor * this, int16_t targetSpeed){
-	if (targetSpeed > 100 || targetSpeed <-100) {
+	if (targetSpeed > 2000 || targetSpeed <-2000) {
 		return;
 	}
 	this->targetSpeed = targetSpeed;
@@ -43,32 +47,33 @@ void Motor_addErr(Motor * this, int32_t newErr) {
 
 void Motor_pidTick(Motor * this){
 	int32_t dSpeed = Motor_PID(this);
-	int32_t speed = this->currentSpeed + dSpeed;
+	int32_t speed = this->targetSpeed + dSpeed;
 
 	if (speed >= 0) {
 		board.gpio.on(DO_AIN2);
 		board.gpio.on(DO_BIN2);
 
-		speed = this->targetSpeed;
+		speed = speed;
 
 	} else {
 		board.gpio.off(DO_AIN2);
 		board.gpio.off(DO_BIN2);
 
-		speed = -this->targetSpeed;
+		speed = -speed;
 	}
 
 	board.pwm.set(PWM_AIN1 , speed);
 	board.pwm.set(PWM_BIN1 , speed);
 
-	this->currentSpeed = speed;
+	this->targetSpeed = speed;
+//	this->currentSpeed = speed;
 }
 
 int32_t Motor_PID(Motor * this){
 	int32_t newErr = 0;
 	int32_t deltaSpeed = 0;
 
-	newErr = this->targetSpeed - this->encoder->speed;
+	newErr = this->encoder->count - this->encoder->speed;
 
 	Motor_addErr(this , newErr);
 

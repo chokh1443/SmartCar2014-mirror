@@ -1,65 +1,15 @@
-
-/********************  Dependent Include files here **********************/
-
-#include "rappid_ref.h"
-#include "rappid_utils.h"
-#include "sys_init.h"
-
-#include "UART_drv_api.h"
-#include "smartcar.h"
-
 #include "algorithm.h"
-#include "test.h"
-
-#include "preset.h"
-#include "main.h"
-
-/**********************  Function Prototype here *************************/
-
-void main(void);
-
-unsigned char newLine[2] = {'\r','\n'};
-
-/*********************  Initialization Function(s) ************************/
-
-void main(void) {
-	SmartCar smartCar;
-	sys_init_fnc();
-	EnableExternalInterrupts();
-
-	SmartCar_init(&smartCar);
-
-	while(1){
-		switch(board.button.read()){
-		case 1:
-			test(&smartCar);
-			break;
-		case 2:
-			start(&smartCar);
-			break;
-		case 3:
-			//preset(&smartCar);
-			break;
-		}
-	}
-
-	/*
-	 * usages :
-	 * board.gpio.on(68);
-	 * board.led.off(1);
-	 *
-	 * pEncoder = board.encoder;
-	 * encoder.get(pEncoder);
-	 * encoder.onTick(pEncoder);
-	 */
-
-}
-
+#include "utils.h"
 
 //camera inputing	time = 0.04~0.06s(about 50ms)
 //servo motor moving time = 0.2s(200ms)
 //we have about 4 data for moving servo motor
 //make map using 5 camera data
+
+typedef struct {
+	int16_t data[128];
+	Range range;
+} DifferentialData;
 
 void getDifferentialData(uint16_t * data, DifferentialData * result);
 void binarization(DifferentialData * differentialData, uint8_t * result);
@@ -76,8 +26,9 @@ void start(SmartCar * smartCar){
 		pos[1] = findLine(&smartCar->camera[1]);
 
 		//decide handling value
-		Servo_runAs(&smartCar->servo, (pos[0] + pos[1])/2);
+		Servo_runAs(&smartCar->servo, ((pos[0] - 64) + (64 -pos[1]))/2);
 		//decide speed value
+		
 	}
 }
 
@@ -91,7 +42,6 @@ int8_t findLine(Camera * camera){
 	binarization(&differentialData, result);
 	return findIndex(result);
 }
-
 void getDifferentialData(uint16_t * data, DifferentialData * result){
 	int16_t min = 0, max = 0;
 	register uint16_t i;
