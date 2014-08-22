@@ -59,7 +59,7 @@ void Motor_pidTick(Motor * this){
 		board.gpio.off(DO_AIN2);
 		board.gpio.off(DO_BIN2);
 
-		speed = -speed;
+		speed = 100 + speed;
 	}
 
 	board.pwm.set(PWM_AIN1 , speed * 20);

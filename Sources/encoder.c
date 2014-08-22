@@ -13,6 +13,7 @@ void Encoder_onTimer(Encoder * this){
 	this->count = 0;
 }
 void Encoder_onTick(Encoder * this){
+	//TODO reverse
 	this->count++;
 }
 

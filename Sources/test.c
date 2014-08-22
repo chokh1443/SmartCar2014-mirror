@@ -183,7 +183,7 @@ void motorTest(SmartCar * smartCar) {
 
 		Segment_print(&smartCar->segment[1], Encoder_get(&smartCar->encoder));
 
-		switch (board.button.read()) {
+		switch (board.button.check()) {
 		case 1: // fast
 			if (speed < 100) {
 				speed = speed + 10;
