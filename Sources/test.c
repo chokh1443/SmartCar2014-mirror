@@ -1,6 +1,7 @@
 #include "test.h"
 #include "utils.h"
-#include "main.h"
+#include "algorithm.h"
+
 
 void enterTest(SmartCar * smartCar, uint8_t);
 void segmentTest(SmartCar * smartCar);
@@ -285,12 +286,12 @@ void cameraTest(SmartCar * smartCar) {
 LEDData getLine(Camera * camera) {
 	LEDData led;
 	uint16_t * data = Camera_get(camera);
-	DifferentialData differentialData;
+	//DifferentialData differentialData;
 	uint8_t result[128];
 	uint8_t i, j, temp = 0;
 
-	getDifferentialData(data, &differentialData);
-	binarization(&differentialData, result);
+	//getDifferentialData(data, &differentialData);
+	//binarization(&differentialData, result);
 
 	for (i = 0; i < 16; i++) {
 		led.data[i] = 0;
