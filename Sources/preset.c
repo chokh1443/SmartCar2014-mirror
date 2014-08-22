@@ -223,7 +223,6 @@ void presetCheckPID(SmartCar * smartCar) {
 	
 	BarLED_print(&smartCar->barLED[0], smartCar->barLED[0].data);
 	BarLED_print(&smartCar->barLED[1], smartCar->barLED[1].data);
-	Segment_print(&smartCar->segment[0], (uint16_t)smartCar->encoder.target);
 	Segment_print(&smartCar->segment[1], (uint16_t)smartCar->encoder.speed);
 	Segment_print(&smartCar->segment[2], (uint16_t)smartCar->motor.targetSpeed);
 	while(1){

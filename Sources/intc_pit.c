@@ -55,10 +55,6 @@ void PIT_ENCODER (void)
 	static uint16_t count = 0;
 	ON_ENCODER();
 	ON_MOTOR();
-//	if(count++ > 10){
-//		ON_MOTOR();
-//		count = 0;
-//	}
 
     PIT.CH[0].TFLG.R = 0x00000001;
 

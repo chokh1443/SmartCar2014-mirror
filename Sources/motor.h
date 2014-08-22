@@ -6,7 +6,7 @@
 typedef struct {
 	Encoder * encoder;
 
-//	int16_t currentSpeed;
+	int16_t currentSpeed;
 	int16_t targetSpeed;
 
 	int32_t kp;
