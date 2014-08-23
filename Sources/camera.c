@@ -1,7 +1,6 @@
 #include "camera.h"
 #include "adc_drv.h"
 
-
 void Camera_onTick(Camera * this);
 
 struct {
@@ -21,12 +20,12 @@ void Camera_init(Camera * this, uint8_t id) {
 	
 }
 uint16_t * Camera_get(Camera * this){
-	
 	return this->rawData;
 }
 
 void Camera_onTick(Camera * this) {
-	
+	//TODO optimaize. maybe can read camera double speed.
+	uint16_t value;
 	if (this->count == 0 || this->count == 1) {
 		board.gpio.on(CAMERA_PINS[this->id].SI);
 	} else {
@@ -35,7 +34,8 @@ void Camera_onTick(Camera * this) {
 
 	board.gpio.on(CAMERA_PINS[this->id].CLK);
 
-	this->rawData[this->count] = A2D_GetSingleCh_10bit(CAMERA_PINS[this->id].CH);
+	value = A2D_GetSingleCh_10bit(CAMERA_PINS[this->id].CH);
+	this->rawData[this->count] = (value * 9 + this->rawData[this->count] * 1) / 10;
 
 	board.gpio.off(CAMERA_PINS[this->id].CLK);
 
