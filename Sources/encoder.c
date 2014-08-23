@@ -13,8 +13,11 @@ void Encoder_onTimer(Encoder * this){
 	this->count = 0;
 }
 void Encoder_onTick(Encoder * this){
-	//TODO reverse
-	this->count++;
+	if(board.gpio.get(DI_ENC_B)){
+		this->count++;
+	} else {
+		this->count--;
+	}
 }
 
 int16_t Encoder_get(Encoder * this) {
