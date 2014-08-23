@@ -28,6 +28,9 @@ void preset(SmartCar * smartCar){
 			enterPreset(smartCar, menu);
 			break;
 		case 4:
+			Segment_print(&smartCar->segment[0], (uint16_t)0123);
+			Segment_print(&smartCar->segment[1], (uint16_t)3456);
+			Segment_print(&smartCar->segment[2], (uint16_t)6789);
 			return;
 		}
 		if(menu < 1){

@@ -20,6 +20,8 @@ void test(SmartCar * smartCar) {
 
 	while (1) {
 		Segment_print(&smartCar->segment[1], menu);
+		Segment_print(&smartCar->segment[0], (uint16_t)1111);
+		Segment_print(&smartCar->segment[2], (uint16_t)1111);
 
 		switch (board.button.read()) {
 		case 1:
@@ -37,7 +39,9 @@ void test(SmartCar * smartCar) {
 			Segment_print(&smartCar->segment[0], 0);
 			break;
 		case 4:
-			Segment_print(&smartCar->segment[0], 0);
+			Segment_print(&smartCar->segment[0], (uint16_t)0123);
+			Segment_print(&smartCar->segment[1], (uint16_t)3456);
+			Segment_print(&smartCar->segment[2], (uint16_t)6789);
 			return;
 		}
 	}
