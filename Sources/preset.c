@@ -138,24 +138,23 @@ void presetMotor(SmartCar * smartCar) {
 	}	
 }
 void presetKp(SmartCar * smartCar) {
-	uint32_t kp;
-	kp = smartCar->motor.kp;
+	uint32_t kp = smartCar->motor.kp;
 	while(1){
 		Segment_print(&smartCar->segment[1], (uint16_t)smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[2], (uint16_t)kp);
 		switch(board.button.read()){
 		case 1:
-			kp += 1;
+			kp += 10;
 			break;
 		case 2:
-			kp -= 1;
+			kp -= 10;
 			break;
 		case 4:
 			return;
 		}
 		if(kp < 1){
 			kp = 1;
-		} else if (kp > 100){
+		} else if (kp > 510){
 			kp = 100;
 		}
 		
@@ -163,8 +162,7 @@ void presetKp(SmartCar * smartCar) {
 	}
 }
 void presetKi(SmartCar * smartCar) {
-	uint32_t ki;
-	ki = smartCar->motor.ki;
+	uint32_t ki = smartCar->motor.ki;
 	while(1){
 		Segment_print(&smartCar->segment[1], (uint16_t)smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[2], (uint16_t)ki);
@@ -189,8 +187,7 @@ void presetKi(SmartCar * smartCar) {
 }
 
 void presetKd(SmartCar * smartCar) {
-	uint32_t kd;
-	kd = smartCar->motor.kd;
+	uint32_t kd = smartCar->motor.kd;
 	while(1){
 		Segment_print(&smartCar->segment[1], (uint16_t)smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[2], (uint16_t)kd);

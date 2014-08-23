@@ -37,7 +37,7 @@ void main(void) {
 			start(&smartCar);
 			break;
 		case 3:
-			//preset(&smartCar);
+			preset(&smartCar);
 			break;
 		}
 	}
