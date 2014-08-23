@@ -2,7 +2,6 @@
 #include "utils.h"
 #include "algorithm.h"
 
-
 void enterTest(SmartCar * smartCar, uint8_t);
 void segmentTest(SmartCar * smartCar);
 void servoTest(SmartCar * smartCar);
@@ -21,6 +20,8 @@ void test(SmartCar * smartCar) {
 
 	while (1) {
 		Segment_print(&smartCar->segment[1], menu);
+		Segment_print(&smartCar->segment[0], (uint16_t)1111);
+		Segment_print(&smartCar->segment[2], (uint16_t)1111);
 
 		switch (board.button.read()) {
 		case 1:
@@ -38,7 +39,9 @@ void test(SmartCar * smartCar) {
 			Segment_print(&smartCar->segment[0], 0);
 			break;
 		case 4:
-			Segment_print(&smartCar->segment[0], 0);
+			Segment_print(&smartCar->segment[0], (uint16_t)0123);
+			Segment_print(&smartCar->segment[1], (uint16_t)3456);
+			Segment_print(&smartCar->segment[2], (uint16_t)6789);
 			return;
 		}
 	}
@@ -173,7 +176,7 @@ void servoTest(SmartCar * smartCar) {
 	}
 }
 void motorTest(SmartCar * smartCar) {
-	int16_t speed = 30;
+	int16_t speed = 200;
 
 	Motor_Enable(&smartCar->motor);
 
@@ -181,23 +184,23 @@ void motorTest(SmartCar * smartCar) {
 		Motor_runAs(&smartCar->motor, speed);
 
 		Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
-
 		Segment_print(&smartCar->segment[1], Encoder_get(&smartCar->encoder));
+		Segment_print(&smartCar->segment[2], smartCar->motor.currentSpeed);
 
 		switch (board.button.check()) {
 		case 1: // fast
-			if (speed < 100) {
-				speed = speed + 10;
+			if (speed < 2000) {
+				speed = speed + 50;
 			} else {
-				speed = 100;
+				speed = 2000;
 			}
 			break;
 
 		case 2: // slow
-			if (speed > -100) {
-				speed = speed - 10;
+			if (speed > -2000) {
+				speed = speed - 50;
 			} else {
-				speed = -100;
+				speed = -2000;
 			}
 			break;
 

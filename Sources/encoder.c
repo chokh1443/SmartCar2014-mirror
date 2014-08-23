@@ -4,7 +4,8 @@
 void Encoder_init(Encoder * this) {
 	this->count = 0;
 	this->speed = 0;
-
+	this->tickCnt = 0;
+	
 	board.addEncoderTimerHandler(bind(this, (ThisCall)Encoder_onTimer));
 	board.addEncoderTickHandler(bind(this, (ThisCall)Encoder_onTick));
 }

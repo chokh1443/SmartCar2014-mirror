@@ -10,7 +10,6 @@
 
 #include "algorithm.h"
 #include "test.h"
-
 #include "preset.h"
 
 /**********************  Function Prototype here *************************/
@@ -37,7 +36,7 @@ void main(void) {
 			start(&smartCar);
 			break;
 		case 3:
-			//preset(&smartCar);
+			preset(&smartCar);
 			break;
 		}
 	}
