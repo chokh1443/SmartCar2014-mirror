@@ -22,7 +22,7 @@ void sendBTInt(int integer){
 }
 
 void sendBTPID(Motor * motor) {
-	static int timer = 0;
+	static int16_t timer = 0;
 	//t=xxxx,e=xxxx,c=xxxx,p=xxx,i=xxx,d=xxx
 	int e = (motor->encoder->speed*6);
 	sendBTInt(timer);
@@ -32,12 +32,6 @@ void sendBTPID(Motor * motor) {
 	sendBTInt(motor->targetSpeed);
 	sendBTChar("\t",1);
 	sendBTInt(motor->currentSpeed);
-//	sendBTChar("\t",1);
-//	sendBTInt2((int16_t)motor->kp);
-//	sendBTChar("i",1);
-//	sendBTInt2((int16_t)motor->ki);
-//	sendBTChar("d",1);
-//	sendBTInt2((int16_t)motor->kd);
 	sendBTNewLine();
 	timer++;
 }

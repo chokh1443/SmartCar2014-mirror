@@ -14,7 +14,7 @@ void Motor_init(Motor * this, Encoder * encoder){
 	Motor_setki(this,15);
 	Motor_setkd(this,10);
 	
-	this->printPID = 0;
+	this->sendPID = 0;
 	
 	board.addMotorPIDHandler(bind(this, (ThisCall)Motor_pidTick));
 }
