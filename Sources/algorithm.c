@@ -1,5 +1,4 @@
 #include "algorithm.h"
-#include "utils.h"
 
 //camera inputing	time = 0.04~0.06s(about 50ms)
 //servo motor moving time = 0.2s(200ms)

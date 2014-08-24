@@ -1,7 +1,6 @@
 #include "segment.h"
 #include "zp_pin.h"
 
-
 uint8_t ENABLE_PINS[3][4] = {
 	{DO_SEG1_1,DO_SEG1_2,DO_SEG1_3,DO_SEG1_4},
 	{DO_SEG2_1,DO_SEG2_2,DO_SEG2_3,DO_SEG2_4},
