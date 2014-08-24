@@ -1,5 +1,4 @@
 #include "test.h"
-#include "utils.h"
 #include "algorithm.h"
 
 void enterTest(SmartCar * smartCar, uint8_t);
@@ -176,17 +175,18 @@ void servoTest(SmartCar * smartCar) {
 	}
 }
 void motorTest(SmartCar * smartCar) {
-	int16_t speed = 200;
+	int16_t speed = 400;
 
 	Motor_Enable(&smartCar->motor);
 
 	while (1) {
+		smartCar->motor.sendPID = 1;//for bluetooth send start
 		Motor_runAs(&smartCar->motor, speed);
 
 		Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[1], Encoder_get(&smartCar->encoder));
 		Segment_print(&smartCar->segment[2], smartCar->motor.currentSpeed);
-
+		
 		switch (board.button.check()) {
 		case 1: // fast
 			if (speed < 2000) {
@@ -209,6 +209,7 @@ void motorTest(SmartCar * smartCar) {
 			break;
 
 		case 4: //motor test end
+			smartCar->motor.sendPID = 0;//for bluetooth send stop
 			speed = 0;
 			Motor_Disable(&smartCar->motor);
 			Segment_print(&smartCar->segment[0], speed);
