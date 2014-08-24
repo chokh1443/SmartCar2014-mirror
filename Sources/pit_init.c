@@ -62,8 +62,9 @@ void pit_init_fnc(void)
 /* ----------------------------------------------------------- */
 
     //PIT.CH[0].LDVAL.R  = 0x0002EE00;
-    PIT.CH[0].LDVAL.R  = 0x0004E1FF;
-        /*value loaded in the Timer0: 191999    */
+    PIT.CH[0].LDVAL.R  = 0x0009C3FE;
+    //PIT.CH[0].LDVAL.R  = 0x0030D400;
+        /*value loaded in the Timer0: 319999    */
     
     PIT.CH[1].LDVAL.R  = 0x00000FA0;    
         /*value loaded in the Timer1: 4000    */

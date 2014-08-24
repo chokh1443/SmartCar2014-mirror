@@ -47,17 +47,13 @@
 #include "intc_pit.h"
 #include "board.h"
 
-
 /************************* INTERRUPT HANDLERS ************************/
 
 void PIT_ENCODER (void)
 {
-	static uint16_t count = 0;
 	ON_ENCODER();
 	ON_MOTOR();
-
     PIT.CH[0].TFLG.R = 0x00000001;
-
 }
 
 
@@ -73,7 +69,7 @@ void PIT_DISPLAY (void)
 {
     ON_DISPLAY();
     PIT.CH[2].TFLG.R = 0x00000001;
-
+    
 }
 
 

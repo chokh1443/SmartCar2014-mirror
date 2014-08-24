@@ -10,13 +10,14 @@ void Encoder_init(Encoder * this) {
 }
 void Encoder_onTimer(Encoder * this){
 	this->speed = this->count;
+	//this->speed = (this->speed*2 + this->count*8)/10;//gausian filter
 	this->count = 0;
 }
 void Encoder_onTick(Encoder * this){
 	if(board.gpio.get(DI_ENC_B)){
-		this->count++;
-	} else {
 		this->count--;
+	} else {
+		this->count++;
 	}
 }
 
