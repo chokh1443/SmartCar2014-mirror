@@ -9,7 +9,7 @@
 void start(SmartCar * smartCar){
 	uint16_t handle, speed;
 	AIData data[2];
-	int8_t pos[2];
+	int16_t pos[2];
 	Servo_runAs(&smartCar->servo, 0);
 	Motor_runAs(&smartCar->motor, 30);
 	while(1){
@@ -27,7 +27,7 @@ void start(SmartCar * smartCar){
 		if(pos[0] < 0) {
 			pos[0] = pos[0] * pos[0] / 32;
 		} else {
-			pos[0] = pos[0] / 16;
+			pos[0] = pos[0];
 		}
 
 		pos[1] = 64 - pos[1];
@@ -35,7 +35,7 @@ void start(SmartCar * smartCar){
 		if(pos[1] > 0 ){
 			pos[1] = pos[1] * pos[1] / 32;
 		} else {
-			pos[1] = pos[1] /16;
+			pos[1] = pos[1];
 		}
 		
 		//decide handling value
@@ -50,9 +50,14 @@ void AIData_init(AIData * this, Camera * camera){
 	uint16_t * data = camera->rawData;
 	register uint16_t i;
 
-	this->arr[0] = this->arr[0] - this->arr[1];
+	this->arr[0] = this->arr[1] - this->arr[0];
 	for(i = 1; i < 128; i++){
-		this->arr[i] = data[i-1] - data[i];
+		this->arr[i] = data[i] - data[i-1];
+		
+		//for ignore side
+		if(i < 8 || i > 120){
+			continue;
+		}
 
 		if(min > this->arr[i]){
 			min = this->arr[i];
@@ -71,8 +76,8 @@ uint8_t findLine(AIData * data){
 }
 void binarization(AIData * data){
 	register uint16_t i;
-	int16_t lowCrit = data->min/2;
-	int16_t highCrit = data->max/2;
+	int16_t lowCrit = data->min*2/3;
+	int16_t highCrit = data->max*2/3;
 	
 	for(i = 0; i < 128; i++){
 		if(data->arr[i] > highCrit) {
@@ -87,18 +92,22 @@ void binarization(AIData * data){
 uint8_t findIndex(AIData * data){
 	register uint16_t i;
 
-	uint16_t first, last;
-	for(i = 0; i < 128; i++){
+	uint16_t first = 8, last = 8;
+	//for ignore side
+	for(i = 8; i < 120; i++){
 		if(data->arr[i] == 1){
 			last = i;
 		} else {
-			first = i;
-			if(last - first <= 2){
+			
+			if(last - first < 2){
 				//noize
+				
 			} else {
 				return (last + first)/2;
 			}
+			first = i;
 		}
 	}
+	return 255;
 }
 

@@ -218,102 +218,46 @@ void motorTest(SmartCar * smartCar) {
 	}
 }
 
-void cameraTest(SmartCar * smartCar) {
-	/*	       ��������					��������
-	 *   	\         /        \           /
-	 * 		left camera         right camera
-	 *
-	 * 				 Bar LED show(1 is on)
-	 * 	  0000011110000000    00000011110000000
-	 *
-	 * 	  	1 BarLED is same 8 camera sensor
-	 */
+void dumpData(int16_t * data, BarLED * led){
 	uint8_t i, j;
-
+	LEDData result;
+	result.len = 0;
+	for(i = 0; i < 16; i ++){
+		for(j = 0; j < 8; j++){
+			if(data[i*7 + j + 8] == 1){
+				LEDData_add(&result, i);
+				break;
+			}
+		}
+	}
+	BarLED_print(led, result);
+}
+void cameraTest(SmartCar * smartCar) {
+	AIData data[2];
+	int16_t pos[2]; 
+	
 	while (1) {
-		BarLED_print(&smartCar->barLED[i], smartCar->barLED[i].data);
-		
-		switch (board.button.read()) {
-		case 1:
-			for (i = 0; i < 2; i++) {
-				for (j = 0; j < 16; j++) {
-					LEDData_add(&smartCar->barLED[i].data, j);
-				}
-			}
-			break;
-		case 2:
-			for (i = 0; i < 2; i++) {
-				smartCar->barLED[i].data.len = (uint8_t) 0;
-			}
-			break;
-		case 3:
+		AIData_init(&data[0], &smartCar->camera[0]);
+		AIData_init(&data[1], &smartCar->camera[1]);
 
-			break;
+		binarization(&data[0]);
+		binarization(&data[1]);
+		
+ 		dumpData(data[0].arr, &smartCar->barLED[0]);
+		dumpData(data[1].arr, &smartCar->barLED[1]);
+
+		pos[0] = findIndex(&data[0]);
+		pos[1] = findIndex(&data[1]);
+		
+		Segment_print(&smartCar->segment[0], pos[0]);
+		Segment_print(&smartCar->segment[2], pos[1]);
+		
+		switch (board.button.check()) {
 		case 4:
-			BarLED_print(&smartCar->barLED[i], smartCar->barLED[i].data);
-					
 			Segment_print(&smartCar->segment[0], 0);
 			Segment_print(&smartCar->segment[1], 0);
 			return;
 		}
 	}
-	/*	while (1) {
-	 for (i = 0; i < 2; i++) {
-	 BarLED_print(&smartCar->barLED[i], smartCar->barLED[i].data);
-	 }
-
-	 for (i = 0; i < 2; i++) {
-	 smartCar->barLED[i].data = getLine(&smartCar->camera[i]);
-	 }
-
-	 // end camera test
-	 if (board.button.isClick(4)) {
-	 for (i = 0; i < 2; i++) {
-	 for (j = 0; j < 16; j++) {
-	 smartCar->barLED[i].data.data[j] = (uint8_t) 0;
-	 }
-	 smartCar->barLED[i].data.len = (uint8_t) 0;
-
-	 BarLED_print(&smartCar->barLED[i], smartCar->barLED[i].data);
-	 }
-	 Segment_print(&smartCar->segment[0], 0);
-	 Segment_print(&smartCar->segment[1], 0
-	 );
-	 
-	 return;
-	 }
-	 }
-	 */
-}
-
-// input getLine Algorithm to camera
-LEDData getLine(Camera * camera) {
-	LEDData led;
-	AIData data;
-	uint8_t i, j, temp = 0;
-
-	AIData_init(&data, camera);
-	binarization(&data);
-	
-	for (i = 0; i < 16; i++) {
-		led.data[i] = 0;
-	}
-	led.len = 0;
-
-	for (i = 0; i < 16; i++) {
-		temp = 0;
-
-		for (j = 0; j < 8; j++) {
-			if (data.arr[i * 16 + j] == 1) {
-				temp++;
-			}
-		}
-
-		if (temp > 3) {
-			LEDData_add(&led, i);
-		}
-	}
-
-	return led;
 }
 
