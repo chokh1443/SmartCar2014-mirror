@@ -102,7 +102,7 @@ void UartTxMsg(uint8_t *u8TxData, uint32_t u32Size)
 		if(((u32Shift+1) % (u32TDFL+1) == 0) || (u32Temp == (u32Size-1)))
 		{
 			LINFLEX_0.BDRL.R = u32BRDL;
-			u32Cnt = 1000000;
+			u32Cnt = 1000;
 			while((UART_TX_FLAG == 0) && (u32Cnt > 0))/* Wait for Data to get trasmitted */
 			{
 				u32Cnt--;
