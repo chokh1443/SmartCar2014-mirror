@@ -6,81 +6,84 @@
 //we have about 4 data for moving servo motor
 //make map using 5 camera data
 
-typedef struct {
-	int16_t data[128];
-	Range range;
-} DifferentialData;
-
-void getDifferentialData(uint16_t * data, DifferentialData * result);
-void binarization(DifferentialData * differentialData, uint8_t * result);
-int8_t findIndex(uint8_t * data);
-int8_t findLine(Camera * camera);
-
 void start(SmartCar * smartCar){
 	uint16_t handle, speed;
+	AIData data[2];
+	int8_t pos[2];
 	Servo_runAs(&smartCar->servo, 0);
 	Motor_runAs(&smartCar->motor, 30);
 	while(1){
-		int8_t pos[2];
-		pos[0] = findLine(&smartCar->camera[0]);
-		pos[1] = findLine(&smartCar->camera[1]);
+		AIData_init(&data[0], &smartCar->camera[0]);
+		AIData_init(&data[1], &smartCar->camera[1]);
 
-		//decide handling value
-		Servo_runAs(&smartCar->servo, ((pos[0] - 64) + (64 -pos[1]))/2);
-		//decide speed value
-		
-	}
-}
+		binarization(&data[0]);
+		binarization(&data[1]);
 
-int8_t findLine(Camera * camera){
+		pos[0] = findIndex(&data[0]);
+		pos[1] = findIndex(&data[1]);
 
-	uint16_t * data = Camera_get(camera);
-	DifferentialData differentialData;
-	uint8_t result[128];
+		pos[0] = pos[0] - 64;
 
-	getDifferentialData(data, &differentialData);
-	binarization(&differentialData, result);
-	return findIndex(result);
-}
-void getDifferentialData(uint16_t * data, DifferentialData * result){
-	int16_t min = 0, max = 0;
-	register uint16_t i;
-
-	result->data[0] = data[0];
-	for(i = 1; i < 128; i++){
-		result->data[i] = data[i-1] - data[i];
-
-		if(min > result->data[i]){
-			min = result->data[i];
-		}
-		if(max < result->data[i]){
-			max = result->data[i];
-		}
-	}
-	result->range.low = min;
-	result->range.high = max;
-}
-
-void binarization(DifferentialData * differentialData, uint8_t * result){
-	int16_t lowCrit = ((int16_t)differentialData->range.low)/2;
-	int16_t highCrit = ((int16_t)differentialData->range.high)/2;
-	int16_t * diffedData = differentialData->data;
-
-	register uint16_t i;
-
-	result[0] = 0;
-	for(i = 1; i < 128; i++){
-		if(diffedData[i] > highCrit) {
-			result[i] = 0;
-		} else if(diffedData[i] < lowCrit){
-			result[i] = 1;
+		if(pos[0] < 0) {
+			pos[0] = pos[0] * pos[0] / 32;
 		} else {
-			result[i] = result[i-1];
+			pos[0] = pos[0] / 16;
+		}
+
+		pos[1] = 64 - pos[1];
+
+		if(pos[1] > 0 ){
+			pos[1] = pos[1] * pos[1] / 32;
+		} else {
+			pos[1] = pos[1] /16;
+		}
+		
+		//decide handling value
+		Servo_runAs(&smartCar->servo, ((pos[0] + pos[1])/2);
+		//decide speed value
+		// TODO
+	}
+}
+
+void AIData_init(AIData * this, Camera * camera){
+	int16_t min = 0, max = 0;
+	int16_t * data = camera->rawData;
+	register uint16_t i;
+
+	this->arr[0] = this->arr[0] - this->arr[1];
+	for(i = 1; i < 128; i++){
+		this->arr[i] = data[i-1] - data[i];
+
+		if(min > this->arr[i]){
+			min = this->arr[i];
+		}
+		if(max < this->arr[i]){
+			max = this->arr[i];
+		}
+	}
+	this->min = min;
+	this->max = max;
+
+}
+uint8_t findLine(AIData * data){
+	binarization(data);
+	return findIndex(data);
+}
+void binarization(AIData * data){
+	int16_t lowCrit = data->min/2;
+	int16_t highCrit = data->max/2;
+	
+	for(i = 0; i < 128; i++){
+		if(data->arr[i] > highCrit) {
+			data->arr[i] = 0;
+		} else if(diffedData[i] < lowCrit){
+			data->arr[i] = 1;
+		} else {
+			data->arr[i] = data->arr[i-1];
 		}
 	}
 }
-int8_t findIndex(uint8_t * data){
-	//TODO nozie controll
+uint8_t findIndex(AIData * data){
 	register uint16_t i;
 
 	uint16_t first, last;
@@ -90,7 +93,7 @@ int8_t findIndex(uint8_t * data){
 		} else {
 			first = i;
 			if(last - first <= 2){
-				//nozie
+				//noize
 			} else {
 				return (last + first)/2;
 			}

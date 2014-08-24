@@ -50,6 +50,5 @@ void main(void) {
 	 * encoder.get(pEncoder);
 	 * encoder.onTick(pEncoder);
 	 */
-
 }
 
