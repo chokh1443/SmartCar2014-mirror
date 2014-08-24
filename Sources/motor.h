@@ -14,6 +14,7 @@ typedef struct {
 	int32_t kd;
 
 	int32_t err[3];
+	int8_t sendPID;
 } Motor;
 
 void Motor_init(Motor * this, Encoder * encoder);
@@ -25,3 +26,4 @@ void Motor_setki(Motor * this, int32_t val);
 void Motor_setkd(Motor * this, int32_t val);
 void Motor_addErr(Motor * this, int32_t newErr);
 void Motor_pidTick(Motor * this);
+int32_t Motor_PID(Motor * this);

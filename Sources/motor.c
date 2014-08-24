@@ -1,6 +1,5 @@
 #include "motor.h"
-
-int32_t Motor_PID(Motor * this);
+#include "bluetooth.h"
 
 void Motor_init(Motor * this, Encoder * encoder){
 	this->encoder = encoder;
@@ -13,8 +12,10 @@ void Motor_init(Motor * this, Encoder * encoder){
 	
 	Motor_setkp(this,400);
 	Motor_setki(this,15);
-	Motor_setkd(this,3);
-
+	Motor_setkd(this,10);
+	
+	this->printPID = 0;
+	
 	board.addMotorPIDHandler(bind(this, (ThisCall)Motor_pidTick));
 }
 void Motor_Enable(Motor * this) {
@@ -46,9 +47,9 @@ void Motor_addErr(Motor * this, int32_t newErr) {
 }
 
 void Motor_pidTick(Motor * this){
-	int32_t dSpeed = Motor_PID(this);
+	int32_t dSpeed = Motor_PID(this); 
 	int32_t speed = this->currentSpeed + dSpeed;
-
+	//speed=this->targetSpeed;
 	
 	if (speed > 2000) {
 		speed = 2000;
@@ -72,6 +73,9 @@ void Motor_pidTick(Motor * this){
 	board.pwm.set(PWM_AIN1 , speed);
 	board.pwm.set(PWM_BIN1 , speed);
 	this->currentSpeed = speed;
+	if(this->sendPID == 1){
+		sendBTPID(this);
+	}	
 }
 
 int32_t Motor_PID(Motor * this){
@@ -80,21 +84,23 @@ int32_t Motor_PID(Motor * this){
 	int32_t encoder = 0;
 	int32_t speedLimit = this->targetSpeed / 2;
 	
-	encoder = (this->encoder->speed * 25) / 2;
+	encoder = this->encoder->speed * 6;
+	//encoder = (this->encoder->speed * 5) / 2;
 	newErr = this->targetSpeed - encoder; 
 
 	Motor_addErr(this , newErr);
 
-	deltaSpeed = this->kp*(this->err[2] - this->err[1])
+	deltaSpeed = this->kp*(this->err[2]-this->err[1])
 			+ this->ki*(this->err[2])
 			+ this->kd*((this->err[2] - this->err[1]) - (this->err[1] - this->err[0]));
+	
 	deltaSpeed /= 100;
 	
-	if(deltaSpeed > speedLimit) {
-		deltaSpeed = speedLimit;
-	} else if(deltaSpeed < -speedLimit) {
-		deltaSpeed = -speedLimit;
-	}
+//	if(deltaSpeed > speedLimit) {
+//		deltaSpeed = speedLimit;
+//	} else if(deltaSpeed < -speedLimit) {
+//		deltaSpeed = -speedLimit;
+//	}
 
 	return deltaSpeed;
 }
