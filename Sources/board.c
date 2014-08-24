@@ -14,6 +14,7 @@ void PWM_SET(uint16_t ch, uint16_t value);
 uint8_t BUTTON_GET(uint16_t ch);
 uint8_t BUTTON_IS_CLICK(uint16_t ch);
 uint8_t BUTTON_READ();
+uint8_t BUTTON_CHEEK();
 
 void ADD_TIMER_INTERRUPT(EventHandler handler);
 void ADD_CAMERA_INTERRUPT(EventHandler handler);
@@ -29,7 +30,7 @@ Board board = {
 	//PWM
 	{PWM_SET},
 	//BUTTON
-	{BUTTON_GET, BUTTON_IS_CLICK, BUTTON_READ},
+	{BUTTON_GET, BUTTON_IS_CLICK, BUTTON_READ, BUTTON_CHEEK},
 	//Interrupt
 	ADD_TIMER_INTERRUPT,
 	ADD_CAMERA_INTERRUPT,
@@ -86,6 +87,21 @@ uint8_t BUTTON_READ(){
 			while (BUTTON_GET(4));
 			return 4;
 		}
+	}
+}
+uint8_t BUTTON_CHEEK(){
+	if (BUTTON_GET(1)) {
+		while (BUTTON_GET(1));
+		return 1;
+	} else if (BUTTON_GET(2)) {
+		while (BUTTON_GET(2));
+		return 2;
+	} else if (BUTTON_GET(3)) {
+		while (BUTTON_GET(3));
+		return 3;
+	} else if (BUTTON_GET(4)) {
+		while (BUTTON_GET(4));
+		return 4;
 	}
 }
 

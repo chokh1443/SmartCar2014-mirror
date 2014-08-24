@@ -22,6 +22,7 @@ typedef struct {
 	uint8_t (*get)(uint16_t ch);
 	uint8_t (*isClick)(uint16_t ch);
 	uint8_t (*read)();
+	uint8_t (*check)();
 } BUTTON;
 
 typedef struct {

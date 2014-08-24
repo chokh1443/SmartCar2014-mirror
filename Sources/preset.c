@@ -28,6 +28,9 @@ void preset(SmartCar * smartCar){
 			enterPreset(smartCar, menu);
 			break;
 		case 4:
+			Segment_print(&smartCar->segment[0], (uint16_t)0123);
+			Segment_print(&smartCar->segment[1], (uint16_t)3456);
+			Segment_print(&smartCar->segment[2], (uint16_t)6789);
 			return;
 		}
 		if(menu < 1){
@@ -125,10 +128,10 @@ void presetMotor(SmartCar * smartCar) {
 		Segment_print(&smartCar->segment[2], (uint16_t)smartCar->encoder.speed);
 		switch(board.button.read()){
 		case 1:
-			speed += 1;
+			speed += 20;
 			break;
 		case 2:
-			speed -= 1;
+			speed -= 20;
 			break;
 		case 4:
 			return;
@@ -138,24 +141,23 @@ void presetMotor(SmartCar * smartCar) {
 	}	
 }
 void presetKp(SmartCar * smartCar) {
-	uint32_t kp;
-	kp = smartCar->motor.kp;
+	uint32_t kp = smartCar->motor.kp;
 	while(1){
 		Segment_print(&smartCar->segment[1], (uint16_t)smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[2], (uint16_t)kp);
 		switch(board.button.read()){
 		case 1:
-			kp += 1;
+			kp += 10;
 			break;
 		case 2:
-			kp -= 1;
+			kp -= 10;
 			break;
 		case 4:
 			return;
 		}
 		if(kp < 1){
 			kp = 1;
-		} else if (kp > 100){
+		} else if (kp > 510){
 			kp = 100;
 		}
 		
@@ -163,8 +165,7 @@ void presetKp(SmartCar * smartCar) {
 	}
 }
 void presetKi(SmartCar * smartCar) {
-	uint32_t ki;
-	ki = smartCar->motor.ki;
+	uint32_t ki = smartCar->motor.ki;
 	while(1){
 		Segment_print(&smartCar->segment[1], (uint16_t)smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[2], (uint16_t)ki);
@@ -189,8 +190,7 @@ void presetKi(SmartCar * smartCar) {
 }
 
 void presetKd(SmartCar * smartCar) {
-	uint32_t kd;
-	kd = smartCar->motor.kd;
+	uint32_t kd = smartCar->motor.kd;
 	while(1){
 		Segment_print(&smartCar->segment[1], (uint16_t)smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[2], (uint16_t)kd);
@@ -223,7 +223,6 @@ void presetCheckPID(SmartCar * smartCar) {
 	
 	BarLED_print(&smartCar->barLED[0], smartCar->barLED[0].data);
 	BarLED_print(&smartCar->barLED[1], smartCar->barLED[1].data);
-	Segment_print(&smartCar->segment[0], (uint16_t)smartCar->encoder.target);
 	Segment_print(&smartCar->segment[1], (uint16_t)smartCar->encoder.speed);
 	Segment_print(&smartCar->segment[2], (uint16_t)smartCar->motor.targetSpeed);
 	while(1){

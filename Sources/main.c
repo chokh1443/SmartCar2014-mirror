@@ -6,8 +6,8 @@
 #include "sys_init.h"
 
 #include "UART_drv_api.h"
-
 #include "smartcar.h"
+
 #include "algorithm.h"
 #include "test.h"
 #include "preset.h"
@@ -36,7 +36,7 @@ void main(void) {
 			start(&smartCar);
 			break;
 		case 3:
-			//preset(&smartCar);
+			preset(&smartCar);
 			break;
 		}
 	}
