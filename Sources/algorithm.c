@@ -39,7 +39,7 @@ void start(SmartCar * smartCar){
 		}
 		
 		//decide handling value
-		Servo_runAs(&smartCar->servo, ((pos[0] + pos[1])/2);
+		Servo_runAs(&smartCar->servo, (pos[0] + pos[1])/2);
 		//decide speed value
 		// TODO
 	}
@@ -47,7 +47,7 @@ void start(SmartCar * smartCar){
 
 void AIData_init(AIData * this, Camera * camera){
 	int16_t min = 0, max = 0;
-	int16_t * data = camera->rawData;
+	uint16_t * data = camera->rawData;
 	register uint16_t i;
 
 	this->arr[0] = this->arr[0] - this->arr[1];
@@ -70,13 +70,14 @@ uint8_t findLine(AIData * data){
 	return findIndex(data);
 }
 void binarization(AIData * data){
+	register uint16_t i;
 	int16_t lowCrit = data->min/2;
 	int16_t highCrit = data->max/2;
 	
 	for(i = 0; i < 128; i++){
 		if(data->arr[i] > highCrit) {
 			data->arr[i] = 0;
-		} else if(diffedData[i] < lowCrit){
+		} else if(data->arr[i] < lowCrit){
 			data->arr[i] = 1;
 		} else {
 			data->arr[i] = data->arr[i-1];
@@ -88,7 +89,7 @@ uint8_t findIndex(AIData * data){
 
 	uint16_t first, last;
 	for(i = 0; i < 128; i++){
-		if(data[i] == 1){
+		if(data->arr[i] == 1){
 			last = i;
 		} else {
 			first = i;

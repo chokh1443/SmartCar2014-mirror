@@ -82,7 +82,7 @@ void segmentTest(SmartCar * smartCar) {
 		}
 
 		//button4 is clicked, and segment test end
-		switch (board.button.read()) {
+		switch (board.button.check()) {
 		//BarLED ON
 		case 1:
 			for (i = 0; i < 16; i++) {
@@ -283,19 +283,18 @@ void cameraTest(SmartCar * smartCar) {
 	 return;
 	 }
 	 }
-	 */}
+	 */
+}
 
 // input getLine Algorithm to camera
 LEDData getLine(Camera * camera) {
 	LEDData led;
-	uint16_t * data = Camera_get(camera);
-	//DifferentialData differentialData;
-	uint8_t result[128];
+	AIData data;
 	uint8_t i, j, temp = 0;
 
-	//getDifferentialData(data, &differentialData);
-	//binarization(&differentialData, result);
-
+	AIData_init(&data, camera);
+	binarization(&data);
+	
 	for (i = 0; i < 16; i++) {
 		led.data[i] = 0;
 	}
@@ -305,7 +304,7 @@ LEDData getLine(Camera * camera) {
 		temp = 0;
 
 		for (j = 0; j < 8; j++) {
-			if (result[i * 16 + j] == 1) {
+			if (data.arr[i * 16 + j] == 1) {
 				temp++;
 			}
 		}
