@@ -16,7 +16,8 @@
 
 void main(void);
 
-unsigned char newLine[2] = {'\r','\n'};
+
+
 
 /*********************  Initialization Function(s) ************************/
 
@@ -24,7 +25,7 @@ void main(void) {
 	SmartCar smartCar;
 	sys_init_fnc();
 	EnableExternalInterrupts();
-
+	UartBufInit();
 	SmartCar_init(&smartCar);
 
 	while(1){
