@@ -6,11 +6,14 @@
 //make map using 5 camera data
 
 void start(SmartCar * smartCar){
-	uint16_t handle, speed;
+	uint16_t handle=0;
+	int16_t speed=30;
 	AIData data[2];
 	int16_t pos[2];
 	Servo_runAs(&smartCar->servo, 0);
+	Motor_Enable(&smartCar->motor);
 	Motor_runAs(&smartCar->motor, 30);
+	
 	while(1){
 		AIData_init(&data[0], &smartCar->camera[0]);
 		AIData_init(&data[1], &smartCar->camera[1]);
@@ -38,9 +41,28 @@ void start(SmartCar * smartCar){
 		}
 		
 		//decide handling value
-		Servo_runAs(&smartCar->servo, (pos[0] + pos[1])/2);
+		handle = (pos[0] + pos[1])/2;
+		Servo_runAs(&smartCar->servo, handle);
 		//decide speed value
-		// TODO
+
+		switch (board.button.check()) {
+		case 1:
+			if(speed < 50){			// max speed = 50
+				speed = speed + 10;
+			} else {
+				speed = speed;
+			}
+			break;
+		case 2:
+			if(speed > 0){			// min speed = 0
+				speed = speed - 10;
+			} else {
+				speed = speed;
+			}
+			break;
+		case 4:
+			return;
+		}
 	}
 }
 

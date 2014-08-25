@@ -1,5 +1,6 @@
 #include "test.h"
 #include "algorithm.h"
+#include "encoder.h"
 
 void enterTest(SmartCar * smartCar, uint8_t);
 void segmentTest(SmartCar * smartCar);
@@ -250,13 +251,31 @@ void cameraTest(SmartCar * smartCar) {
 		pos[0] = findIndex(&data[0]);
 		pos[1] = findIndex(&data[1]);
 		
+		pos[0] = pos[0] - 64;
+		
+		if(pos[0] < 0) {
+			pos[0] = pos[0] * pos[0] / 32;
+		} else {
+			pos[0] = pos[0];
+		}
+
+		pos[1] = 64 - pos[1];
+
+		if(pos[1] > 0 ){
+			pos[1] = pos[1] * pos[1] / 32;
+		} else {
+			pos[1] = pos[1];
+		}
+		
 		Segment_print(&smartCar->segment[0], pos[0]);
+		Segment_print(&smartCar->segment[1], (pos[0]+pos[1])/2);
 		Segment_print(&smartCar->segment[2], pos[1]);
 		
 		switch (board.button.check()) {
 		case 4:
 			Segment_print(&smartCar->segment[0], 0);
 			Segment_print(&smartCar->segment[1], 0);
+			Segment_print(&smartCar->segment[2], 0);
 			return;
 		}
 	}
