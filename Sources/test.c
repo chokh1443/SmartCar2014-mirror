@@ -224,20 +224,6 @@ void motorTest(SmartCar * smartCar) {
 	}
 }
 
-void dumpData(int16_t * data, BarLED * led){
-	uint8_t i, j;
-	LEDData result;
-	result.len = 0;
-	for(i = 0; i < 16; i ++){
-		for(j = 0; j < 8; j++){
-			if(data[i*7 + j + 8] == 1){
-				LEDData_add(&result, i);
-				break;
-			}
-		}
-	}
-	BarLED_print(led, result);
-}
 void cameraTest(SmartCar * smartCar) {
 	AIData data[2];
 	int16_t pos[2]; 
@@ -255,25 +241,9 @@ void cameraTest(SmartCar * smartCar) {
 		pos[0] = findIndex(&data[0]);
 		pos[1] = findIndex(&data[1]);
 		
-		pos[0] = pos[0] - 64;
-		
-		if(pos[0] < 0) {
-			pos[0] = pos[0] * pos[0] / 32;
-		} else {
-			pos[0] = pos[0];
-		}
-
-		pos[1] = 64 - pos[1];
-
-		if(pos[1] > 0 ){
-			pos[1] = pos[1] * pos[1] / 32;
-		} else {
-			pos[1] = pos[1];
-		}
-		
-		Segment_print(&smartCar->segment[0], pos[0]);
-		Segment_print(&smartCar->segment[1], (pos[0]+pos[1])/2);
-		Segment_print(&smartCar->segment[2], pos[1]);
+		Segment_print(&smartCar->segment[0], (smartCar->camera[1].average + smartCar->camera[0].average)/2);
+		Segment_print(&smartCar->segment[1], handling(pos[0], pos[1]));
+		Segment_print(&smartCar->segment[2], Camera_getInterval() / 100);
 		
 		switch (board.button.check()) {
 		case 4:

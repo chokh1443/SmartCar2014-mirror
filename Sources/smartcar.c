@@ -20,16 +20,5 @@ void SmartCar_init(SmartCar * this){
 	Motor_init(&this->motor, &this->encoder);
 	Servo_init(&this->servo);
 	
-	SmartCar_setCameraPIT(this, 12000);
-}
-
-void SmartCar_setCameraPIT(SmartCar * smartCar, uint32_t value) {
-	/*PIT.CH[1].LDVAL.R  = 0x00000FA0; 4000 ~ 12000*/
-	if(value < 4000){
-		value = 4000;
-	} else if(value > 12000){
-		value = 12000;
-	}
-	smartCar->cameraPIT = value;
-	PIT.CH[1].LDVAL.R = smartCar->cameraPIT;
+	PIT.CH[1].LDVAL.R = 12000;
 }

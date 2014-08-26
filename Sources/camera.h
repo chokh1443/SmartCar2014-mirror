@@ -9,13 +9,12 @@ typedef struct {
 	uint8_t id;
 	uint8_t count;
 	
-	uint16_t clk;
-	uint8_t clk_change;
+	uint32_t sum;
+	uint32_t average;
 } Camera;
 
 void Camera_init(Camera * this, uint8_t id);
 uint16_t * Camera_get(Camera * this);
+uint32_t Camera_getInterval();
 uint16_t Camera_minValue(Camera * this);
 uint16_t Camera_maxValue(Camera * this);
-void Camera_setClk(Camera * this, uint16_t value);
-uint16_t Camera_getClk(Camera * this);

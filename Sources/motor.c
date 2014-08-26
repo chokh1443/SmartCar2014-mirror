@@ -50,6 +50,9 @@ void Motor_pidTick(Motor * this){
 	int32_t dSpeed = Motor_PID(this); 
 	int32_t speed = this->currentSpeed + dSpeed;
 	//speed=this->targetSpeed;
+	if(this->targetSpeed==0){
+		speed = 0;
+	}
 	
 	if (speed > 2000) {
 		speed = 2000;

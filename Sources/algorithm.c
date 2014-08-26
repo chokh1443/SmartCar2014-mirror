@@ -1,4 +1,5 @@
 #include "algorithm.h"
+#include "bluetooth.h"
 
 //camera inputing	time = 0.04~0.06s(about 50ms)
 //servo motor moving time = 0.2s(200ms)
@@ -6,21 +7,17 @@
 //make map using 5 camera data
 
 void start(SmartCar * smartCar){
-	uint16_t handle=0;
+	int16_t handle=0, handle_check=0;
 	int16_t speed=200;
 	AIData data[2];
 	int16_t pos[2];
+	
 	Servo_runAs(&smartCar->servo, 0);
 	Motor_Enable(&smartCar->motor);
 	
 	
 	while(1){
-		Motor_runAs(&smartCar->motor, speed);
 		
-		Segment_print(&smartCar->segment[0], (uint16_t)speed);
-		//Segment_print(&smartCar->segment[1], (data[0]->min < data[1]->min)? (uint16_t)data[0]->min : (uint16_t)data[1]->min);
-		//Segment_print(&smartCar->segment[2], (data[0]->max > data[1]->max)? (uint16_t)data[0]->max : (uint16_t)data[1]->max);
-		  
 		AIData_init(&data[0], &smartCar->camera[0]);
 		AIData_init(&data[1], &smartCar->camera[1]);
 
@@ -29,38 +26,52 @@ void start(SmartCar * smartCar){
 
 		pos[0] = findIndex(&data[0]);
 		pos[1] = findIndex(&data[1]);
-
-		pos[0] = pos[0] - 64;
-
-		if(pos[0] < 0) {
-			pos[0] = pos[0] * pos[0] / 32;
-		} else {
-			pos[0] = pos[0];
-		}
-
-		pos[1] = 64 - pos[1];
-
-		if(pos[1] > 0 ){
-			pos[1] = pos[1] * pos[1] / 32;
-		} else {
-			pos[1] = pos[1];
-		}
 		
-		//decide handling value
-		handle = (pos[0] + pos[1])/2;
+		handle = handling(pos[0], pos[1]);
+
+//		pos[0] = pos[0] == 255 ? -50 : 64 -  pos[0];
+//
+//		if(pos[0] < 0) {
+//			pos[0] = -pos[0] * pos[0] / 32;
+//		} else {
+//			pos[0] = pos[0];
+//		} 
+//
+//		pos[1] = pos[1] == 255 ? 50 : 64 - pos[1];
+//
+//		if(pos[1] > 0 ){
+//			pos[1] = pos[1] * pos[1] / 32;
+		
+//		} else {
+//			pos[1] = pos[1];
+//		}
+//		
+//		handle = (pos[0]+pos[1]);
+
+		//current speed
+		Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
+		Segment_print(&smartCar->segment[1], handle);
+		Segment_print(&smartCar->segment[2], Camera_getInterval()/100);
+		
+		//Segment_print(&smartCar->segment[0], pos[1]);
+		//Segment_print(&smartCar->segment[2], pos[0]);
+		//print camera status
+		dumpData(data[0].arr, &smartCar->barLED[0]);
+		dumpData(data[1].arr, &smartCar->barLED[1]);
+		
 		Servo_runAs(&smartCar->servo, handle);
-		//decide speed value
+		Motor_runAs(&smartCar->motor, speed);
 
 		switch (board.button.check()) {
 		case 1:
-			if(speed < 2000){			// max speed = 2000
+			if(speed < 2000){// max speed = 2000
 				speed = speed + 50;
 			} else {
 				speed = speed;
 			}
 			break;
 		case 2:
-			if(speed > 0){			// min speed = 0
+			if(speed > 0){// min speed = 0
 				speed = speed - 50;
 			} else {
 				speed = speed;
@@ -70,6 +81,12 @@ void start(SmartCar * smartCar){
 			return;
 		}
 	}
+}
+int16_t handling(uint16_t right, uint16_t left){
+	static int16_t value = 0;
+	int16_t handle = (right == 255 ? 0 : (128 - right) * (128 -right) / 64) + (left == 255 ? 0 : - left * left / 64);
+	value = (value * 2 + handle * 8) / 10;
+	return value;
 }
 
 void AIData_init(AIData * this, Camera * camera){
@@ -95,8 +112,8 @@ void AIData_init(AIData * this, Camera * camera){
 	}
 	this->min = min;
 	this->max = max;
-	sendBTCamera(camera);
 
+	//sendBTCamera(camera);
 }
 uint8_t findLine(AIData * data){
 	binarization(data);
@@ -126,7 +143,6 @@ uint8_t findIndex(AIData * data){
 		if(data->arr[i] == 1){
 			last = i;
 		} else {
-			
 			if(last - first < 2){
 				//noize
 				
@@ -139,3 +155,17 @@ uint8_t findIndex(AIData * data){
 	return 255;
 }
 
+void dumpData(int16_t * data, BarLED * led){
+	uint8_t i, j;
+	LEDData result;
+	result.len = 0;
+	for(i = 0; i < 16; i ++){
+		for(j = 0; j < 8; j++){
+			if(data[i*7 + j + 8] == 1){
+				LEDData_add(&result, i);
+				break;
+			}
+		}
+	}
+	BarLED_print(led, result);
+}

@@ -21,6 +21,30 @@ void sendBTInt(int integer){
 	UartTxMsg((unsigned char *)(int2chrArr + integer%10),1);
 }
 
+void sendBTInt2(int integer){
+	const static unsigned char int2chrArr[10] = {'0', '1', '2', '3', '4',
+			'5', '6', '7', '8', '9'};
+	if(integer < 0){
+		UartTxMsg((unsigned char *)("-"), 1);
+		integer *= -1;
+	}
+	UartTxMsg((unsigned char *)(int2chrArr + integer/10),1);
+	UartTxMsg((unsigned char *)(int2chrArr + integer%10),1);
+}
+void sendBTInt4(int integer){
+	const static unsigned char int2chrArr[10] = {'0', '1', '2', '3', '4',
+			'5', '6', '7', '8', '9'};
+	if(integer < 0){
+		UartTxMsg((unsigned char *)("-"), 1);
+		integer *= -1;
+	}
+	UartTxMsg((unsigned char *)(int2chrArr + integer/1000),1);
+	UartTxMsg((unsigned char *)(int2chrArr + integer%1000/100),1);
+	UartTxMsg((unsigned char *)(int2chrArr + integer%100/10),1);
+	UartTxMsg((unsigned char *)(int2chrArr + integer%10),1);
+}
+
+
 void sendBTPID(Motor * motor) {
 	static int16_t timer = 0;
 	//t=xxxx,e=xxxx,c=xxxx,p=xxx,i=xxx,d=xxx
@@ -35,10 +59,23 @@ void sendBTPID(Motor * motor) {
 	sendBTNewLine();
 	timer++;
 }
-void sendCamera(Camera * camera) {
-	uint8_t i;
-	for(i = 0 ; i < 128 ; i++){
-		sendBTInt(camera->rawData[i]);
-	}	
+void sendBTCamera(Camera * camera) {
+	static int a=0,b=0;
+	int i;
+	
+	sendBTInt(camera->id);
+	sendBTChar("\t",1);
+	if(camera->id == 0){
+		a=++a%12;
+		sendBTInt2(a);
+	} else if(camera->id == 1){
+		b=++b%12;
+		sendBTInt2(b);
+	}
+	sendBTChar("\t",1);
+	for(i = a*10 ; i < (a*10+10) ; i++){
+		sendBTInt4(camera->rawData[i]);
+		sendBTChar("\t",1);
+	}
 	sendBTNewLine();
 }

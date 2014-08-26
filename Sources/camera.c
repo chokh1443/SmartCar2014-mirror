@@ -1,5 +1,6 @@
 #include "camera.h"
 #include "adc_drv.h"
+#include "bluetooth.h"
 
 void Camera_onTick(Camera * this);
 
@@ -12,25 +13,25 @@ struct {
 	{DO_CAM2_CLK, DO_CAM2_SI, ADC_CAM2}
 };
 
+void Camera_autoSet(Camera * this);
+
 void Camera_init(Camera * this, uint8_t id) {
 	
 	this->id = id;
 	this->count = 0;
-	
-	this->clk = 4000;
-	this->clk_change = 0;
 		
 	board.addCameraHandler(bind(this, (ThisCall)Camera_onTick));
-	
 }
 uint16_t * Camera_get(Camera * this){
 	return this->rawData;
 }
 
 void Camera_onTick(Camera * this) {
-	//TODO optimaize. maybe can read camera double speed.
+	static uint32_t clockSpeed = 4000;
 	uint16_t value;
+	
 	if (this->count == 0 || this->count == 1) {
+		this->sum = 0; 
 		board.gpio.on(CAMERA_PINS[this->id].SI);
 	} else {
 		board.gpio.off(CAMERA_PINS[this->id].SI);
@@ -39,15 +40,31 @@ void Camera_onTick(Camera * this) {
 	board.gpio.on(CAMERA_PINS[this->id].CLK);
 
 	value = A2D_GetSingleCh_10bit(CAMERA_PINS[this->id].CH);
+	this->sum += value;
 	this->rawData[this->count] = (value * 9 + this->rawData[this->count] * 1) / 10;
 
 	board.gpio.off(CAMERA_PINS[this->id].CLK);
-
-	if((this->count == 127) && (this->clk_change == 1)){
-		PIT.CH[1].LDVAL.R  = this->clk;
-		this->clk_change = 0;
+	
+	if(this->count == 127){
+		this->average = this->sum / 128;
+		Camera_autoSet(this);
 	}
+	
 	this->count = ++this->count % 128;
+}
+void Camera_autoSet(Camera * this){
+	if(this->average < 650){
+		if(PIT.CH[1].LDVAL.R < 32000){
+			PIT.CH[1].LDVAL.R += 500;
+		}
+	} else if(this->average > 950){
+		if(PIT.CH[1].LDVAL.R > 2000){
+			PIT.CH[1].LDVAL.R -= 500;
+		}
+	}
+}
+uint32_t Camera_getInterval(){
+	return PIT.CH[1].LDVAL.R;
 }
 uint16_t Camera_minValue(Camera * this){
 	int minVal = 1000;
@@ -68,11 +85,4 @@ uint16_t Camera_maxValue(Camera * this){
 		}
 	}
 	return maxVal;
-}
-void Camera_setClk(Camera * this, uint16_t value){
-	this->clk = value;
-	this->clk_change = 1;
-}
-uint16_t Camera_getClk(Camera * this){
-	return this->clk;
 }
