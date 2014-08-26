@@ -179,8 +179,12 @@ void motorTest(SmartCar * smartCar) {
 	int16_t speed = 300;
 
 	Motor_Enable(&smartCar->motor);
-
+	Servo_init(&smartCar->servo);
+	Servo_runAs(&smartCar->servo,0);
+	
 	while (1) {
+		Servo_runAs(&smartCar->servo,0);
+			
 		smartCar->motor.sendPID = 1;//for bluetooth send start
 		Motor_runAs(&smartCar->motor, speed);
 
