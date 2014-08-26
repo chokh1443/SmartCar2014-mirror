@@ -61,7 +61,7 @@ void start(SmartCar * smartCar){
 			break;
 		case 2:
 			if(speed > 0){			// min speed = 0
-				speed = speed - 10;
+				speed = speed - 50;
 			} else {
 				speed = speed;
 			}
