@@ -82,11 +82,11 @@ int32_t Motor_PID(Motor * this){
 	int32_t newErr = 0;
 	int32_t deltaSpeed = 0;
 	int32_t encoder = 0;
-	int32_t speedLimit = this->targetSpeed / 2;
+//	int32_t speedLimit = this->targetSpeed / 2;
 	
-	encoder = this->encoder->speed * 6;
 	//encoder = (this->encoder->speed * 5) / 2;
-	newErr = this->targetSpeed - encoder; 
+	encoder = this->encoder->speed * 6;	
+	newErr = this->targetSpeed - encoder;
 
 	Motor_addErr(this , newErr);
 

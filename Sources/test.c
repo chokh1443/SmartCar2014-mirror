@@ -19,8 +19,8 @@ void test(SmartCar * smartCar) {
 	board.led.off(4);
 
 	while (1) {
-		Segment_print(&smartCar->segment[1], menu);
 		Segment_print(&smartCar->segment[0], (uint16_t)1111);
+		Segment_print(&smartCar->segment[1], menu);		
 		Segment_print(&smartCar->segment[2], (uint16_t)1111);
 
 		switch (board.button.read()) {
@@ -176,7 +176,7 @@ void servoTest(SmartCar * smartCar) {
 	}
 }
 void motorTest(SmartCar * smartCar) {
-	int16_t speed = 400;
+	int16_t speed = 300;
 
 	Motor_Enable(&smartCar->motor);
 

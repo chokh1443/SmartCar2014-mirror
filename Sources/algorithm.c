@@ -7,14 +7,20 @@
 
 void start(SmartCar * smartCar){
 	uint16_t handle=0;
-	int16_t speed=30;
+	int16_t speed=200;
 	AIData data[2];
 	int16_t pos[2];
 	Servo_runAs(&smartCar->servo, 0);
 	Motor_Enable(&smartCar->motor);
-	Motor_runAs(&smartCar->motor, 30);
+	
 	
 	while(1){
+		Motor_runAs(&smartCar->motor, speed);
+		
+		Segment_print(&smartCar->segment[0], (uint16_t)speed);
+		Segment_print(&smartCar->segment[1], (data[0]->min < data[1]->min)? (uint16_t)data[0]->min : (uint16_t)data[1]->min);
+		Segment_print(&smartCar->segment[2], (data[0]->max > data[1]->max)? (uint16_t)data[0]->max : (uint16_t)data[1]->max);
+		  
 		AIData_init(&data[0], &smartCar->camera[0]);
 		AIData_init(&data[1], &smartCar->camera[1]);
 
@@ -47,8 +53,8 @@ void start(SmartCar * smartCar){
 
 		switch (board.button.check()) {
 		case 1:
-			if(speed < 50){			// max speed = 50
-				speed = speed + 10;
+			if(speed < 2000){			// max speed = 2000
+				speed = speed + 50;
 			} else {
 				speed = speed;
 			}
