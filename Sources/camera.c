@@ -17,7 +17,8 @@ void Camera_init(Camera * this, uint8_t id) {
 	this->id = id;
 	this->count = 0;
 	board.addCameraHandler(bind(this, (ThisCall)Camera_onTick));
-	
+	this->clk = 4000;
+	this->clk_change = 0;
 }
 uint16_t * Camera_get(Camera * this){
 	return this->rawData;
@@ -39,6 +40,10 @@ void Camera_onTick(Camera * this) {
 
 	board.gpio.off(CAMERA_PINS[this->id].CLK);
 
+	if((this->count == 127) && (this->clk_change == 1)){
+		PIT.CH[1].LDVAL.R  = this->clk;
+		this->clk_change = 0;
+	}
 	this->count = ++this->count % 128;
 }
 uint16_t Camera_minValue(Camera * this){
@@ -60,4 +65,11 @@ uint16_t Camera_maxValue(Camera * this){
 		}
 	}
 	return maxVal;
+}
+void Camera_setClk(Camera * this, uint16_t value){
+	this->clk = value;
+	this->clk_change = 1;
+}
+uint16_t Camera_getClk(Camera * this){
+	return this->clk;
 }
