@@ -8,3 +8,4 @@ void sendBTNewLine(void);
 void sendBTChar(const char * arr, unsigned long length);
 void sendBTInt(int integer);
 void sendBTPID(Motor * motor);
+void sendCamera(SmartCar * smartCar);

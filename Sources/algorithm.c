@@ -95,6 +95,7 @@ void AIData_init(AIData * this, Camera * camera){
 	}
 	this->min = min;
 	this->max = max;
+	sendCamera(camera);
 
 }
 uint8_t findLine(AIData * data){

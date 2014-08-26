@@ -16,9 +16,12 @@ void Camera_init(Camera * this, uint8_t id) {
 	
 	this->id = id;
 	this->count = 0;
-	board.addCameraHandler(bind(this, (ThisCall)Camera_onTick));
+	
 	this->clk = 4000;
 	this->clk_change = 0;
+		
+	board.addCameraHandler(bind(this, (ThisCall)Camera_onTick));
+	
 }
 uint16_t * Camera_get(Camera * this){
 	return this->rawData;
