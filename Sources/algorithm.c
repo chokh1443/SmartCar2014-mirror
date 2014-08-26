@@ -18,8 +18,8 @@ void start(SmartCar * smartCar){
 		Motor_runAs(&smartCar->motor, speed);
 		
 		Segment_print(&smartCar->segment[0], (uint16_t)speed);
-		Segment_print(&smartCar->segment[1], (data[0]->min < data[1]->min)? (uint16_t)data[0]->min : (uint16_t)data[1]->min);
-		Segment_print(&smartCar->segment[2], (data[0]->max > data[1]->max)? (uint16_t)data[0]->max : (uint16_t)data[1]->max);
+		//Segment_print(&smartCar->segment[1], (data[0]->min < data[1]->min)? (uint16_t)data[0]->min : (uint16_t)data[1]->min);
+		//Segment_print(&smartCar->segment[2], (data[0]->max > data[1]->max)? (uint16_t)data[0]->max : (uint16_t)data[1]->max);
 		  
 		AIData_init(&data[0], &smartCar->camera[0]);
 		AIData_init(&data[1], &smartCar->camera[1]);
