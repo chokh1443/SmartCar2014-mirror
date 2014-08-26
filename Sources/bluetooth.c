@@ -36,8 +36,12 @@ void sendBTPID(Motor * motor) {
 	timer++;
 }
 void sendCamera(Camera * camera) {
-	
-	for(int i = 0 ; i < 128 ; i++){
-		camera->rawData[i]
+	uint8_t i;
+	for(i = 0 ; i < 128 ; i++){
+		sendBTInt(camera->rawData[i]);
+		sendBTChar(" : ", 3);		
+		sendBTInt(camera->rawData[i]);
+		sendBTChar(", ", 2);
 	}	
+	sendBTNewLine();
 }
