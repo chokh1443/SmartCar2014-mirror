@@ -24,8 +24,8 @@ void start(SmartCar * smartCar){
 		binarization(&data[0]);
 		binarization(&data[1]);
 
-		pos[0] = findIndex(&data[0]);
-		pos[1] = findIndex(&data[1]);
+		pos[0] = findIndexLR(&data[0]);//right camera
+		pos[1] = findIndexRL(&data[1]);//left camera
 		
 		handle = handling(pos[0], pos[1]);
 
@@ -49,12 +49,12 @@ void start(SmartCar * smartCar){
 //		handle = (pos[0]+pos[1]);
 
 		//current speed
-		Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
+		//Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[1], handle);
-		Segment_print(&smartCar->segment[2], Camera_getInterval()/100);
+		//Segment_print(&smartCar->segment[2], Camera_getInterval()/100);
 		
-		//Segment_print(&smartCar->segment[0], pos[1]);
-		//Segment_print(&smartCar->segment[2], pos[0]);
+		Segment_print(&smartCar->segment[0], pos[1]);
+		Segment_print(&smartCar->segment[2], pos[0]);
 		//print camera status
 		dumpData(data[0].arr, &smartCar->barLED[0]);
 		dumpData(data[1].arr, &smartCar->barLED[1]);
@@ -82,10 +82,11 @@ void start(SmartCar * smartCar){
 		}
 	}
 }
+
 int16_t handling(uint16_t right, uint16_t left){
 	static int16_t value = 0;
-	int16_t handle = (right == 255 ? 0 : (128 - right) * (128 -right) / 64) + (left == 255 ? 0 : - left * left / 64);
-	value = (value * 2 + handle * 8) / 10;
+	int16_t handle = (left == 255 ? 0 : - left * left / 32) + (right == 255 ? 0 : (128 - right) * (128 - right) / 32) ;
+	value = (value * 4 + handle * 6) / 10;
 	return value;
 }
 
@@ -115,10 +116,7 @@ void AIData_init(AIData * this, Camera * camera){
 
 	//sendBTCamera(camera);
 }
-uint8_t findLine(AIData * data){
-	binarization(data);
-	return findIndex(data);
-}
+
 void binarization(AIData * data){
 	register uint16_t i;
 	int16_t lowCrit = data->min*2/3;
@@ -134,7 +132,7 @@ void binarization(AIData * data){
 		}
 	}
 }
-uint8_t findIndex(AIData * data){
+uint8_t findIndexRL(AIData * data){//left camera
 	register uint16_t i;
 
 	uint16_t first = 8, last = 8;
@@ -146,6 +144,27 @@ uint8_t findIndex(AIData * data){
 			if(last - first < 2){
 				//noize
 				
+			} else {
+				return (last + first)/2;
+			}
+			first = i;
+		}
+	}
+	return 255;
+}
+
+
+uint8_t findIndexLR(AIData * data){//right camera
+	register uint16_t i;
+
+	uint16_t first = 120, last = 120;
+	//for ignore side
+	for(i = 120; i > 8; i--){
+		if(data->arr[i] == 1){
+			last = i;
+		} else {
+			if(first - last < 2){
+				//noize
 			} else {
 				return (last + first)/2;
 			}

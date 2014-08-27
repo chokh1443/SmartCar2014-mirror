@@ -27,7 +27,7 @@ uint16_t * Camera_get(Camera * this){
 }
 
 void Camera_onTick(Camera * this) {
-	static uint32_t clockSpeed = 4000;
+//	static uint32_t clockSpeed = 4000;
 	uint16_t value;
 	
 	if (this->count == 0 || this->count == 1) {
@@ -53,13 +53,13 @@ void Camera_onTick(Camera * this) {
 	this->count = ++this->count % 128;
 }
 void Camera_autoSet(Camera * this){
-	if(this->average < 650){
-		if(PIT.CH[1].LDVAL.R < 32000){
+	if(this->average < 750){
+		if(PIT.CH[1].LDVAL.R < 37000){
 			PIT.CH[1].LDVAL.R += 500;
 		}
 	} else if(this->average > 950){
 		if(PIT.CH[1].LDVAL.R > 2000){
-			PIT.CH[1].LDVAL.R -= 500;
+			PIT.CH[1].LDVAL.R -= 1000;
 		}
 	}
 }

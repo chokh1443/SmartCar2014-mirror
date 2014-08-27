@@ -238,8 +238,8 @@ void cameraTest(SmartCar * smartCar) {
  		dumpData(data[0].arr, &smartCar->barLED[0]);
 		dumpData(data[1].arr, &smartCar->barLED[1]);
 
-		pos[0] = findIndex(&data[0]);
-		pos[1] = findIndex(&data[1]);
+		pos[0] = findIndexRL(&data[0]);
+		pos[1] = findIndexLR(&data[1]);
 		
 		Segment_print(&smartCar->segment[0], (smartCar->camera[1].average + smartCar->camera[0].average)/2);
 		Segment_print(&smartCar->segment[1], handling(pos[0], pos[1]));
