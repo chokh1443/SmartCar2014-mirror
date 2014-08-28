@@ -30,12 +30,12 @@ void start(SmartCar * smartCar){
 		handle = handling(pos[0], pos[1]);
 
 		//current speed
-		//Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
+		Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[1], handle);
-		//Segment_print(&smartCar->segment[2], Camera_getInterval()/100);
+		Segment_print(&smartCar->segment[2], Camera_getInterval()/100);
 		
-		Segment_print(&smartCar->segment[0], pos[1]);
-		Segment_print(&smartCar->segment[2], pos[0]);
+		//Segment_print(&smartCar->segment[0], pos[1]);
+		//Segment_print(&smartCar->segment[2], pos[0]);
 		//print camera status
 		dumpData(data[0].arr, &smartCar->barLED[0]);
 		dumpData(data[1].arr, &smartCar->barLED[1]);
@@ -64,25 +64,42 @@ void start(SmartCar * smartCar){
 	}
 }
 
+uint16_t getValue(uint16_t index);
+uint16_t getReverseValue(uint16_t index);
+
 int16_t handling(uint16_t right, uint16_t left){
 	static int16_t value = 0;
 	int16_t handle = 0;
 	
-	if(left < 100){
-		handle -= left/2 + 50;
-	} else {
-		handle -= -2 * left + 250;
-	}
-	if(right < 28){
-		handle += 2 * right - 6; 
-	} else {
-		handle += - right / 2 + 114;
-	}
-	handle = handle * 2;
+	handle += getValue(right);
+	handle -= getReverseValue(left);
 	
-		
+	handle = handle * 2;
+
 	value = (value * 2 + handle * 8) / 10;
 	return value;
+}
+
+uint16_t getValue(uint16_t index){
+	if(index < 20) {
+		return 3*index+140;
+	} else if(index < 40){
+		return 5*index/2+60;
+	} else if(index < 60){
+		return -5*index/2+200;
+	} else if(index < 90){
+		return -2*index+190;
+	} else if(index < 128){
+		return -index/4+32;
+	} else {
+		return 0;
+	}
+}
+uint16_t getReverseValue(uint16_t index){
+	if(index == 255){
+		return 0;
+	}
+	return getValue(128-index);
 }
 
 void AIData_init(AIData * this, Camera * camera){
@@ -142,8 +159,14 @@ void binarization(AIData * data){
 	}
 	*/
 }
+int16_t abs(int16_t val){
+	return val >= 0 ? val : -val; 
+}
 uint8_t findIndexRL(AIData * data){//left camera
 	register uint16_t i;
+	
+	uint16_t diff = 50;
+	uint16_t index = 255;
 
 	uint16_t first = 8, last = 8;
 	//for ignore side
@@ -151,37 +174,42 @@ uint8_t findIndexRL(AIData * data){//left camera
 		if(data->arr[i] == 1){
 			last = i;
 		} else {
-			if(last - first < 2){
+			if(last - first <= 3){
 				//noize
 				
-			} else {
-				return (last + first)/2;
+			} else if(abs((last - first) - 5) < diff ) {
+				diff = abs((last - first) - 5);
+				index = (last + first) /2;
 			}
 			first = i;
 		}
 	}
-	return 255;
+	return index;
 }
 
 
 uint8_t findIndexLR(AIData * data){//right camera
 	register uint16_t i;
 
+	uint16_t diff = 50;
+	uint16_t index = 255;
+	
 	uint16_t first = 120, last = 120;
 	//for ignore side
 	for(i = 120; i > 8; i--){
 		if(data->arr[i] == 1){
 			last = i;
 		} else {
-			if(first - last < 2){
+			if(first - last <= 3){
 				//noize
-			} else {
-				return (last + first)/2;
+			} else if(abs((first - last) -5) < diff){
+				diff = abs((first - last) - 5);
+				index = (last + first)/2;
 			}
 			first = i;
 		}
 	}
-	return 255;
+	return index;
 }
 
 void dumpData(int16_t * data, BarLED * led){
