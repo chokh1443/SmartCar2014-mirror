@@ -29,25 +29,6 @@ void start(SmartCar * smartCar){
 		
 		handle = handling(pos[0], pos[1]);
 
-//		pos[0] = pos[0] == 255 ? -50 : 64 -  pos[0];
-//
-//		if(pos[0] < 0) {
-//			pos[0] = -pos[0] * pos[0] / 32;
-//		} else {
-//			pos[0] = pos[0];
-//		} 
-//
-//		pos[1] = pos[1] == 255 ? 50 : 64 - pos[1];
-//
-//		if(pos[1] > 0 ){
-//			pos[1] = pos[1] * pos[1] / 32;
-		
-//		} else {
-//			pos[1] = pos[1];
-//		}
-//		
-//		handle = (pos[0]+pos[1]);
-
 		//current speed
 		//Segment_print(&smartCar->segment[0], smartCar->motor.targetSpeed);
 		Segment_print(&smartCar->segment[1], handle);
@@ -85,8 +66,22 @@ void start(SmartCar * smartCar){
 
 int16_t handling(uint16_t right, uint16_t left){
 	static int16_t value = 0;
-	int16_t handle = (left == 255 ? 0 : - left * left / 32) + (right == 255 ? 0 : (128 - right) * (128 - right) / 32) ;
-	value = (value * 4 + handle * 6) / 10;
+	int16_t handle = 0;
+	
+	if(left < 100){
+		handle -= left/2 + 50;
+	} else {
+		handle -= -2 * left + 250;
+	}
+	if(right < 28){
+		handle += 2 * right - 6; 
+	} else {
+		handle += - right / 2 + 114;
+	}
+	handle = handle * 2;
+	
+		
+	value = (value * 2 + handle * 8) / 10;
 	return value;
 }
 
@@ -119,8 +114,8 @@ void AIData_init(AIData * this, Camera * camera){
 
 void binarization(AIData * data){
 	register uint16_t i;
-	int16_t lowCrit = data->min*2/3;
-	int16_t highCrit = data->max*2/3;
+	int16_t lowCrit = data->min*4/5;
+	int16_t highCrit = data->max*4/5;
 	
 	for(i = 0; i < 128; i++){
 		if(data->arr[i] > highCrit) {
@@ -131,6 +126,21 @@ void binarization(AIData * data){
 			data->arr[i] = data->arr[i-1];
 		}
 	}
+	/*
+	for(i = 0; i < 128; i++){
+		if(data->arr[i] > highCrit) {
+			for(j = i; j > 0; j--){
+				if(data->arr[j] < lowCrit){
+					for(k = j; k < i; k++){
+						data->arr[k] = 1;
+					}
+					break;
+				}
+			}
+		} 
+		data->arr[i] = 0;
+	}
+	*/
 }
 uint8_t findIndexRL(AIData * data){//left camera
 	register uint16_t i;
