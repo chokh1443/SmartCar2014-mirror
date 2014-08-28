@@ -31,7 +31,7 @@ void Camera_onTick(Camera * this) {
 	uint16_t value;
 	
 	if (this->count == 0 || this->count == 1) {
-		this->sum = 0; 
+		 
 		board.gpio.on(CAMERA_PINS[this->id].SI);
 	} else {
 		board.gpio.off(CAMERA_PINS[this->id].SI);
@@ -47,6 +47,7 @@ void Camera_onTick(Camera * this) {
 	
 	if(this->count == 127){
 		this->average = this->sum / 128;
+		this->sum = 0;
 		Camera_autoSet(this);
 	}
 	
@@ -54,12 +55,14 @@ void Camera_onTick(Camera * this) {
 }
 void Camera_autoSet(Camera * this){
 	if(this->average < 750){
-		if(PIT.CH[1].LDVAL.R < 37000){
+		if(PIT.CH[1].LDVAL.R < 37000) {
 			PIT.CH[1].LDVAL.R += 500;
 		}
 	} else if(this->average > 950){
-		if(PIT.CH[1].LDVAL.R > 2000){
+		if (PIT.CH[1].LDVAL.R > 24000) {
 			PIT.CH[1].LDVAL.R -= 1000;
+		} else if(PIT.CH[1].LDVAL.R > 2000){
+			PIT.CH[1].LDVAL.R -= 500;
 		}
 	}
 }
