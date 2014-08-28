@@ -15,7 +15,7 @@ void differential(AIData * data);
 void binarization(AIData * data);
 uint8_t findIndexRL(AIData * data);
 uint8_t findIndexLR(AIData * data);
-int16_t handling(uint16_t right, uint16_t left);
+int16_t handling(uint16_t right, uint16_t left, int16_t speed);
 void dumpData(int16_t * data, BarLED * led);
 void start(SmartCar * smartCar);
 

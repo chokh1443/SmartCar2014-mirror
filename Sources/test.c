@@ -242,7 +242,7 @@ void cameraTest(SmartCar * smartCar) {
 		pos[1] = findIndexLR(&data[1]);
 		
 		Segment_print(&smartCar->segment[0], (smartCar->camera[1].average + smartCar->camera[0].average)/2);
-		Segment_print(&smartCar->segment[1], handling(pos[0], pos[1]));
+		Segment_print(&smartCar->segment[1], handling(pos[0], pos[1],smartCar->motor.targetSpeed));
 		Segment_print(&smartCar->segment[2], Camera_getInterval() / 100);
 		
 		switch (board.button.check()) {
