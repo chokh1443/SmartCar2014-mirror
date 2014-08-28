@@ -46,14 +46,14 @@ void start(SmartCar * smartCar){
 		switch (board.button.check()) {
 		case 1:
 			if(speed < 2000){// max speed = 2000
-				speed = speed + 50;
+				speed = speed + 30;
 			} else {
 				speed = speed;
 			}
 			break;
 		case 2:
 			if(speed > 0){// min speed = 0
-				speed = speed - 50;
+				speed = speed - 30;
 			} else {
 				speed = speed;
 			}
@@ -72,17 +72,17 @@ int16_t handling(uint16_t right, uint16_t left, int16_t speed){
 	int16_t handle = 0;
 
 	// <- looking direction
-	if (speed > 201){
+	if (speed > 289){
 		if(right < 32){
 
 		} else if(right < 52){
-			handle += -(right-128) *25/10;
+			handle += -(right-128) *85/10;
 		} else if(right < 72){
-			handle += -(right-128) *20/10;
+			handle += -(right-128) *63/10;
 		} else if(right < 87){
-			handle += -(right-128)*15/10;
+			handle += -(right-128) *44/10;
 		} else if(right < 105){
-			handle += -(right-128);
+			handle += -(right-128) *26/10;
 		} else{ // 255
 			handle += 10;
 		}
@@ -90,13 +90,97 @@ int16_t handling(uint16_t right, uint16_t left, int16_t speed){
 		if(left < 10){
 			handle -= 10;
 		} else if (left < 32){
-			handle -= left;
+			handle -= left *30/10;
 		} else if (left < 47){
-			handle -= left*15/10;
+			handle -= left *48/10;
 		} else if (left < 67){
-			handle -= left*20/10;
+			handle -= left *64/10;
 		} else if (left < 87){
-			handle -= left*25/10;
+			handle -= left *85/10;
+		} else {
+
+		}
+	} else if (speed > 279){
+		if(right < 32){
+
+		} else if(right < 52){
+			handle += -(right-128) *75/10;
+		} else if(right < 72){
+			handle += -(right-128) *59/10;
+		} else if(right < 87){
+			handle += -(right-128) *41/10;
+		} else if(right < 105){
+			handle += -(right-128) *23/10;
+		} else{ // 255
+			handle += 10;
+		}
+
+		if(left < 10){
+			handle -= 10;
+		} else if (left < 32){
+			handle -= left *27/10;
+		} else if (left < 47){
+			handle -= left *44/10;
+		} else if (left < 67){
+			handle -= left *62/10;
+		} else if (left < 87){
+			handle -= left *78/10;
+		} else {
+
+		}
+	} else if (speed > 259){
+		if(right < 32){
+
+		} else if(right < 52){
+			handle += -(right-128) *50/10;
+		} else if(right < 72){
+			handle += -(right-128) *37/10;
+		} else if(right < 87){
+			handle += -(right-128) *28/10;
+		} else if(right < 105){
+			handle += -(right-128) *20/10;
+		} else{ // 255
+			handle += 10;
+		}
+
+		if(left < 10){
+			handle -= 10;
+		} else if (left < 32){
+			handle -= left *23/10;
+		} else if (left < 47){
+			handle -= left *31/10;
+		} else if (left < 67){
+			handle -= left *40/10;
+		} else if (left < 87){
+			handle -= left *52/10;
+		} else {
+
+		}
+	} else if (speed > 229){
+		if(right < 32){
+
+		} else if(right < 52){
+			handle += -(right-128) *35/10;
+		} else if(right < 72){
+			handle += -(right-128) *29/10;
+		} else if(right < 87){
+			handle += -(right-128) *24/10;
+		} else if(right < 105){
+			handle += -(right-128) *19/10;
+		} else{ // 255
+			handle += 10;
+		}
+
+		if(left < 10){
+			handle -= 10;
+		} else if (left < 32){
+			handle -= left *22/10;
+		} else if (left < 47){
+			handle -= left *27/10;
+		} else if (left < 67){
+			handle -= left *32/10;
+		} else if (left < 87){
+			handle -= left *38/10;
 		} else {
 
 		}
@@ -108,11 +192,11 @@ int16_t handling(uint16_t right, uint16_t left, int16_t speed){
 		} else if(right < 52){
 			handle += -(right-128) *25/10;
 		} else if(right < 72){
-			handle += -(right-128) *20/10;
+			handle += -(right-128) *21/10;
 		} else if(right < 87){
-			handle += -(right-128)*15/10;
+			handle += -(right-128) *17/10;
 		} else if(right < 105){
-			handle += -(right-128);
+			handle += -(right-128) *13/10;
 		} else{ // 255
 			handle += 10;
 		}
@@ -120,20 +204,24 @@ int16_t handling(uint16_t right, uint16_t left, int16_t speed){
 		if(left < 10){
 			handle -= 10;
 		} else if (left < 32){
-			handle -= left;
+			handle -= left *18/10;
 		} else if (left < 47){
-			handle -= left*15/10;
+			handle -= left *22/10;
 		} else if (left < 67){
-			handle -= left*20/10;
+			handle -= left *26/10;
 		} else if (left < 87){
-			handle -= left*25/10;
+			handle -= left *30/10;
 		} else {
 
 		}
 	}
 
 	handle = handle;
-	value = (value * 2 + handle * 8) / 10;
+	if(speed > 289){
+		value = (value * 1 + handle * 9) / 10;
+	} else {
+		value = (value * 2 + handle * 8) / 10;
+	}
 	return value;
 }
 /*
