@@ -76,9 +76,9 @@ void Motor_pidTick(Motor * this){
 	board.pwm.set(PWM_AIN1 , speed);
 	board.pwm.set(PWM_BIN1 , speed);
 	this->currentSpeed = speed;
-	if(this->sendPID == 1){
-		sendBTPID(this);
-	}	
+//	if(this->sendPID == 1){
+//		sendBTPID(this);
+//	}	
 }
 
 int32_t Motor_PID(Motor * this){
